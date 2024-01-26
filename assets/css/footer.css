@@ -1,0 +1,180 @@
+footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 7rem;
+    background-color: var(--color-background);
+    font-family: 'Poppins', sans-serif;
+    border-top: 1px solid var(--color-text);
+    transition: transform 0.5s ease-in-out; 
+}
+
+.scrolledfooter {
+    transform: translate3d(0, 0, 0);
+}
+
+.element{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+    overflow: hidden;
+}
+
+.reseaux{
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+}
+
+.facebook{
+    width: 35px;
+    height: 35px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.facebook img{
+    width: 100%;
+    height: 100%;
+}
+
+.reseaux div:hover{
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
+
+.pages {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 1rem;
+    text-align: center;
+    gap: 3rem;
+}
+
+.pages a{
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.pages a::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-first-color);
+    transition: all 0.3s;
+}
+
+.pages a:hover::after{
+    width: 100%;
+}
+
+.pages a:hover{
+    color: var(--first-color);
+}
+
+.mentions ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 1rem;
+    text-align: center;
+    gap: 2rem;
+}
+
+.mentions ul li{
+    list-style: none;
+}
+
+.mentions a {
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: var(--text-color);
+}
+
+.mentions a::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-first-color);
+    transition: all 0.3s;
+}
+
+.mentions a:hover::after{
+    width: 100%;
+}
+
+.hero{
+    width: 0.5px;
+    height: 50px;
+    border-right: 0.5px solid var(--color-text);
+}
+
+@media all and (max-width : 1030px){
+    .pages a{
+        font-size: 1.2rem;
+    }
+}
+@media all and (max-width : 960px){
+    .pages a{
+        font-size: 1.1rem;
+    }
+}
+@media all and (max-width : 910px){
+    .pages a{
+        font-size: 1rem;
+    }
+}
+@media all and (max-width : 860px){
+    .pages a{
+        font-size: 0.9rem;
+    }
+
+}
+
+@media all and (max-width : 800px){
+    .element{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: row;
+        padding: 1rem;
+        text-align: center;
+    }
+    .reseaux{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        gap: 3rem;
+    }
+    .pages{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        gap: 1rem;
+    }
+    .mentions ul{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        gap: 1rem;
+        list-style: none;
+    }
+}
