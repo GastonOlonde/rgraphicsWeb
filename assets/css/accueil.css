@@ -98,10 +98,9 @@ body {
 /* Section 2 */
 
 
-/* #section2{
-    height: 720px;
-    border-bottom: 1px solid var(--color-text);
-} */
+#section2{
+    height: 900px;
+}
 
 .div-covering{
     margin-top: 75px;
@@ -160,13 +159,16 @@ body {
 
 /* Style de la liste déroulante */
 .dropdown-content {
-    display: none;
+    display: block;
     border-radius: 10px;
     position: absolute;
     background-color: rgba(249, 249, 249, .8);
     min-width: 100px;
+    height: 0px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Style des liens dans la liste déroulante */
@@ -185,8 +187,9 @@ body {
 
 /* Affichage de la liste déroulante lorsqu'elle est activée */
 .dropdown:hover .dropdown-content {
-    display: block;
+    height: 527px;
 }
+
 
 .swiper-container{
     width: 85%;

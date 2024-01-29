@@ -85,6 +85,10 @@ var swiper = new Swiper('.swiper-container', {
 })
 
 
+
+
+
+
 $(document).ready(function () {
     // Fonction pour le défilement fluide
     $(".section-link").on('click', function (event) {
