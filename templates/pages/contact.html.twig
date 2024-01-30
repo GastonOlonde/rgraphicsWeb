@@ -30,46 +30,16 @@
 
         <div class="contact-form">
             <h2>Contactez-nous</h2>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            {{ form_end(form) }}
-            {# <form action="{{ path('contact') }}" method="POST">
-
-                <div class="nom-prenom">
-                    <div class="label-nom">
-                        <label for="nom">Nom*</label>    
-                        <input type="text" name="nom" class="text-box" placeholder="Votre nom" required>
-                    </div>
-                    <div class="label-prenom">
-                        <label for="prenom">Prénom*</label>
-                        <input type="text" name="prenom" class="text-box" placeholder="Votre prénom" required>
-                    </div>
+            {% for message in app.flashes('notice') %}
+                <div class="flash-notice">
+                    {{ message }}
                 </div>
-                
-                <div class="label-mail">
-                    <label class="lblmail" for="email">Email*</label>
-                    <input type="email" name="email" class="text-box" placeholder="Votre email" required>
-                </div>
-
-
-                <div class="tel-obj">
-                    <div class="label-tel">
-                        <label for="tel">Téléphone*</label>
-                        <input type="number" name="tel" class="text-box" placeholder="Votre téléphone" required>
-                    </div>
-                    
-                    <div class="label-obj">
-                        <label for="object">Objet*</label>
-                        <input type="text" name="object" class="text-box" placeholder="Objet" required>
-                    </div>
-                </div>
-
-                <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-
-                <button type="submit" name="submit" class="send-btn">Envoyer</button>
-            </form> #}
+            {% endfor %}
+            {{ form_start(formulaire) }}
+            {{ form_widget(formulaire) }}
+            {{ form_end(formulaire) }}
+            
         </div>
-
     </div>
 </div>
 
