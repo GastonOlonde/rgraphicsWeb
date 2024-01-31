@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/connexioninscription.css') }}">
+{% endblock %}
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    <div class="div-inscription">
+        <h1>Inscription</h1>
+        {{ form_start(registrationForm) }}
+        {{ form_errors(registrationForm) }}
+            {{ form_row(registrationForm.nom) }}
+            {{ form_row(registrationForm.prenom) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword)}}
+            {# {{ form_row(registrationForm.agreeTerms) }} #}
+            <button type="submit" class="button-connexion">M'inscrire</button>
+        {{ form_end(registrationForm) }}
+    </div>
+{% endblock %}

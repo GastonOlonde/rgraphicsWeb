@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/connexioninscription.css') }}">
+{% endblock %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+<div class="div-connexion">
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="mb-3">
+                Vous êtes connecté(e) en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Me déconnecter</a>
+            </div>
+        {% endif %}
+
+        <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+        <label for="inputEmail">Email</label>
+        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+        <label for="inputPassword">Mot de passe</label>
+        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+        <input type="hidden" name="_csrf_token"
+            value="{{ csrf_token('authenticate') }}"
+        >
+        <a class="mdp-oubli" href="{{ path('app_forgotten_password') }}"> Mot de passe oublié</a>
+        <button class="button-connexion" type="submit">
+            Me connecter
+        </button>
+    </form>
+</div>
+
+{% endblock %}

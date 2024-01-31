@@ -63,10 +63,11 @@ nav{
 .menu{
     display: flex;
     justify-content: space-around;
-    /* align-content: start; */
+    align-items: center;
     list-style: none;
     margin-top: -30px;
-    width: 500px;
+    padding: 0.5rem;
+    gap: 2rem;
 }
 
 .menu li a{
@@ -74,7 +75,7 @@ nav{
     text-decoration: none;
 }
 
-.menu li a::after{
+.menu li .underline::after{
     content: '';
     display: block;
     width: 0px;
@@ -83,7 +84,7 @@ nav{
     transition: all 0.3s;
 }
 
-.menu li.active a::after {
+.menu li.active .underline::after {
     width: 100%;
     background-color: var(--color-first-color); /* Couleur jaune */
 }
@@ -106,6 +107,24 @@ nav{
     height: 100%;
     margin-top: 2px;
 }
+
+.btn-header{
+    background-color: var(--color-button);
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 0.5rem;
+    border: none;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-header:hover{
+    background-color: rgba(255, 213, 0, 0.9);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
 
 @media all and (max-width : 991px){
 

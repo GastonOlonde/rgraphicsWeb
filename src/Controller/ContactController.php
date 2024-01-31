@@ -15,7 +15,7 @@ use Flashy\FlashyNotifier;
 
 class ContactController extends AbstractController
 {
-    #[Route('/contact', name: 'contact')]
+    #[Route('/contact', name: 'app_contact')]
     public function index(Request $request, MailerInterface $mailer): Response
     {
         $form = $this->createForm(ContactFormType::class);

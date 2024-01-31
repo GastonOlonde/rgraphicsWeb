@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UsersRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet email.')]
 class Users implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -15,7 +18,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    // #[Assert\NotBlank(message:"L'email est obligatoire.")]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -32,6 +36,9 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 100)]
     private ?string $prenom = null;
+
+    #[ORM\Column(type: 'string', length: 100)]
+    private $resetToken;
 
     public function getId(): ?int
     {
@@ -123,6 +130,18 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getResetToken(): ?string
+    {
+        return $this->resetToken;
+    }
+
+    public function setResetToken(?string $resetToken): self
+    {
+        $this->resetToken = $resetToken;
 
         return $this;
     }
