@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Categories;
 use App\Repository\ServicesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -22,6 +23,10 @@ class Services
 
     #[ORM\Column(type: Types::BLOB)]
     private $image = null;
+
+    // Clé secondaire qui correspood à la clé primaire de la table Categories
+    #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'services', nullable: false)]
+    private $categorie;
 
     public function getId(): ?int
     {

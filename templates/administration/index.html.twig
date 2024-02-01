@@ -1,9 +1,41 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
 {% block title %}RGRAPHICS - Administration{% endblock %}
 
 {% block body %}
 
-<h2>ADMINISTRATION</h2>
+    <div class="div-admin">
+        <section class="add-content">
+            <h1>Contenu Accueil</h1>
+            <div class="ajout-contenu">
+                {# formulaire addContentForm #}
+                {{ form_start(addContentForm) }}
+                {{ form_widget(addContentForm.legende) }}
+                {{ form_widget(addContentForm.titre) }}
+                {{ form_widget(addContentForm.image) }}
+                {{ form_widget(addContentForm.categorie) }}
+                    <button class="button-connexion" type="submit">
+                    Me connecter
+                    </button>
+                {{ form_end(addContentForm) }}
+            </div>
+            
+        </section>
+        <section class="info-gen">
+            <div class="page-accueil">
+
+            </div>
+            <div class="page-contact">
+
+            </div>
+        </section>
+        <section class="equipe">
+
+        </section>
+    </div>
 
 {% endblock %}

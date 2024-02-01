@@ -37,8 +37,8 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100)]
     private ?string $prenom = null;
 
-    #[ORM\Column(type: 'string', length: 100)]
-    private $resetToken;
+    #[ORM\Column(type: 'string', length: 100, nullable: true)]
+    private ?string $resetToken = null;
 
     public function getId(): ?int
     {

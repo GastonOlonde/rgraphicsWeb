@@ -1,0 +1,21 @@
+<stylesheet> 
+    <link rel="stylesheet" href="{{ asset('css/flash.css') }}">
+</stylesheet>
+
+{% for flashMessage in app.flashes('success') %}
+        <div class="flash-message flash-succes">
+            {{ flashMessage|raw }}
+        </div>
+{% endfor %}
+
+{% for flashMessage in app.flashes('error') %}
+        <div class="flash-message flash-error">
+            {{ flashMessage|raw }}
+        </div>
+{% endfor %}
+
+{% for flashMessage in app.flashes('alert') %}
+        <div class="flash-message flash-alert">
+            {{ flashMessage|raw }}
+        </div>
+{% endfor %}
