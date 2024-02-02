@@ -18,11 +18,36 @@ section{
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+
 }
 
+
+.ajout-contenu form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+}
+.ajout-contenu form div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+
+
+/* .addcontent_form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+} */
+
 .ajout-contenu{
-    margin-top: 150px;
-    margin-left: 35%;
+    margin-top: 50px;
     width: 30%;
     margin-bottom: 10%;
     padding: 2rem;
@@ -30,6 +55,273 @@ section{
     border-radius: 10px;
     background-color: #f5f5f5;
     display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+    gap: 2rem;
+}
+
+.button-add-content{
+    font-family: 'Inter', sans-serif;
+    width: 30%;
+    height: 100%;
+    background-color: var(--color-button);
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 1rem;
+    border: none;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
+    transition: all 0.3s ease-in-out;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+.button-add-content:hover{
+    background-color: rgba(255, 213, 0, 0.9);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+input{
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid var(--color-text);
+    border-radius: 15px;
+}
+
+#addcontent_form_legende{
+    width: 100%;
+    height: 100px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid var(--color-text);
+    border-radius: 10px 5px 5px 10px;
+    resize: none;
+    overflow-y: scroll;
+}
+
+#addcontent_form_legende::-webkit-scrollbar {
+    width: 10px; /* Ajustez la largeur selon vos besoins */
+}
+
+#addcontent_form_legende::-webkit-scrollbar-thumb {
+    background-color: #808080; /* Couleur du bouton de la scrollbar */
+    border-radius: 15px; /* Border-radius pour rendre la scrollbar arrondie */
+}
+#addcontent_form_legende::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur de la piste de la scrollbar */
+    border-radius: 15px; /* Border-radius pour rendre la scrollbar arrondie */
+}
+
+#addcontent_form_legende:focus{
+    outline: none;
+    border: 1px solid var(--color-first-color);
+}
+
+input:focus{
+    outline: none;
+    border: 1px solid var(--color-first-color);
+}
+
+
+#addcontent_form_categorie{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 5px;
+    width: 30%;
+    padding: .5rem;
+    align-self: flex-start;
+}
+
+#addcontent_form_categorie:focus{
+    outline: none;
+    border: 1px solid var(--color-first-color);
+}
+#addcontent_form_categorie:hover{
+    cursor: pointer;
+}
+
+
+
+.vich-image{
+    width: 100%;
+}
+
+.vich-image #addcontent_form_imageFile_file{
+    width: 100%;
+}
+
+
+
+
+
+
+
+.button-inscription{
+    font-family: 'Inter', sans-serif;
+    width: 30%;
+    margin-top: 1rem;
+    background-color: var(--color-button);
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 1rem;
+    border: none;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
+    transition: all 0.3s ease-in-out;
+}
+
+.button-inscription:hover{
+    background-color: rgba(255, 213, 0, 0.9);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.div-inscription{
+    margin-top: 150px;
+    margin-left: 35%;
+    width: 30%;
+    margin-bottom: 10%;
+    padding: 2rem;
+    border: 1px solid var(--color-first-color);
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    display: flex;
     flex-direction: column;
     gap: 2rem;
 }
+
+.div-inscription input{
+    margin-top: 1rem;
+}
+
+
+.div-inscription form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.div-inscription form div{
+    width: 100%;
+}
+
+.div-inscription h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.info-gen{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    width: 100%;
+    align-items: center;
+}
+
+.div-form-info-gen{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 80%;
+    align-items: center;
+    padding: 2rem;
+    border: 1px solid var(--color-first-color);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);    
+}
+
+.page-accueil{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    width: 100%;
+}
+
+.page-accueil h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-accueil form{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.page-accueil form input {
+    display: flex;
+    margin-top: 0.5rem;
+    padding: 0rem;
+    width: 100%;
+    height: 100%;
+    border: 1px solid var(--color-text);
+    border-radius: 3px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.page-accueil form label{
+    display: none;
+}
+
+.page-accueil form input:hover {
+    cursor: pointer;
+}
+
+.logo-accueil{
+    width: 100%;
+}
+
+/* .page-accueil form div {
+   width: 20%;
+} */
+
+.page-accueil form input{
+    display: flex;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+    background-color: var(--color-button);
+    align-self: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 1rem;
+    border: none;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
+    transition: all 0.3s ease-in-out;
+}
+
+.page-accueil form input:hover{
+    background-color: rgba(255, 213, 0, 0.9);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.page-accueil form button {
+    width: 10%;
+}
+
+.image-logo{
+    display: flex;
+    width: 100%;
+    height: 400px;
+}
+

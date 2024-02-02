@@ -13,28 +13,55 @@
             <h1>Contenu Accueil</h1>
             <div class="ajout-contenu">
                 {# formulaire addContentForm #}
+                <h1>Ajout services</h1>
                 {{ form_start(addContentForm) }}
-                {{ form_widget(addContentForm.legende) }}
-                {{ form_widget(addContentForm.titre) }}
-                {{ form_widget(addContentForm.image) }}
-                {{ form_widget(addContentForm.categorie) }}
-                    <button class="button-connexion" type="submit">
-                    Me connecter
+                {{ form_row(addContentForm.titre) }}
+                {{ form_row(addContentForm.legende) }}
+                {{ form_row(addContentForm.imageFile) }}
+                {{ form_row(addContentForm.categorie) }}
+                    <button class="button-add-content" type="submit">
+                    Ajouter
                     </button>
                 {{ form_end(addContentForm) }}
             </div>
             
         </section>
         <section class="info-gen">
-            <div class="page-accueil">
+            <h1>Informations générales</h1>
+            <div class="div-form-info-gen">
+                <div class="page-accueil">
+                    <h3>Logo page d'accueil</h3>
+                    {{ form_start(logoAccueilForm) }}
+                    {# récupération de l'image stocké en base de donnée par le nom_param #}
+                    <div class="image-logo">
+                        <img src="{{ vich_uploader_asset(parametre, 'imageFile', parametre.nom_param = "LOGO") }}" alt="logo accueil" class="logo-accueil">
+                    </div>
+                    {{ form_row(logoAccueilForm.imageFile) }}
+                    <button class="button-add-content" type="submit">Valider</button>
+                    {{ form_end(logoAccueilForm) }}
+                </div>
+                <div class="page-contact">
 
+                </div>
             </div>
-            <div class="page-contact">
-
-            </div>
+            
         </section>
         <section class="equipe">
 
+        </section>
+        <section class="ajout-admin">
+            <div class="div-inscription">
+                <h1>Ajout un nouvel Administrateur</h1>
+                {{ form_start(registrationForm) }}
+                {{ form_errors(registrationForm) }}
+                    {{ form_row(registrationForm.nom) }}
+                    {{ form_row(registrationForm.prenom) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.plainPassword)}}
+                    {# {{ form_row(registrationForm.agreeTerms) }} #}
+                    <button type="submit" class="button-inscription">Ajouter</button>
+                {{ form_end(registrationForm) }}
+            </div>
         </section>
     </div>
 

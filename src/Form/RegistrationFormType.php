@@ -22,36 +22,28 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' =>[
-                    'placeholder' => 'Votre e-mail'
+                    'placeholder' => 'johndoe@gmail.com'
                 ],
                 'label' => 'E-mail'
             ])
             ->add('nom', TextType::class, [
                 'attr' =>[
-                    'placeholder' => 'Votre nom'
+                    'placeholder' => 'Doe'
                 ],
                 'label' => 'Nom'
             ])
             ->add('prenom', TextType::class, [
                 'attr' =>[
-                    'placeholder' => 'Votre prénom'
+                    'placeholder' => 'John'
                 ],
                 'label' => 'Prénom'
             ])
-            // ->add('RGPDConsent', CheckboxType::class, [
-            //                     'mapped' => false,
-            //     'constraints' => [
-            //         new IsTrue([
-            //             'message' => 'You should agree to our terms.',
-            //         ]),
-            //     ],
-            // ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password',
-                'placeholder' => 'Votre mot de passe',
+                'placeholder' => 'Mot de passe',
                 ],
                 'label' => 'Mot de passe',
                 'constraints' => [

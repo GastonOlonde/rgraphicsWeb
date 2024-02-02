@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use App\Entity\Categories;
 use App\Repository\ServicesRepository;
-use Doctrine\DBAL\Types\Types;
+// use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: ServicesRepository::class)]
+#[Vich\Uploadable]
 class Services
 {
     #[ORM\Id]
@@ -21,12 +24,20 @@ class Services
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $titre = null;
 
-    #[ORM\Column(type: Types::BLOB)]
-    private $image = null;
+    #[Vich\UploadableField(mapping: 'rgraphics_images', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
 
-    // Clé secondaire qui correspood à la clé primaire de la table Categories
-    #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'services', nullable: false)]
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
+
+
+    // // Clé secondaire qui correspood à la clé primaire de la table Categories
+    #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'services')]
+    #[ORM\JoinColumn(nullable: false)]
     private $categorie;
+
+
 
     public function getId(): ?int
     {
@@ -57,14 +68,40 @@ class Services
         return $this;
     }
 
-    public function getImage()
+    public function getImageFile(): ?File
     {
-        return $this->image;
+        return $this->imageFile;
     }
 
-    public function setImage($image): static
+    public function setImageFile(?File $imageFile = null): void
     {
-        $this->image = $image;
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost // traduction // 
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
+    }
+    
+    public function getCategorie(): ?Categories
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categories $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }
