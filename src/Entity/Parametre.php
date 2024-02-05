@@ -97,4 +97,8 @@ class Parametre
 
         return $this;
     }
+    public function __toString()
+    {
+        return $this->getNomParam(); // Assurez-vous d'adapter cela en fonction de votre structure réelle
+    }
 }

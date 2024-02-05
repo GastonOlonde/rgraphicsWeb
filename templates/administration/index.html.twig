@@ -30,15 +30,34 @@
             <h1>Informations générales</h1>
             <div class="div-form-info-gen">
                 <div class="page-accueil">
-                    <h3>Logo page d'accueil</h3>
+                    <h1>Logo page d'accueil</h1>
+                    <p class="p-apercu">Aperçu actuel du logo</p>
                     {{ form_start(logoAccueilForm) }}
-                    {# récupération de l'image stocké en base de donnée par le nom_param #}
                     <div class="image-logo">
-                        <img src="{{ vich_uploader_asset(parametre, 'imageFile', parametre.nom_param = "LOGO") }}" alt="logo accueil" class="logo-accueil">
+                        <img src="{{ vich_uploader_asset(parametrelogoAccueil, 'imageFile') }}" alt="{{parametrelogoAccueil.imageName}}" class="logo-accueil">
                     </div>
                     {{ form_row(logoAccueilForm.imageFile) }}
                     <button class="button-add-content" type="submit">Valider</button>
                     {{ form_end(logoAccueilForm) }}
+                    <h1>Texte page d'accueil</h1>
+                    <p class="p-apercu">Aperçu actuel du Texte</p>
+                    {{ form_start(textAccueilForm) }}
+                    <div class="text-apercu">
+                        <p>{{parametreTextAccueil.textAccroche}}</p>   
+                    </div>
+                    {{ form_row(textAccueilForm.textAccroche) }}
+                    <button class="button-add-content" type="submit">Valider</button>
+                    {{ form_end(textAccueilForm) }}
+                    <h1>Page Contact</h1>
+                    {{ form_start(infoContactForm) }}
+                    {{ form_row(infoContactForm.nom_param) }}
+                    {# <div class="text-apercu">
+                        <p>{{infoscontact}}</p>   
+                    </div> #}
+                    {{ form_row(infoContactForm.value_param) }}
+                    <button class="button-add-content" type="submit">Valider</button>
+                    {{ form_end(infoContactForm) }}
+
                 </div>
                 <div class="page-contact">
 

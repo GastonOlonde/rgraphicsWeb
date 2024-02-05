@@ -10,6 +10,8 @@ use App\Form\AddcontentFormType;
 use App\Entity\Parametre;
 use App\Entity\Categories;
 use App\Form\LogoAccueilFormType;
+use App\Form\TextAccueilFromType;
+use App\Form\InfoContactFormType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Users;
@@ -119,8 +121,6 @@ class AdministrationController extends AbstractController
             $entityManager->remove($logo);
             $entityManager->flush();
 
-            // instance de parametre
-
             // on récupère toutes les données du formulaire
             $logo = $formLogo->getData();
             $nom_param = 'LOGO';
@@ -132,14 +132,84 @@ class AdministrationController extends AbstractController
         }
 
 
-        $parametre = new Parametre();
+        // Formulaire de modification du texte d'accueil
+
+        $textAccueil = new Parametre();
+        $formTextAccueil = $this->createForm(TextAccueilFromType::class, $textAccueil);
+        $formTextAccueil->handleRequest($request);
+
+        if($formTextAccueil->isSubmitted() && $formTextAccueil->isValid()){
+            //suppression de l'ancien texte
+            $textAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'TEXTE_ACCUEIL']);
+            if($textAccueil != null){
+                $entityManager->remove($textAccueil);
+                $entityManager->flush();
+            }
+           
+
+            // on récupère toutes les données du formulaire
+            $textAccueil = $formTextAccueil->getData();
+            $nom_param = 'TEXTE_ACCUEIL';
+            $textAccueil->setNomParam($nom_param);
+            $entityManager->persist($textAccueil);
+            $entityManager->flush();
+            $this->addFlash('success', 'Le texte d\'accueil a bien été modifié.');
+            return $this->redirectToRoute('app_administration');
+        }
+
+
+
+
+
+
+        // Formulaire de modification des informations de contact
+        $infoContact = new Parametre();
+        $formInfoContact = $this->createForm(InfoContactFormType::class, $infoContact);
+        $formInfoContact->handleRequest($request);
+
+        if($formInfoContact->isSubmitted() && $formInfoContact->isValid()){
+            //suppression de l'information de contact sélectionnée avec la liste déroulante
+            $paramseltioned = $formInfoContact->get('nom_param')->getData();
+            if($paramseltioned != null){
+                $entityManager->remove($paramseltioned);
+                $entityManager->flush();
+            }
+           
+
+            // on récupère toutes les données du formulaire
+            $infoContact = $formInfoContact->getData();
+            $nom_param = $formInfoContact->get('nom_param')->getData();
+            $infoContact->setNomParam($nom_param);
+            $entityManager->persist($infoContact);
+            $entityManager->flush();
+            $this->addFlash('success', 'Les informations de contact ont bien été modifiées.');
+            return $this->redirectToRoute('app_administration');
+        }
+
+        // on récupère le valu_param du nom_param sélectionné depuis la liste déroulante du formulaire de modification des informations de contact
+        $infoscontact = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => $formInfoContact->get('nom_param')->getData()]);
+
+        // On récupère le logo de la page d'accueil        
+        $parametrelogoAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO']);
+
+        // On récupère le texte d'accueil
+        $parametreTextAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'TEXTE_ACCUEIL']);
+        // s'il n'existe pas, on affiche "aucun texte d'accueil pour le moment, veuillez en ajouter un."
+        if($parametreTextAccueil == null){
+            $parametreTextAccueil = new Parametre();
+            $parametreTextAccueil->setValueParam('Aucun texte d\'accueil pour le moment, veuillez en ajouter un.');
+        }
 
         return $this->render('administration/index.html.twig', [
             'addContentForm' => $form->createView(),
             'registrationForm' => $formIns->createView(),
             'logoAccueilForm' => $formLogo->createView(),
+            'textAccueilForm' => $formTextAccueil->createView(),
+            'infoContactForm' => $formInfoContact->createView(),
             'controller_name' => 'AdministrationController',
-            'parametre' => $parametre,
+            'parametrelogoAccueil' => $parametrelogoAccueil,
+            'parametreTextAccueil' => $parametreTextAccueil,
+            'infoscontact' => $infoscontact
         ]);
     }
     

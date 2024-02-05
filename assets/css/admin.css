@@ -142,6 +142,7 @@ input:focus{
 }
 #addcontent_form_categorie:hover{
     cursor: pointer;
+    background-color: #f1f1f1;
 }
 
 
@@ -242,7 +243,7 @@ input:focus{
 .page-accueil{
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
     width: 100%;
 }
@@ -253,6 +254,13 @@ input:focus{
     align-items: center;
 }
 
+.page-accueil .p-apercu{
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+    margin-left: 32px;
+}
+
 .page-accueil form{
     display: flex;
     flex-direction: row;
@@ -260,8 +268,8 @@ input:focus{
     width: 100%;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem;
-    border-radius: 10px;
+    padding: 0 2rem 4rem 2rem;
+    border-bottom: 1px solid var(--color-text);
 }
 
 .page-accueil form input {
@@ -322,6 +330,88 @@ input:focus{
 .image-logo{
     display: flex;
     width: 100%;
-    height: 400px;
+    /* height: 400px; */
+    border: 1px solid var(--color-first-color);
+    padding: 0.2rem;
 }
 
+.text-apercu{
+    display: flex;
+    width: 50%;
+    height: 100px;
+    background-color: #f1f1f1;
+    border: 1px solid var(--color-first-color);
+    padding: 0.2rem;
+    overflow-y: scroll;
+}
+
+
+.text-apercu::-webkit-scrollbar {
+    width: 10px; /* Ajustez la largeur selon vos besoins */
+}
+.text-apercu::-webkit-scrollbar-thumb {
+    background-color: #808080; /* Couleur du bouton de la scrollbar */
+    border-radius: 15px; /* Border-radius pour rendre la scrollbar arrondie */
+}
+.text-apercu::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur de la piste de la scrollbar */
+    border-radius: 15px; /* Border-radius pour rendre la scrollbar arrondie */
+}
+
+#text_accueil_from_textAccroche{
+    width: 500px;
+    height: 100px;
+    padding: 0.5rem;
+    border: 1px solid var(--color-first-color);
+    resize: none;
+    overflow-y: scroll;
+}
+
+#text_accueil_from_textAccroche::-webkit-scrollbar {
+    width: 10px; /* Ajustez la largeur selon vos besoins */
+}
+#text_accueil_from_textAccroche::-webkit-scrollbar-thumb {
+    background-color: #808080; /* Couleur du bouton de la scrollbar */
+    border-radius: 15px; /* Border-radius pour rendre la scrollbar arrondie */
+}
+#text_accueil_from_textAccroche::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur de la piste de la scrollbar */
+    border-radius: 15px; /* Border-radius pour rendre la scrollbar arrondie */
+}
+
+#info_contact_form_value_param{
+    width: 500px;
+    height: 100px;
+    padding: 0.5rem;
+    border: 1px solid var(--color-first-color);
+    resize: none;
+    overflow-y: scroll;
+}
+
+#info_contact_form_value_param::-webkit-scrollbar {
+    width: 10px; /* Ajustez la largeur selon vos besoins */
+}
+#info_contact_form_value_param::-webkit-scrollbar-thumb {
+    background-color: #808080; /* Couleur du bouton de la scrollbar */
+    border-radius: 15px; /* Border-radius pour rendre la scrollbar arrondie */
+}
+#info_contact_form_value_param::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Couleur de la piste de la scrollbar */
+    border-radius: 15px; /* Border-radius pour rendre la scrollbar arrondie */
+}
+
+#info_contact_form_nom_param{
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+#info_contact_form_nom_param:hover{
+    cursor: pointer;
+    background-color: #f1f1f1;
+}
+
+#info_contact_form_nom_param:focus{
+    outline: none;
+    border: 1px solid var(--color-first-color);
+}
