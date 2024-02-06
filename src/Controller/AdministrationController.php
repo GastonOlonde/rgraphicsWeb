@@ -8,10 +8,12 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Services;
 use App\Form\AddcontentFormType;
 use App\Entity\Parametre;
+use App\Entity\Membre;
 use App\Entity\Categories;
 use App\Form\LogoAccueilFormType;
 use App\Form\TextAccueilFromType;
 use App\Form\InfoContactFormType;
+use App\Form\AjoutMembreFormType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Users;
@@ -186,6 +188,51 @@ class AdministrationController extends AbstractController
             return $this->redirectToRoute('app_administration');
         }
 
+
+
+
+
+        // traitement du formulaire d'ajout de membres
+        $membre = new Membre();
+        $formMembre = $this->createForm(AjoutMembreFormType::class, $membre);
+        $formMembre->handleRequest($request);
+
+        if($formMembre->isSubmitted() && $formMembre->isValid()){
+            // on récupère toutes les données du formulaire
+            $membre = $formMembre->getData();
+
+            // Si l'image ne fais pas plus de 200ko
+            if($membre->getImageFile()->getSize() < 200000){
+
+                // si il n'y a pas de caractères spéciaux ( injection de code, etc...)
+                if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getNom()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getPrenom()) || preg_match('/[\^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getDescription()) || preg_match('/[\^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getRole()) ){
+                    $this->addFlash('error', 'Les caractères spéciaux ne sont pas autorisés.');
+                    return $this->redirectToRoute('app_administration');
+                }
+                
+
+                // On ajoute les données dans la base de données
+                // exepetion si flush ne se passe pas bien
+                try{
+                    $entityManager->persist($membre);
+                    $entityManager->flush();
+                } catch(\Exception $e){
+                    $this->addFlash('error', 'Une erreur est survenue, veuillez réessayer.');
+                    return $this->redirectToRoute('app_administration');
+                }
+                // si flush s'est bien passé, on addflash
+                $this->addFlash('success', 'Le membre et ses infrmations ont bien été ajoutés.');
+                return $this->redirectToRoute('app_administration');
+            }else{
+                $this->addFlash('error', 'L\'image est trop lourde, elle ne doit pas dépasser 200ko.');
+
+            }
+        }
+
+
+
+
+
         // on récupère le valu_param du nom_param sélectionné depuis la liste déroulante du formulaire de modification des informations de contact
         $infoscontact = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => $formInfoContact->get('nom_param')->getData()]);
 
@@ -206,6 +253,7 @@ class AdministrationController extends AbstractController
             'logoAccueilForm' => $formLogo->createView(),
             'textAccueilForm' => $formTextAccueil->createView(),
             'infoContactForm' => $formInfoContact->createView(),
+            'ajoutMembreForm' => $formMembre->createView(),
             'controller_name' => 'AdministrationController',
             'parametrelogoAccueil' => $parametrelogoAccueil,
             'parametreTextAccueil' => $parametreTextAccueil,

@@ -57,16 +57,20 @@
                     {{ form_row(infoContactForm.value_param) }}
                     <button class="button-add-content" type="submit">Valider</button>
                     {{ form_end(infoContactForm) }}
-
                 </div>
-                <div class="page-contact">
-
-                </div>
-            </div>
-            
         </section>
         <section class="equipe">
-
+            <div class="div-equipe">
+                <h1>Page Equipe</h1>
+                {{ form_start(ajoutMembreForm) }}
+                {{ form_row(ajoutMembreForm.nom) }}
+                {{ form_row(ajoutMembreForm.prenom) }}
+                {{ form_row(ajoutMembreForm.description) }}
+                {{ form_row(ajoutMembreForm.role) }}
+                {{ form_row(ajoutMembreForm.imageFile) }}
+                <button class="button-add-content" type="submit">Ajouter</button>
+                {{ form_end(ajoutMembreForm) }}
+            </div>
         </section>
         <section class="ajout-admin">
             <div class="div-inscription">

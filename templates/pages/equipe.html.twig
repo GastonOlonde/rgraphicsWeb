@@ -16,20 +16,25 @@
 
 <div class="div-equipe">
     <div class="div-images">
-        <img src="{{asset('images/verstappen.jpg')}}" alt="">
+        <img src="{{ asset('/images/verstappen.jpg')}}" alt="">
     </div>
     <div class="div-info">
         <div class="dropdown">
-            <button class="dropdown-btn">
+            {# <button class="dropdown-btn">
                 <span class="dropdown-btn-text">Membre</span>
                 <i class='bx bxs-down-arrow'></i>
             </button>
 
             <div class="dropdown-content">
-                <a href="" class="">Rodolphe</a>
-                <a href="" class="">Manon</a>
-                <a href="" class="">Maxime</a>
+                {% for membre in membres %}
+                    <a href="" class="">{{ membre.nom }}</a>
+                {% endfor %}
+            </div> #}
+            {{ form_start(form) }}
+            <div class="dropdown">
+                {{ form_row(form.prenom, { 'attr': {'class': 'select-membre-autocomplete'} }) }}
             </div>
+            {{ form_end(form) }}
         </div>
         <div class="text-membre">
             <div class="desc">
@@ -56,5 +61,34 @@
    
     </div>
 </div>
+{% block javascript %}
+    <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const selectMembreAutocomplete = document.querySelector('.select-membre-autocomplete');
 
+                if (selectMembreAutocomplete) {
+                    selectMembreAutocomplete.addEventListener('change', function () {
+                        const form = selectMembreAutocomplete.closest('form');
+
+                        // Serialize the form data
+                        const formData = new FormData(form);
+
+                        // Send an AJAX request to the server
+                        fetch(form.action, {
+                            method: 'POST',
+                            body: formData,
+                        })
+                        .then(response => response.text())
+                        .then(data => {
+                            // Update the DOM with the response data (e.g., replace a div with the new content)
+                            // Example: document.getElementById('update-container').innerHTML = data;
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    });
+                }
+            });
+        </script>
+{% endblock %}
 {% endblock %}

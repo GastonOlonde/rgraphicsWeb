@@ -36,7 +36,17 @@
                 </div>
             {% endfor %}
             {{ form_start(formulaire) }}
-            {{ form_widget(formulaire) }}
+            <div class="nom-prenom">
+                {{ form_row(formulaire.nom) }}
+                {{ form_row(formulaire.prenom) }}
+            </div>
+            {{ form_row(formulaire.email) }}
+            <div class="tel-objet">
+                {{ form_row(formulaire.telephone) }}
+                {{ form_row(formulaire.objet) }}
+            </div>
+            
+            {{ form_row(formulaire.message) }}
             {{ form_end(formulaire) }}
             
         </div>

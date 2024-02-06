@@ -23,7 +23,7 @@ class ContactController extends AbstractController
     public function index(
         Request $request,
         EntityManagerInterface $entityManager,
-        MailerInterface $mail,
+        MailerInterface $mailer,
     ): Response
     {
         $form = $this->createForm(ContactFormType::class);
@@ -32,18 +32,20 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $formData = $form->getData();
+            $emailfrom = $formData['email'];
+            $nom = $formData['nom'];
+            $objet = $formData['objet'];
+            $message = $formData['message'];
+            $message .= $formData['telephone'];
 
-            // On envoi un mail
-            $mail->sendMail(
-                $formData['email'],
-                'gastonolonde@gmail.com',
-                $formData["objet"],
-                'contact',
-                [
-                    'formData' => $formData
-                ]
-            );
-                
+            $email = (new Email())
+                ->from(new Address($emailfrom, $nom))
+                ->to('gaston@gmail.com')
+                ->subject($objet)
+                ->html($message);
+
+            // Envoyer l'email
+            $mailer->send($email);
         }
 
         // on récupère la veleur de nom_param='PDG'

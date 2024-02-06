@@ -341,6 +341,7 @@ input:focus{
     height: 100px;
     background-color: #f1f1f1;
     border: 1px solid var(--color-first-color);
+    border-radius: 10px 5px 5px 10px;
     padding: 0.2rem;
     overflow-y: scroll;
 }
@@ -362,10 +363,17 @@ input:focus{
     width: 500px;
     height: 100px;
     padding: 0.5rem;
-    border: 1px solid var(--color-first-color);
+    border: 1px solid var(--color-text);
     resize: none;
+    border-radius: 10px 5px 5px 10px;
     overflow-y: scroll;
 }
+
+#text_accueil_from_textAccroche:focus{
+    outline: none;
+    border: 1px solid var(--color-first-color);
+}
+
 
 #text_accueil_from_textAccroche::-webkit-scrollbar {
     width: 10px; /* Ajustez la largeur selon vos besoins */
@@ -383,9 +391,14 @@ input:focus{
     width: 500px;
     height: 100px;
     padding: 0.5rem;
-    border: 1px solid var(--color-first-color);
+    border: 1px solid var(--color-text);
     resize: none;
+    border-radius: 10px 5px 5px 10px;
     overflow-y: scroll;
+}
+#info_contact_form_value_param:focus{
+    outline: none;
+    border: 1px solid var(--color-first-color);
 }
 
 #info_contact_form_value_param::-webkit-scrollbar {
@@ -414,4 +427,81 @@ input:focus{
 #info_contact_form_nom_param:focus{
     outline: none;
     border: 1px solid var(--color-first-color);
+}
+
+.equipe{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.div-equipe{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    background-color: #f5f5f5;
+    padding: 2rem;
+    border: 1px solid var(--color-first-color);
+    border-radius: 10px;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);
+    width: 80%;
+}
+
+.div-equipe form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+}
+.div-equipe form div{
+    display: flex;
+    gap: 1rem;
+    width: 60%;
+}
+.div-equipe form div input{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    margin-bottom: 0;
+}
+.div-equipe form div textarea{
+    display: flex;
+    width: 70%;
+    height: 115px;
+    resize: none;
+    border: 1px solid var(--color-text);
+    border-radius: 10px 5px 5px 10px;
+    overflow-y: scroll;
+}
+
+.div-equipe form div textarea:focus{
+    outline: none;
+    border: 1px solid var(--color-first-color);
+}
+
+.div-equipe form div textarea::-webkit-scrollbar {
+    width: 10px; 
+}
+.div-equipe form div textarea::-webkit-scrollbar-thumb {
+    background-color: #808080;
+    border-radius: 15px;
+}
+.div-equipe form div textarea::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 15px;
+}
+
+.div-equipe form div label{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 15%;
+}
+
+.div-equipe .button-add-content{
+    width: 15%;
 }
