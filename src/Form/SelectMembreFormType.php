@@ -22,9 +22,8 @@ class SelectMembreFormType extends AbstractType
                     ->orderBy('m.prenom', 'ASC');
             },
             'choice_label' => 'prenom',
-            'label' => 'Prénom',
             'attr' => [
-                'class' => 'select-membre-autocomplete', // Add a class for easier selection with jQuery
+                'class' => 'select-membre-autocomplete', 
             ],
         ]);
     }

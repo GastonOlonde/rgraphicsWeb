@@ -2,7 +2,8 @@
 
 {% block stylesheets %}
     {# <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/> #}
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    {# <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> #}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/equipe.css') }}">
@@ -15,80 +16,76 @@
 {% block body %}
 
 <div class="div-equipe">
-    <div class="div-images">
-        <img src="{{ asset('/images/verstappen.jpg')}}" alt="">
-    </div>
+    {% for i in 0..membres|length-1 %}
+        <div class="div-images {{membres[i].prenom}}">
+        
+            <img src="{{ vich_uploader_asset(membres[i], 'imageFile')}}" alt="">
+        </div> 
+    {% endfor %}    
+    
     <div class="div-info">
-        <div class="dropdown">
-            {# <button class="dropdown-btn">
-                <span class="dropdown-btn-text">Membre</span>
-                <i class='bx bxs-down-arrow'></i>
-            </button>
 
-            <div class="dropdown-content">
-                {% for membre in membres %}
-                    <a href="" class="">{{ membre.nom }}</a>
-                {% endfor %}
-            </div> #}
-            {{ form_start(form) }}
+            {{ form_start(select) }}
             <div class="dropdown">
-                {{ form_row(form.prenom, { 'attr': {'class': 'select-membre-autocomplete'} }) }}
+                {{ form_row(select.prenom, { 'attr': {'class': 'select-membre-autocomplete'} }) }}
             </div>
-            {{ form_end(form) }}
-        </div>
-        <div class="text-membre">
-            <div class="desc">
-                <h3>Description</h3>
-                <p> 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-            </div>
-            <div class="role">
-                <h3>Rôle</h3>
-                <p> 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </p>
-            </div>
-        </div>
-   
+            {{ form_end(select) }}
+        
+        {# Pour chaque membre on affiche ses information (description, role) avec un for #}
+        {# {% for membre in membres %} #}
+            {# Pour i de 0 à taille de membres-1 #}
+            {% for i in 0..membres|length-1 %}
+                <div class="text-membre {{membres[i].prenom}}">
+                    <div class="desc">
+                        <h3>Description</h3>
+                            <p> 
+                                {{membres[i].description}}
+                            </p>
+                </div>
+                    <div class="role">
+                        <h3>Rôle</h3>
+                        <p> 
+                            {{membres[i].role}}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}    
     </div>
 </div>
 {% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const selectMembreAutocomplete = document.querySelector('.select-membre-autocomplete');
-
-                if (selectMembreAutocomplete) {
-                    selectMembreAutocomplete.addEventListener('change', function () {
-                        const form = selectMembreAutocomplete.closest('form');
-
-                        // Serialize the form data
-                        const formData = new FormData(form);
-
-                        // Send an AJAX request to the server
-                        fetch(form.action, {
-                            method: 'POST',
-                            body: formData,
-                        })
-                        .then(response => response.text())
-                        .then(data => {
-                            // Update the DOM with the response data (e.g., replace a div with the new content)
-                            // Example: document.getElementById('update-container').innerHTML = data;
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
-                    });
+        $(document).ready(function() {
+            $("#select_membre_form_prenom").select2(
+                {
+                    minimumResultsForSearch: Infinity,
+                    width: 'auto',
                 }
+            );
+            // premier membre affiché par défaut
+            var selectedPrenom = $("#select_membre_form_prenom").find(':selected').text();
+
+            //console.log(selectedPrenom);
+            $('.' + selectedPrenom).show();
+            // les autres membres sont cachés
+            $('.text-membre').not('.' + selectedPrenom).hide();
+            $('.div-images').not('.' + selectedPrenom).hide();
+
+            // Show the selected text-membre element when the dropdown changes
+            $("#select_membre_form_prenom").on('select2:select', function() {
+                var selectedPrenom = $(this).find(':selected').text();
+
+                console.log(selectedPrenom);
+                // Hide all text-membre elements initially
+                $('.text-membre').not('.' + selectedPrenom).hide();
+                $('.div-images').not('.' + selectedPrenom).hide();
+
+
+                $('.' + selectedPrenom).show();
+                $('.' + selectedPrenom).show();
             });
-        </script>
+        });
+    </script>
 {% endblock %}
 {% endblock %}

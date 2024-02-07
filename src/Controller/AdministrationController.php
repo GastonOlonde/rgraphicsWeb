@@ -201,11 +201,11 @@ class AdministrationController extends AbstractController
             // on récupère toutes les données du formulaire
             $membre = $formMembre->getData();
 
-            // Si l'image ne fais pas plus de 200ko
-            if($membre->getImageFile()->getSize() < 200000){
+            // Si l'image ne fais pas plus de 200ko et si elle est bien orientée au format portrait
+            if($membre->getImageFile()->getSize() < 200000 && $membre->getImageFile()->getOrientation() == 1){ // 1 = portrait 0 = paysage 2 = carré 3 = inversé portrait 4 = inversé paysage 5 = inversé carré
 
                 // si il n'y a pas de caractères spéciaux ( injection de code, etc...)
-                if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getNom()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getPrenom()) || preg_match('/[\^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getDescription()) || preg_match('/[\^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getRole()) ){
+                if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getNom()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getPrenom()) || preg_match('/[\^£$%&*()}{@#~><>|=_+¬-]/', $membre->getDescription()) || preg_match('/[\^£$%&*()}{@#~><>|=_+¬-]/', $membre->getRole()) ){
                     $this->addFlash('error', 'Les caractères spéciaux ne sont pas autorisés.');
                     return $this->redirectToRoute('app_administration');
                 }

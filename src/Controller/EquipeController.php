@@ -17,7 +17,6 @@ class EquipeController extends AbstractController
     #[Route('/equipe', name: 'app_equipe')]
     public function index(
         EntityManagerInterface $entityManager,
-        Response $response,
         Request $request
     ): Response
     {
@@ -39,6 +38,7 @@ class EquipeController extends AbstractController
 
         return $this->render('pages/equipe.html.twig', [
             'controller_name' => 'EquipeController',
+            'select' => $select->createView(),
             'membres' => $membres
         ]);
     }
