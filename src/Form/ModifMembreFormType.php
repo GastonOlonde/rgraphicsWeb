@@ -6,35 +6,41 @@ use App\Entity\Membre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Vich\UploaderBundle\Form\Type\VichImageType;
+use Vich\UploaderBundle\Form\Type\VichImageType;    
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
-
-class AjoutMembreFormType extends AbstractType
+class ModifMembreFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('nom', TextType::class, [
                 'label' => 'Nom*',
+                'required' => true,
 
             ])
             ->add('prenom', TextType::class, [
                 'label' => 'Prénom*',
+                'required' => true,
 
             ])
             ->add('description', TextAreaType::class, [
-                'label' => 'Description*',
+                'required' => false,
+                'label' => 'Description',
 
             ])
             ->add('role', TextAreaType::class, [
-                'label' => 'Role*',
+                'required' => false,
+                'label' => 'Role',
             ])
+            // imageFile ( vich_uploader)
             ->add('imageFile', VichImageType::class,
             [
-                'required' => true,
-                'label' => 'Photo*',
+                'required' => false,
+                'label' => 'Photo',
             ])
         ;
     }

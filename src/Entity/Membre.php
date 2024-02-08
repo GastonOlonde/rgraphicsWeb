@@ -6,6 +6,8 @@ use App\Repository\MembreRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Imagine\Gd\Imagine;
+
 
 #[ORM\Entity(repositoryClass: MembreRepository::class)]
 #[Vich\Uploadable]
@@ -112,5 +114,29 @@ class Membre
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    // getOrientation -> imageFile ( récupération de l'orientation de l'image)
+    public function getOrientation(): int
+    {
+        if ($this->imageFile) {// Si une image est associée à l'entité
+            $imagePath = $this->imageFile->getPathname();// Récupérez le chemin de l'image
+            
+            // Utilisez Imagine pour obtenir l'orientation de l'image
+            $imagine = new \Imagine\Gd\Imagine();// Créez une instance de l'objet Imagine
+            $image = $imagine->open($imagePath);// Ouvrez l'image
+
+            // Obtenez l'orientation (1 signifie que l'image est dans la position normale)
+            $orientation = $image->metadata()->get('exif.Orientation', 1);// 1 = portrait, 8 = paysage
+
+            return $orientation;
+        }
+
+        // Si aucune image n'est associée, retournez une valeur par défaut (par exemple, 0)
+        return 0;
+    }
+    public function __toString()
+    {
+        return $this->getPrenom(); // Assurez-vous d'adapter cela en fonction de votre structure réelle
     }
 }

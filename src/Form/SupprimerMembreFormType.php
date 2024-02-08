@@ -6,15 +6,16 @@ use App\Entity\Membre;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
 
-class SelectMembreFormType extends AbstractType
+
+class SupprimerMembreFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        // prenom qui sera à sélectionner avec une liste déroulante
         ->add('prenom', EntityType::class, [
             'class' => Membre::class,
             'query_builder' => function (EntityRepository $er) {
@@ -23,9 +24,6 @@ class SelectMembreFormType extends AbstractType
             },
             'choice_label' => 'prenom',
             'label' => 'Membre à sélectionner',
-            'attr' => [
-                'class' => 'select-membre-autocomplete', 
-            ],
         ]);
     }
 
@@ -33,7 +31,6 @@ class SelectMembreFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Membre::class,
-            'csrf_protection' => false, // Disable CSRF protection for AJAX requests
         ]);
     }
 }

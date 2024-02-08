@@ -24,28 +24,28 @@ class AddcontentFormType extends AbstractType
                 'attr' =>[
                     'placeholder' => 'Titre'
                 ],
-                'label' => 'Titre'
+                'label' => 'Titre*'
             ])
             // tectarea pour la légende
             ->add('legende', TextAreaType::class, [
                 'attr' =>[
                     'placeholder' => 'Légende'
                 ],
-                'label' => 'Légende'
+                'label' => 'Légende*'
             ])
             // Input pour l'image avec vichuploader File
             ->add('imageFile', VichImageType::class, [
                 'attr' =>[
                     'placeholder' => 'Votre image'
                 ],
-                'label' => 'Image'
+                'label' => 'Image*'
             ])
             
             // Valeures de la table catégories qui seront à selectionner depuis une liste déroulante dans le formulaire d'ajout de service
             ->add('categorie', EntityType::class, [
                 'class' => Categories::class,
                 'choice_label' => 'nom',
-                'label' => 'Catégorie'
+                'label' => 'Catégorie*'
             ])
         ;
     }

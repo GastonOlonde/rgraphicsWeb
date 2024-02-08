@@ -24,19 +24,19 @@ class RegistrationFormType extends AbstractType
                 'attr' =>[
                     'placeholder' => 'johndoe@gmail.com'
                 ],
-                'label' => 'E-mail'
+                'label' => 'E-mail*'
             ])
             ->add('nom', TextType::class, [
                 'attr' =>[
                     'placeholder' => 'Doe'
                 ],
-                'label' => 'Nom'
+                'label' => 'Nom*'
             ])
             ->add('prenom', TextType::class, [
                 'attr' =>[
                     'placeholder' => 'John'
                 ],
-                'label' => 'Prénom'
+                'label' => 'Prénom*'
             ])
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
@@ -45,7 +45,7 @@ class RegistrationFormType extends AbstractType
                 'attr' => ['autocomplete' => 'new-password',
                 'placeholder' => 'Mot de passe',
                 ],
-                'label' => 'Mot de passe',
+                'label' => 'Mot de passe*',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Le mot de passe est requis',

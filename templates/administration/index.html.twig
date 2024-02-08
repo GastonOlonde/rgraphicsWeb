@@ -61,28 +61,51 @@
                 </div>
         </section>
         <section class="equipe">
-            <div class="div-equipe">
-                <h1>Page Equipe</h1>
+            <div class="div-equipe">   
+
+
+                <h1 class="class-h1">Modification d'un membres</h1>
+
+                <div class="modifMembreForm">
+                    {{ form_start(modifyForm)}}
+                    {{ form_row(modifyForm.prenom) }}
+                    {{ form_row(modifyForm.nom) }}
+                    {{ form_row(modifyForm.description) }}
+                    {{ form_row(modifyForm.role) }}
+                    {{ form_row(modifyForm.imageFile) }}
+                    <button class="button-add-content" type="submit">Modifier</button>
+                    {{ form_end(modifyForm) }}
+                </div>
+
+                <h1 class="class-h1">Ajout d'un membre</h1>
                 {{ form_start(ajoutMembreForm) }}
-                {{ form_row(ajoutMembreForm.nom) }}
                 {{ form_row(ajoutMembreForm.prenom) }}
+                {{ form_row(ajoutMembreForm.nom) }}
                 {{ form_row(ajoutMembreForm.description) }}
                 {{ form_row(ajoutMembreForm.role) }}
                 {{ form_row(ajoutMembreForm.imageFile) }}
                 <button class="button-add-content" type="submit">Ajouter</button>
                 {{ form_end(ajoutMembreForm) }}
+
+                <h1 class="class-h1">Suppression d'un membre</h1>
+                <div class="supp_membre_form">
+                    {{ form_start(supprimerMembreForm) }}
+                    {{ form_row(supprimerMembreForm.prenom) }}
+                    <button class="button-add-content" type="submit">Supprimer</button>
+                    {{ form_end(supprimerMembreForm) }}
+                </div>
+                
             </div>
         </section>
         <section class="ajout-admin">
             <div class="div-inscription">
-                <h1>Ajout un nouvel Administrateur</h1>
+                <h1 class="class-h1">Ajout d'un nouvel Administrateur</h1>
                 {{ form_start(registrationForm) }}
                 {{ form_errors(registrationForm) }}
                     {{ form_row(registrationForm.nom) }}
                     {{ form_row(registrationForm.prenom) }}
                     {{ form_row(registrationForm.email) }}
                     {{ form_row(registrationForm.plainPassword)}}
-                    {# {{ form_row(registrationForm.agreeTerms) }} #}
                     <button type="submit" class="button-inscription">Ajouter</button>
                 {{ form_end(registrationForm) }}
             </div>
@@ -100,6 +123,12 @@
             $("#info_contact_form_nom_param").select2(
                 {
                     minimumResultsForSearch: Infinity,
+                }
+            );
+            $("#supprimer_membre_form_prenom").select2(
+                {
+                    minimumResultsForSearch: Infinity,
+                    width: 'auto'
                 }
             );
         });

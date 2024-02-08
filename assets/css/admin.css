@@ -510,3 +510,78 @@ input:focus{
 .div-equipe .button-add-content{
     width: 15%;
 }
+
+.selectmembre{
+    width: 100%;
+}
+
+.selectmembre form{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectmembre form div{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.selectmembre form div label{
+    width: auto;
+}
+
+.modifMembreForm{
+    width: 100%;
+}
+
+.class-h1::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-first-color);
+    transition: all 0.3s;
+}
+/* hover sur modifMembreForm , modif-h1::after a width=100% */
+.div-equipe:hover .class-h1::after{
+    width: 100%;
+}
+
+.div-equipe form{
+    margin-bottom: 5rem;
+}
+
+.supp_membre_form{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.supp_membre_form form{
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.supp_membre_form form div{
+    width: 60%;
+    display: flex;
+    /* gap: 2rem; */
+    flex-direction: row;
+    justify-content: space-evenly;
+
+}
+
+.supp_membre_form form div label{
+    width: 50%;
+
+}
+
+.supp_membre_form form .button-add-content{
+    width: 30%;
+}
