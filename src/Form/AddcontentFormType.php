@@ -38,7 +38,8 @@ class AddcontentFormType extends AbstractType
                 'attr' =>[
                     'placeholder' => 'Votre image'
                 ],
-                'label' => 'Image*'
+                'label' => 'Image*',
+                'required' => false
             ])
             
             // Valeures de la table catégories qui seront à selectionner depuis une liste déroulante dans le formulaire d'ajout de service

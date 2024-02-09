@@ -47,28 +47,60 @@ class AdministrationController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             // on récupère toutes les données du formulaire
             $service = $form->getData();
+            // on récupère le name du bouton pressé
+            $buttonpressed = $request->request->all();
 
-            // Si l'image ne fais pas plus de 200ko
-            if($service->getImageFile()->getSize() < 200000){
+            // on parse le tableau pour récupérer le name du bouton pressé
+            $buttonpressed = array_keys($buttonpressed);
+            $button = $buttonpressed[1];
+            // Convertir en chaine de caractères
+            $button = (string)$button;
 
-                // si il n'y a pas de caractères spéciaux ( injection de code, etc...)
-                if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getLegende()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getTitre())){
-                    $this->addFlash('error', 'Les caractères spéciaux ne sont pas autorisés.');
-                    return $this->redirectToRoute('app_administration');
+            $button = trim($button);
+
+
+
+            if($button == "add"){
+
+                // Si l'image ne fais pas plus de 200ko
+                if($service->getImageFile()->getSize() < 200000){
+
+                    // si il n'y a pas de caractères spéciaux ( injection de code, etc...)
+                    if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getLegende()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getTitre())){
+                        $this->addFlash('error', 'Les caractères spéciaux ne sont pas autorisés.');
+                        return $this->redirectToRoute('app_administration');
+                    }
+                    
+                    // On ajoute les données dans la base de données avec try catch
+                    try{
+                        $entityManager->persist($service);
+                        $entityManager->flush();
+                        $this->addFlash('success', 'L\'image et ses infrmations ont bien été ajoutés.');
+                        return $this->redirectToRoute('app_administration');
+                    } catch(\Exception $e){
+                        $this->addFlash('error', 'Une erreur est survenue, veuillez réessayer.');
+                        return $this->redirectToRoute('app_administration');
+                    }
+                }else{
+                    $this->addFlash('error', 'L\'image est trop lourde, elle ne doit pas dépasser 200ko.');
+
                 }
-                
 
-                // On ajoute les données dans la base de données
-                $entityManager->persist($service);
-                // si flush s'est bien passé, on addflash
-                if($entityManager->flush()){
-                    $this->addFlash('success', 'l\image et ses infrmations ont bien été ajoutés.');
+            } elseif ( $button == 'delete' ){
+                // à partir du titre de la légende et du select on récupère le service à supprimer
+                $serviceAsupp = $entityManager->getRepository(Services::class)->findOneBy(['titre' => $service->getTitre(), 'legende' => $service->getLegende(), 'categorie' => $service->getCategorie()]);
+                // si le service existe
+                if($serviceAsupp != null){
+                    // On supprime le service
+                    $entityManager->remove($serviceAsupp);
+                    $entityManager->flush();
+                    $this->addFlash('success', 'Le service a bien été supprimé.');
                     return $this->redirectToRoute('app_administration');
+                }else{
+                    $this->addFlash('error', 'Le service n\'existe pas, veuillez essayer à nouveau.');
                 }
-            }else{
-                $this->addFlash('error', 'L\'image est trop lourde, elle ne doit pas dépasser 200ko.');
-
             }
+
         }
         if(!$this->getUser())
         {

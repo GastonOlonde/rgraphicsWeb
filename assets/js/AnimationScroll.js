@@ -1,7 +1,7 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const observeElements = (targetClass, threshold, transformStyle, initialTransform) => {
+    const observeElements = (targetClass, threshold, delay, transformStyle, initialTransform) => {
         const elements = document.querySelectorAll(targetClass);
         const options = {
             threshold: threshold
@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transition = 'transform 1s, opacity 1s';
+                    // délais de la transition duration
+                    entry.target.style.transitionDuration = delay + 's';
                     entry.target.style.transform = transformStyle;
                     observer.unobserve(entry.target);
                 }
@@ -27,13 +29,19 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // pour les éléments .hiddenY
-    observeElements('.hiddenY', 0.1, 'translateY(0)', 'translateY(50px)');
+    observeElements('.hiddenY', 0.1, 1, 'translateY(0)', 'translateY(50px)');
 
     // pour les éléments .hiddenX
-    observeElements('.hiddenX', 0.2, 'translateX(0)', 'translateX(-50px)');
+    observeElements('.hiddenX', 0.2, 1, 'translateX(0)', 'translateX(-50px)');
 
     // pour les scales
-    observeElements('.hiddenScale', 0.2, 'scale(1)', 'scale(0.5)');
+    observeElements('.hiddenScale', 0.2, 1, 'scale(1)', 'scale(0.5)');
+
+    // effet retourné sur l'axe z
+    observeElements('.hiddenRotateY', 0.2, 2, 'rotateY(0)', 'rotateY(90deg)');
+
+    // // effet de hauteurs qui par de 0 jusqu'a auto
+    // observeElements('.hiddenH', 0.2, 1, 'height:0', 'height:auto');
 });
 
 

@@ -61,6 +61,15 @@ section{
     gap: 2rem;
 }
 
+.ajout-contenu .div_button_add_delete{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 80%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
 .button-add-content{
     font-family: 'Inter', sans-serif;
     width: 30%;
@@ -79,6 +88,29 @@ section{
 
 .button-add-content:hover{
     background-color: rgba(255, 213, 0, 0.9);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+.button-delete-content{
+    font-family: 'Inter', sans-serif;
+    width: 30%;
+    height: 100%;
+    background-color: rgba(255, 0, 0, 0.685);
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 1rem;
+    border: none;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
+    transition: all 0.3s ease-in-out;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+}
+
+.button-delete-content:hover{
+    background-color: rgba(255, 0, 0, 1);
     transform: scale(1.1);
     cursor: pointer;
 }

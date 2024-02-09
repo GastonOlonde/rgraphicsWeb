@@ -15,22 +15,19 @@
 
 {% block body %}
 
-<div class="div-equipe">
+<div class="div-equipe hiddenY">
     {% for i in 0..membres|length-1 %}
         <div class="div-images {{membres[i].prenom}}">
-        
             <img src="{{ vich_uploader_asset(membres[i], 'imageFile')}}" alt="">
         </div> 
     {% endfor %}    
     
     <div class="div-info">
-
             {{ form_start(select) }}
             <div class="dropdown">
                 {{ form_row(select.prenom, { 'attr': {'class': 'select-membre-autocomplete'} }) }}
             </div>
             {{ form_end(select) }}
-        
         {# Pour chaque membre on affiche ses information (description, role) avec un for #}
         {# {% for membre in membres %} #}
             {# Pour i de 0 à taille de membres-1 #}
@@ -67,7 +64,8 @@
             var selectedPrenom = $("#select_membre_form_prenom").find(':selected').text();
 
             //console.log(selectedPrenom);
-            $('.' + selectedPrenom).show();
+            // avec une animation d'opacité on affiche le membre sélectionné
+            $('.' + selectedPrenom).fadeIn(500);
             // les autres membres sont cachés
             $('.text-membre').not('.' + selectedPrenom).hide();
             $('.div-images').not('.' + selectedPrenom).hide();
@@ -82,10 +80,14 @@
                 $('.div-images').not('.' + selectedPrenom).hide();
 
 
-                $('.' + selectedPrenom).show();
-                $('.' + selectedPrenom).show();
+                $('.' + selectedPrenom).fadeIn(500);
+                $('.' + selectedPrenom).fadeIn(500);
             });
         });
     </script>
+    {# <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> #}
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script src="{{ asset('js/AnimationScroll.js') }}"></script>    
 {% endblock %}
 {% endblock %}

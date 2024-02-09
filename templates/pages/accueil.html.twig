@@ -12,11 +12,11 @@
 
 
 {% block body %}
-<section class="section1-accueil">
+<section class="section1-accueil hiddenY">
         <div class="star"></div>
         <div class="star-background"></div>
     <div class="div-accueil">
-        <div class="logo-text">
+        <div class="logo-text hiddenY">
             <div class="logo-accueil">
                 <img src="{{ vich_uploader_asset(parametrelogoAccueil, 'imageFile') }}" alt="{{parametrelogoAccueil.imageName}}" class="logo-accueil">
             </div>
@@ -26,8 +26,8 @@
                 </p>
             </div>
         </div>
-        <a href="#section2" class="section-link">
-            <button class="btn-decouvrir">Découvrir</button>
+        <a href="#section2" class="section-link hiddenRotateY ">
+            <button class="btn-decouvrir ">Découvrir</button>
         </a>
         
     </div>

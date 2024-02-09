@@ -3,6 +3,37 @@
     width: 100%;
 }
 
+.div_maps{
+    display: block;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    /* transition: all .5s ease-in-out; */
+    animation: map 1s ease-in-out;
+}
+
+/* .div_maps:hover{
+    height: 100vh;
+} */
+.div_maps iframe{
+    width: 100%;
+    height: 100%;
+    border: none;
+    box-sizing: border-box;
+}
+
+
+@keyframes map {
+    from{
+        height: 0;
+    }
+    to{
+        height: 70vh;
+    }
+}
+
+
+
 .contact-info{
     display: flex;
     flex-direction: row;
