@@ -35,6 +35,7 @@ body {
 }
 .logo-accueil{
     width: 55%;
+    transition: all 0.5s ;
 }
 .logo-text{
     display: flex;
@@ -47,6 +48,14 @@ body {
 .logo-accueil img{
     width: 100%;
 }
+
+.logo-accueil:hover{
+    transform: scale(1.001);
+}
+.logo-accueil img:hover{
+    filter: drop-shadow(4px 4px 1px rgba(0,0,0,0.2));
+}
+
 .text-accueil{
     width: 20%;
 }
@@ -58,6 +67,7 @@ body {
     border-radius: 10px;
     padding: 1rem;
     border: none;
+    text-transform: uppercase;
     font-size: 1rem;
     font-family: 'Inter', sans-serif;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);

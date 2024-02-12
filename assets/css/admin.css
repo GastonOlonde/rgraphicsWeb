@@ -216,7 +216,7 @@ input:focus{
 }
 
 .div-inscription{
-    margin-top: 150px;
+    margin-top: 50px;
     margin-left: 35%;
     width: 30%;
     margin-bottom: 10%;
@@ -246,11 +246,11 @@ input:focus{
     width: 100%;
 }
 
-.div-inscription h1{
+/* .div-inscription h1{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 
 .info-gen{
@@ -274,6 +274,23 @@ input:focus{
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.1);    
 }
 
+
+input[type=file]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: rgba(255, 213, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #000;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+    background: var(--color-first-color);
+}
+
+
 .page-accueil{
     display: flex;
     flex-direction: column;
@@ -282,11 +299,11 @@ input:focus{
     width: 100%;
 }
 
-.page-accueil h1{
+/* .page-accueil h1{
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .page-accueil .p-apercu{
     display: flex;
@@ -341,19 +358,19 @@ input:focus{
     margin-top: 0;
     margin-bottom: 0;
     height: 100%;
-    background-color: var(--color-button);
+    /* background-color: var(--color-button); */
     align-self: center;
     justify-content: center;
     border-radius: 10px;
-    padding: 1rem;
-    border: none;
-    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
+    padding: 0.5rem;
+    /* border: none; */
+    /* box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30); */
     transition: all 0.3s ease-in-out;
 }
 
 .page-accueil form input:hover{
-    background-color: rgba(255, 213, 0, 0.9);
-    transform: scale(1.05);
+    /* background-color: rgba(255, 213, 0, 0.9);
+    transform: scale(1.05); */
     cursor: pointer;
 }
 
@@ -579,9 +596,13 @@ input:focus{
     transition: all 0.3s;
 }
 /* hover sur modifMembreForm , modif-h1::after a width=100% */
-.div-equipe:hover .class-h1::after{
+.div-equipe:hover .class-h1::after,
+.div-form-info-gen:hover .class-h1::after,
+.div-inscription:hover .class-h1::after,
+.ajout-contenu:hover .class-h1::after{
     width: 100%;
 }
+
 
 .div-equipe form{
     margin-bottom: 5rem;

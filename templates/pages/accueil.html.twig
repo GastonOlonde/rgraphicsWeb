@@ -69,10 +69,12 @@
 
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="{{ asset('images/event.jpg') }}" alt="covering1">
-                </div>
-                <div class="swiper-slide">
+                {% for img in services %}
+                    <div class="swiper-slide">
+                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                    </div>
+                {% endfor %}
+                {# <div class="swiper-slide">
                     <img src="{{ asset('images/event.avif') }}" alt="covering2">
                 </div>
                 <div class="swiper-slide">
@@ -98,7 +100,7 @@
                 </div>
                 <div class="swiper-slide">
                     <img src="{{ asset('images/event.avif') }}" alt="covering10">
-                </div>
+                </div> #}
             </div>
         </div>
 

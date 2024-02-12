@@ -20,6 +20,7 @@ use App\Form\SupprimerMembreFormType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Users;
+use Intervention\Image\ImageManagerStatic as Image;
 use App\Form\RegistrationFormType;
 use App\Security\UsersAuthenticator;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -61,9 +62,17 @@ class AdministrationController extends AbstractController
 
 
             if($button == "add"){
-
                 // Si l'image ne fais pas plus de 200ko
-                if($service->getImageFile()->getSize() < 200000){
+                // $imagePath = $service->getImageFile()->getRealPath();
+                // try{
+                //     $image = $service->getOrientation();
+                //     dd($image, "good");
+                // }catch(\Exception $e){
+                //     dd("bad", $e);
+                // }
+                
+
+                if($service->getImageFile()->getSize() < 200000 && $service->getOrientation() == 1){
 
                     // si il n'y a pas de caractères spéciaux ( injection de code, etc...)
                     if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getLegende()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getTitre())){

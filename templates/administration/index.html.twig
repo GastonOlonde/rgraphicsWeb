@@ -14,7 +14,7 @@
             <h1>Contenu Accueil</h1>
             <div class="ajout-contenu">
                 {# formulaire addContentForm #}
-                <h1>Ajout services</h1>
+                <h1 class="class-h1">Ajout services</h1>
                 {{ form_start(addContentForm) }}
                 {{ form_row(addContentForm.titre) }}
                 {{ form_row(addContentForm.legende) }}
@@ -37,7 +37,7 @@
             <h1>Informations générales</h1>
             <div class="div-form-info-gen">
                 <div class="page-accueil">
-                    <h1>Logo page d'accueil</h1>
+                    <h1 class="class-h1">Logo page d'accueil</h1>
                     <p class="p-apercu">Aperçu actuel du logo</p>
                     {{ form_start(logoAccueilForm) }}
                     <div class="image-logo">
@@ -46,7 +46,7 @@
                     {{ form_row(logoAccueilForm.imageFile) }}
                     <button class="button-add-content" type="submit">Valider</button>
                     {{ form_end(logoAccueilForm) }}
-                    <h1>Texte page d'accueil</h1>
+                    <h1 class="class-h1">Texte page d'accueil</h1>
                     <p class="p-apercu">Aperçu actuel du Texte</p>
                     {{ form_start(textAccueilForm) }}
                     <div class="text-apercu">
@@ -55,7 +55,7 @@
                     {{ form_row(textAccueilForm.textAccroche) }}
                     <button class="button-add-content" type="submit">Valider</button>
                     {{ form_end(textAccueilForm) }}
-                    <h1>Page Contact</h1>
+                    <h1 class="class-h1">Page Contact</h1>
                     {{ form_start(infoContactForm) }}
                     {{ form_row(infoContactForm.nom_param) }}
                     {# <div class="text-apercu">

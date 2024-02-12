@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Entity\Categories;
 use App\Repository\ServicesRepository;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Intervention\Image\ImageManagerStatic as Image;
 // use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -105,4 +107,26 @@ class Services
 
         return $this;
     }
+
+    // // méthode qui récupère l'orientation de l'image à partier de ses dimensions 
+    // public function getOrientation(): ?int
+    // {
+    //     $imagePath = $this->getAbsolutePath(); // Mettez en place cette méthode pour obtenir le chemin complet de l'image
+    //     // dd($imagePath);
+
+    //         $imageInfo = getimagesize($imagePath);
+
+    //         if ($imageInfo && isset($imageInfo['Orientation'])) {
+    //             return $imageInfo['Orientation'];
+    //         }
+        
+
+    //     return 0;
+    // }
+
+    // // Ajoutez la méthode getAbsolutePath si elle n'est pas déjà présente dans votre classe
+    // public function getAbsolutePath(): ?string
+    // {
+    //     return $this->getImageFile()->getRealPath();
+    // }
 }
