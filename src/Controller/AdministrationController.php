@@ -72,7 +72,7 @@ class AdministrationController extends AbstractController
                 // }
                 
 
-                if($service->getImageFile()->getSize() < 200000 && $service->getOrientation() == 1){
+                if($service->getImageFile()->getSize() < 200000){
 
                     // si il n'y a pas de caractères spéciaux ( injection de code, etc...)
                     if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getLegende()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getTitre())){

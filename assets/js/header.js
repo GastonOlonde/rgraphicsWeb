@@ -8,6 +8,13 @@ toggle.addEventListener('click',function(){
     body.classList.toggle("open");
 });
 
+// apparition du header au chargement de la page avec une translation depuis le haut
+window.addEventListener('load', () => {
+    header.style.top = "0";
+});
+
+
+
 
 let lastScroll = 0;
 
