@@ -23,8 +23,8 @@ body{
     overflow: hidden;
 }
 .div-images img{
-    max-width: 100%;
-    /* height: 100%; */
+    width: auto;
+    height: 100%;
     display: block;
     border-radius: 10px 0 0 10px;
     z-index: -2;
@@ -134,20 +134,39 @@ body{
 .dropdown label{
     display: none;
 }
-/* 
-.custom-select2-theme .select2-container--default .select2-selection--single {
-    background-color: #f5f5f5;
-    background-color: #f5f5f5;
-    border-radius: 0 0 10px 0 ;
-    color: var(--color-text);
-    padding: 10px;
-    width: auto;
-    border: none;
-    display: flex;
-    flex-direction: row;
-    gap : 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    font-size: 0.9rem;
-} */
 
+
+@media all and (max-width : 1100px) {
+    .div-equipe{
+        flex-direction: column-reverse;
+        margin-bottom: 50px;
+        gap: 2rem;
+        width: 90%;
+        height: auto;
+        margin-left: 5%;
+        align-items: center;
+        border: none;
+    }
+    .div-images{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+    }
+    .div-images img{
+        width:90%;
+        height: 100%;
+        border-radius: 10px;
+    }
+    .div-info{
+        gap: 2rem;
+        width: 90%;
+        display: flex;
+        align-items: left;
+        justify-content: center;
+    }
+    .desc,
+    .role{
+        width: 100%;
+    }
+}
