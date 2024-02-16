@@ -37,8 +37,11 @@ body {
 }
 .logo-accueil{
     width: 55%;
-    transition: all 0.5s ;
+    transition: all 0.3s ease-in-out;
 }
+
+
+
 .logo-text{
     display: flex;
     flex-direction: row;
@@ -46,6 +49,8 @@ body {
     justify-content: space-around;
     width:90%;
     margin-top: 10rem;
+    /* animation: beat 4s linear infinite 01s ; */
+
 }
 .logo-accueil img{
     width: 100%;
@@ -74,12 +79,27 @@ body {
     font-family: 'Inter', sans-serif;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
     transition: all 0.3s ease-in-out;
+    animation: tac 2s linear infinite ;
+}
+
+@keyframes tac {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+    
 }
 
 .btn-decouvrir:hover{
     background-color: rgba(255, 213, 0, 0.9);
-    transform: scale(1.1);
+    /* animation: tac 2s linear infinite ; */
     cursor: pointer;
+    /* transform: scale(1.25); */
 }
 
 

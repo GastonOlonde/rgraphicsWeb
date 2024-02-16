@@ -249,12 +249,10 @@ class AdministrationController extends AbstractController
             if($membre->getImageFile()->getSize() < 200000){ // 1 = portrait 0 = paysage 2 = carré 3 = inversé portrait 4 = inversé paysage 5 = inversé carré
 
                 // si il n'y a pas de caractères spéciaux ( injection de code, etc...)
-                if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getNom()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getPrenom()) || preg_match('/[\^£$%&*()}{@#~><>|=_+¬-]/', $membre->getDescription()) || preg_match('/[\^£$%&*()}{@#~><>|=_+¬-]/', $membre->getRole()) ){
+                if(preg_match('/[\£$%&*()}{@#~><>|=_+¬-]/', $membre->getNom()) || preg_match('/[\£$%&*()}{@#~><>|=_+¬-]/', $membre->getPrenom()) || preg_match('/[\£$%&*()}{@#~><>|=_+¬-]/', $membre->getDescription()) || preg_match('/[\£$%&*()}{@#~><>|=_+¬-]/', $membre->getRole()) ){
                     $this->addFlash('error', 'Les caractères spéciaux ne sont pas autorisés.');
-                    return $this->redirectToRoute('app_administration');
-                }
-                
-
+                    // pas de redirection car on veut que l'utilisateur puisse réessayer
+                }else{
                 // On ajoute les données dans la base de données
                 // exepetion si flush ne se passe pas bien
                 try{
@@ -267,9 +265,9 @@ class AdministrationController extends AbstractController
                 // si flush s'est bien passé, on addflash
                 $this->addFlash('success', 'Le membre et ses infrmations ont bien été ajoutés.');
                 return $this->redirectToRoute('app_administration');
+                }
             }else{
                 $this->addFlash('error', 'L\'image est trop lourde, elle ne doit pas dépasser 200ko.');
-
             }
         }
 
@@ -290,10 +288,9 @@ class AdministrationController extends AbstractController
                     // si il n'y a pas de caractères spéciaux ( injection de code, etc...)
                     if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getNom()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $membre->getPrenom()) || preg_match('/[\^£$%&*()}{@#~><>|=_+¬-]/', $membre->getDescription()) || preg_match('/[\^£$%&*()}{@#~><>|=_+¬-]/', $membre->getRole()) ){
                         $this->addFlash('error', 'Les caractères spéciaux ne sont pas autorisés.');
-                        return $this->redirectToRoute('app_administration');
-                    }
-
-                    // exepetion si flush ne se passe pas bien
+                        // return $this->redirectToRoute('app_administration');
+                    }else{
+                     // exepetion si flush ne se passe pas bien
                     // On remplace les données du membre à modifier par les nouvelles données
                     
                     if($membre->getNom() != null){
@@ -325,9 +322,7 @@ class AdministrationController extends AbstractController
                     // si flush s'est bien passé, on addflash
                     $this->addFlash('success', 'Le membre et ses infrmations ont bien été modifiés.');
                     return $this->redirectToRoute('app_administration');
-                // }else{
-                //     $this->addFlash('error', 'L\'image est trop lourde, elle ne doit pas dépasser 200ko.');
-                // }
+                    }
             }else{
                 $this->addFlash('error', 'Le membre n\'existe pas.');
             }
@@ -392,8 +387,3 @@ class AdministrationController extends AbstractController
     }
     
 }
-
-
-
-
-   

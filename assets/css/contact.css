@@ -132,3 +132,16 @@ button:hover{
     background-color: rgba(255, 213, 0, 0.9);
     transform: scale(1.1);
 }
+
+@media  all and (max-width: 1200px){
+    .contact-info{
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .info{
+        width: 80%;
+    }
+    .contact-form{
+        width: 80%;
+    }
+}

@@ -398,7 +398,6 @@ input[type=file]::file-selector-button:hover {
     overflow-y: scroll;
 }
 
-
 .text-apercu::-webkit-scrollbar {
     width: 10px; /* Ajustez la largeur selon vos besoins */
 }

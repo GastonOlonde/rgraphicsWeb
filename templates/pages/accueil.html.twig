@@ -67,8 +67,9 @@
 
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                {% for img in services %}
+                {% for img in covering %}
                     <div class="swiper-slide">
+                    {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
                         <div class="info_cov">
                             <h3>{{img.titre}}</h3>
@@ -110,11 +111,22 @@
                     <a href="#section13" class="section-link">Goddies</a>
                     <a href="#section14" class="section-link">Partenaires</a>
                 </div>
-                
             </div>
-
-
-
+            {# <div class="images_sec3">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        {% for img in marquageVehicule %}
+                            <div class="swiper-slide">
+                                <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                                <div class="info_cov">
+                                    <h3>{{img.titre}}</h3>
+                                    <p>{{img.legende}}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div> #}
         </div>
     </div>
 </section>
