@@ -155,9 +155,9 @@ nav{
 }
 
 
-@media all and (max-width : 991px){
+@media screen and (max-width : 760px){
 
-    .header{
+    header{
         background-color: transparent;
     }
 

@@ -65,6 +65,7 @@ body {
 
 .text-accueil{
     width: 20%;
+    text-align: justify;
 }
 .btn-decouvrir{
     width: 150px;
@@ -304,10 +305,31 @@ body {
         width: 70%;
         text-align: justify;
     }
-    .sectin2{
+    #section2{
         margin-top: 0;
     }
     .div-covering{
         margin-top: 0;
+    }
+}
+@media screen and (max-width: 980px){
+    .star {
+        top:-242.5px;
+        left: -182px;
+        width: 900px;
+        height: 900px;
+    }
+    .star-background {
+        top: -250px;
+        left: -190px;
+        width: 915px;
+        height: 915px;
+    }
+    .logo-accueil{
+        width: 90%;
+    }
+    .text-accueil{
+        width: 100% ;
+        text-align: justify;
     }
 }

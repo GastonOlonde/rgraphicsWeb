@@ -306,9 +306,13 @@ class AdministrationController extends AbstractController
                         $membreamodif->setRole($membre->getRole());
                     }                    
                     if( $membre->getImageFile() != null){
-                        $image = $membre->getImageFile();
+                        // On supprime l'ancienne image
+                        $imageAsupp = $entityManager->getRepository(Membre::class)->findOneBy(['prenom' => $membre->getPrenom(), 'nom' => $membre->getNom()]);
+                        $entityManager->remove($imageAsupp);
+                        $entityManager->flush();
                         if($membre->getImageFile()->getSize() < 200000){
-                            $membreamodif->setImageFile($membre->getImageFile());
+                            $image = $membre->getImageFile();
+                            $membreamodif->setImageFile($image);
                         }
                     }
                     // On ajoute les données dans la base de données

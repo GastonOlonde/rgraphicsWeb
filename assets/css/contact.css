@@ -83,6 +83,14 @@ form div{
     width: 80%;
 }
 
+/* cinquième enfant de form */
+form :nth-child(5){
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .nom-prenom{
     display: flex;
     flex-direction: row;
@@ -139,9 +147,61 @@ button:hover{
         gap: 2rem;
     }
     .info{
+        display: grid;
+        grid-template-columns: 30% 30% 30% ;
         width: 80%;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
     }
     .contact-form{
         width: 80%;
+    }
+}
+
+@media  all and (max-width: 1121px){
+    .contact-info{
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .info{
+        display: grid;
+        grid-template-columns: 45% 45% ;
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+    }
+    .contact-form{
+        width: 90%;
+    }
+    .contact-form form {
+        width: 90%;
+    }
+    .contact-form form div {
+        width: 90%;
+    }
+}
+@media  all and (max-width: 995px){
+    .contact-info{
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .info{
+        display: grid;
+        grid-template-columns: 45% 45% ;
+        width: 90%;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+    }
+    .contact-form{
+        width: 90%;
+    }
+    .contact-form form {
+        width: 90%;
+    }
+    .contact-form form div {
+        width: 90%;
     }
 }
