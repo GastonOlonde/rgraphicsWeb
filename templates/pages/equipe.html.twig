@@ -14,8 +14,9 @@
 
 
 {% block body %}
-
+{# <img class="fond" src="{{ asset('images/FOND_INDUS.png') }}" alt="logo"> #}
 <div class="div-equipe hiddenY">
+    
     {% for i in 0..membres|length-1 %}
         <div class="div-images {{membres[i].prenom}}">
             <img src="{{ vich_uploader_asset(membres[i], 'imageFile')}}" alt="">
@@ -23,6 +24,7 @@
     {% endfor %}    
     
     <div class="div-info">
+            
             {{ form_start(select) }}
             <div class="dropdown">
                 {{ form_row(select.prenom, { 'attr': {'class': 'select-membre-autocomplete'} }) }}

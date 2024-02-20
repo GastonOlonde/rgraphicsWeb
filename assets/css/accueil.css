@@ -24,7 +24,6 @@ body {
 .section1-accueil{
     height: 820px;
     overflow: hidden;
-
 }
 
 .div-accueil{
@@ -178,9 +177,14 @@ body {
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
-    margin-right: 4rem;
+    position: fixed;
+    right: -50%;
+    /* transform: translateY(-50%); */
+    top: 12%;
+    display: block;
+    /* width: 10px; */
+    z-index: 100;
+    transition: right 0.2s ease-in-out;
 }
 
 /* Style du bouton du dropdown */
@@ -191,8 +195,9 @@ body {
     padding: 10px;
     border: none;
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
-    width: auto;
+    width: 190px;
     gap : 10px;
     cursor: pointer;
     font-size: 1rem;
@@ -202,11 +207,11 @@ body {
 
 /* Style de la liste déroulante */
 .dropdown-content {
-    display: block;
+    display: inline-block;
     border-radius: 10px;
     position: absolute;
     background-color: rgba(249, 249, 249, .8);
-    min-width: 100px;
+    width: auto;
     height: 0px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.2);
     z-index: 1;
@@ -230,7 +235,7 @@ body {
 
 /* Affichage de la liste déroulante lorsqu'elle est activée */
 .dropdown:hover .dropdown-content {
-    height: 588px;
+    height: 551px;
 }
 
 
@@ -291,7 +296,7 @@ body {
     opacity: 0.8;
 }
 
-@media screen and (max-width: 1170px){
+@media all and (max-width: 1170px){
     .logo-text{
         flex-direction: column;
         align-items: center;
@@ -299,10 +304,10 @@ body {
         margin-top: 70px;
     }
     .logo-accueil{
-        width: 70%;
+        width: 100%;
     }
     .text-accueil{
-        width: 70%;
+        width: 100%;
         text-align: justify;
     }
     #section2{
@@ -312,9 +317,9 @@ body {
         margin-top: 0;
     }
 }
-@media screen and (max-width: 980px){
+@media all and (max-width: 975px){
     .star {
-        top:-242.5px;
+        top:-243px;
         left: -182px;
         width: 900px;
         height: 900px;
@@ -325,11 +330,11 @@ body {
         width: 915px;
         height: 915px;
     }
-    .logo-accueil{
-        width: 90%;
+    /* .logo-accueil{
+        width: 100%;
     }
     .text-accueil{
         width: 100% ;
         text-align: justify;
-    }
+    } */
 }

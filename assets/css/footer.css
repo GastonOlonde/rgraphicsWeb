@@ -2,12 +2,22 @@ footer{
     position: relative;
     bottom: 0;
     width: 100%;
+    height: 60px;
     margin-top: 7rem;
-    background-color: var(--color-background);
     font-family: 'Poppins', sans-serif;
     border-top: 1px solid var(--color-text);
-    transition: transform 0.5s ease-in-out; 
+    overflow: hidden;
+    /* color: white; */
+    transition: transform 0.5s ease-in-out;
 }
+
+/* .fond{
+    position: absolute;
+    display: inline-block;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+} */
 
 .scrolledfooter {
     transform: translate3d(0, 0, 0);
@@ -15,6 +25,7 @@ footer{
 
 .element{
     display: flex;
+    height: 60px;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;

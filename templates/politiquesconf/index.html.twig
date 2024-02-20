@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RGRAPHICS - Politiques de Confidentialités{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/mentionslegales.css') }}">
+{% endblock %}
+
+
+{% block body %}
+    <div class="div_pol">
+        <h1>Politique de confidentialité</h1>
+        <p>La présente politique de confidentialité définit et vous informe de la manière dont RGRAPHICS utilise et protège les informations
+        que vous nous transmettez, le cas échéant, lorsque vous utilisez le présent site accessible à partir de l'URL suivante :
+        <a target="_blank" href="http://www.rgraphics.fr">www.rgraphics.fr</a>.</p>
+        {# date de modif #}
+        <h2>Date de dernière mise à jour</h2>
+        <p>La présente politique de confidentialité a été mise à jour le 20/02/2024.</p>
+        {# Collecte des données personnelles #}
+        <p>Veuillez noter que cette politique de confidentialité est susceptible d'être modifiée ou complétée à tout moment par RGRAPHICS,
+        notamment en vue de se conformer à toute évolution législative, réglementaire, jurisprudentielle ou technologique. Dans un tel cas,
+        la date de sa mise à jour sera clairement identifiée en tête de la présente politique. Ces modifications engagent l'Utilisateur dès
+        leur mise en ligne. Il convient par conséquent que l'Utilisateur consulte régulièrement la présente politique de confidentialité
+        afin de prendre connaissance de ses éventuelles modifications.</p>
+        <h2>Collecte des données personnelles</h2>
+        <p>Aucune donnée personnelle n'est nécessaire pour l'entière utilisation du site.</p>
+        <h2>Utilisation des données personnelles collectées</h2>
+        <p>Aucune donnée personnelle n'est collectée.</p>
+        <h2>Liens vers des sites tiers</h2>
+        <p>Le site peut contenir des liens vers des sites tiers. RGRAPHICS n'a aucun contrôle sur ces sites et n'est pas responsable de leurs
+        politiques de confidentialité. Nous vous recommandons de lire attentivement leurs politiques de confidentialité.</p>
+        <h2>Coordonnées</h2>
+        <p>Pour toute question concernant la présente politique de confidentialité ou pour toute demande relative à vos données personnelles,
+        veuillez nous contacter via le formulaire de contact disponible sur la page de <a href="{{ path('app_contact')}}">contact</a>.</p>
+    </div>
+{% endblock %}

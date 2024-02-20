@@ -34,7 +34,7 @@ class SecurityController extends AbstractController
         // vérification si idd incorrect
         if( $error != null)
         {
-            $this->addFlash('error', 'Identifiants incorrects !');
+            $this->addFlash('error', 'Vous n\'avez pas l\'authorisation d\'accéder à cette partie du site !');
         } 
 
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
