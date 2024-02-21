@@ -41,7 +41,7 @@
             </div>
             <div class="dropdown"> {# Onglet de navigation entre les sections #}
 
-                <button class="dropdown-btn">
+                <button class="dropdown-btn" draggable="true">
                     <span class="dropdown-btn-text">sections</span>
                     <i class='bx bxs-down-arrow'></i>
                 </button>
@@ -216,6 +216,85 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script src="{{ asset('js/AnimationScroll.js') }}"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const dropdown = document.querySelector('.dropdown');
+    const dropdownBtn = document.querySelector('.dropdown-btn');
+
+    // Variables pour stocker la position du début du glisser-déposer
+    let offsetX;
+    let offsetY;
+
+    // Fonction pour gérer le début du glisser-déposer
+    function dragStart(e) {
+        e.preventDefault();
+
+        // Récupérer la position du début du glisser-déposer par rapport à la position du bouton
+        offsetX = e.clientX - dropdownBtn.getBoundingClientRect().right;
+        offsetY = e.clientY - dropdownBtn.getBoundingClientRect().top;
+
+        // Ajouter la classe pour indiquer que le glisser-déposer a commencé
+        dropdownBtn.classList.add('dragging');
+
+        // Mettre à jour la position initiale du glisser-déposer
+        dragMove(e);
+    }
+
+    // Fonction pour gérer la fin du glisser-déposer
+    function dragEnd() {
+        // Retirer la classe du glisser-déposer
+        dropdownBtn.classList.remove('dragging');
+    }
+
+    // Fonction pour gérer le déplacement pendant le glisser-déposer
+    function dragMove(e) {
+        const newRight = window.innerWidth - e.clientX + offsetX;
+        const newTop = e.clientY - offsetY;
+
+        // Limite gauche
+            const minRight = 0;
+
+        // Limite droite
+        const maxRight = window.innerWidth - dropdownBtn.clientWidth;
+        const boundedRight = Math.min(Math.max(newRight, minRight), maxRight);
+        dropdown.style.right = `calc(${boundedRight}px)`;
+        dropdown.style.top = `${newTop}px`;
+    }
+
+    // Ajouter des gestionnaires d'événements pour le début et la fin du glisser-déposer
+    dropdownBtn.addEventListener('mousedown', dragStart);
+
+    // Ajouter des gestionnaires d'événements pour le déplacement pendant le glisser-déposer
+    
+    dropdownBtn.addEventListener('mouseup', dragEnd);
+    
+    document.addEventListener('mousemove', function(e) {
+        if (dropdownBtn.classList.contains('dragging')) {
+            dragMove(e);
+        }
+    });
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        if (scrollPosition >= 750) {
+            // récupération du nouveau right du bouton dropdown mise à jour lors du glisser-déposer
+            // seulement si le drag and drop a été effectué au moins une fois
+            if (dropdown.style.right !== '1%' && dropdown.style.right !== '-50%') {
+                const newRight = dropdownBtn.getBoundingClientRect().right;
+                dropdown.style.right = `calc(${newRight}px - dropdownBtn.getBoundingClientRect().width`;
+                const newTop = dropdownBtn.getBoundingClientRect().top;
+                dropdown.style.top = `${newTop}px`;
+            } else {
+                dropdown.style.right = '1%';
+            }
+        } else {
+            dropdown.style.right = '-50%';
+            //dropdown.style.right = `calc(${window.innerWidth}px - ${dropdownBtn.getBoundingClientRect().right}px)`;
+        }
+    });
+});
+</script>
+{# 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const dropdown = document.querySelector('.dropdown');
@@ -232,6 +311,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-</script>
+</script> #}
 
 {% endblock %}
