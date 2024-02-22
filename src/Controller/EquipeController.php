@@ -35,11 +35,15 @@ class EquipeController extends AbstractController
 
         // dd($membres);
 
+        // récuperaction du nombre de membre
+        $nbMembres = count($membres);
+
 
         return $this->render('pages/equipe.html.twig', [
             'controller_name' => 'EquipeController',
             'select' => $select->createView(),
-            'membres' => $membres
+            'membres' => $membres,
+            'nbMembres' => $nbMembres
         ]);
     }
 }

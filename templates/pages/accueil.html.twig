@@ -279,7 +279,7 @@
         if (scrollPosition >= 750) {
             // récupération du nouveau right du bouton dropdown mise à jour lors du glisser-déposer
             // seulement si le drag and drop a été effectué au moins une fois
-            if (dropdown.style.right !== '1%' && dropdown.style.right !== '-50%') {
+            if (parseFloat(dropdown.style.right) !== '1%' && (dropdown.style.right) !== '-50%') {
                 const newRight = dropdownBtn.getBoundingClientRect().right;
                 dropdown.style.right = `calc(${newRight}px - dropdownBtn.getBoundingClientRect().width`;
                 const newTop = dropdownBtn.getBoundingClientRect().top;

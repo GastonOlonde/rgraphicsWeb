@@ -2,16 +2,30 @@ body{
     font-family: 'Inter', sans-serif;
     background-color: var(--color-background);
     height: 100%;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
 }
 
+.titre_page{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+.phrase_page{
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: justify;
+}
 
 .div-equipe{
     display: flex;
     flex-direction: row;
-    margin-top: 150px;
     width: 80%;
     height: 70vh;
-    margin-left: 10%;
+    /* margin-left: 10%; */
     border-radius: 10px;
     border: 2px solid var(--color-first-color);
     overflow: hidden;
@@ -49,71 +63,15 @@ body{
     width: 100%;
     z-index: -10000;
 }
-/* .dropdown {
-    position: relative;
-    display: inline-block;
-    justify-content: space-around;
-    width: 10%;
-    height: 10%;
-} */
-/* 
-.dropdown-btn {
-    background-color: #f5f5f5;
-    border-radius: 0 0 10px 0 ;
-    color: var(--color-text);
-    padding: 10px;
-    min-width: auto 150px;
-    border: none;
-    display: flex;
-    flex-direction: row;
-    gap : 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-
-.dropdown-content {
-    display: block;
-    border-radius: 10px;
-    position: absolute;
-    background-color: rgba(249, 249, 249, .8);
-    min-width: auto;
-    height: 0px;
-    box-shadow: 4px 4px 16px rgba(0,0,0,0.2);
-    transition: all 0.3s ease-in-out;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: #333;
-    padding: 12px 16px;
-    display: block;
-    text-decoration: none;
-    transition: all 0.3s ease-in-out;
-}
-
-.dropdown-content a:hover {
-    background-color: rgba(255, 213, 0, 0.7); 
-    border-radius: 10px;
-}
-
-.dropdown:hover .dropdown-content {
-    height: auto;
-}
-.dropdown-btn:hover{
-    background-color: rgba(255, 213, 0, 0.7); 
-} */
-
-
 
 .text-membre{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 100%;
     height: 85%;
-    gap: 50px;
+    gap: 1rem;
     background-color: transparent;
     flex: 1;
 }
@@ -131,6 +89,7 @@ body{
     background-color: #f5f5f5;
     max-height: 40%;
     width: 80%;
+    height: auto;
     border-radius: 10px;
     border: 2px solid var(--color-first-color);
 }
@@ -144,22 +103,42 @@ body{
 
 .dropdown label{
     display: none;
+    background: transparent;
 }
 
 
-@media all and (max-width : 1100px) {
+.selection #select2-select_membre_form_prenom-container{
+    background-color: var(--color-first-color);
+    border-radius: 5px;
+    border: 1px solid var(--color-text);
+    color: black;
+    z-index: 2000;
+}
+.select2-container--default .select2-selection--single {
+    border: none;
+    border-radius: 5px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b{
+    border-color: black transparent transparent transparent;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b{
+    border-color: transparent transparent black transparent;
+}
+
+@media all and (max-width : 800px) {
     .div-equipe{
         flex-direction: column-reverse;
         margin-bottom: 50px;
         gap: 2rem;
         width: 90%;
         height: auto;
-        margin-left: 5%;
         align-items: center;
         border: none;
     }
     .div-images{
-        width: 100%;
+        width: 80%;
         display: flex;
         justify-content: center;
     }

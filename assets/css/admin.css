@@ -637,3 +637,23 @@ input[type=file]::file-selector-button:hover {
 .supp_membre_form form .button-add-content{
     width: 30%;
 }
+@media all and (max-width: 1080px) {
+    .page-accueil form{
+        flex-direction: column;
+    }
+    
+}
+@media all and (max-width: 900px) {
+    .ajout-contenu form{
+        width: 80%;
+    }
+}
+@media all and (max-width: 780px) {
+    .ajout-contenu form{
+        width: 95%;
+        padding: auto;
+    }
+    .ajout-contenu form button{
+        width: 100%;
+    }
+}
