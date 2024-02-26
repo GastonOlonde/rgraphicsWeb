@@ -18,7 +18,8 @@ Class AccueilController extends AbstractController
     ):Response
     {
 
-        $parametrelogoAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO']);
+        $parametrelogoAccueilblack = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-GR']);
+        $parametrelogoAccueilwhite = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-GR']);
         $parametreTextAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'TEXTE_ACCUEIL']);
         // récupération des sevices qui coreespondent aux coverings
         $covering = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'TOTAL COVERING'])]);
@@ -61,7 +62,8 @@ Class AccueilController extends AbstractController
 
         return $this->render('pages/accueil.html.twig',
         [
-            'parametrelogoAccueil' => $parametrelogoAccueil,
+            'parametrelogoAccueilblack' => $parametrelogoAccueilblack,
+            'parametrelogoAccueilwhite' => $parametrelogoAccueilwhite,
             'parametreTextAccueil' => $parametreTextAccueil,
             'covering' => $covering,
             'marquageVehicule' => $marquageVehicule,

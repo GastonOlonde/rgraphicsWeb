@@ -29,7 +29,7 @@ window.addEventListener('scroll', () => {
     if (currentScroll <= 100) {
         nav.style.backgroundColor = "transparent";
     } else {
-        nav.style.backgroundColor = "#ffffff";
+        nav.style.backgroundColor = "var(--color-background)";
     }
 
     lastScroll = currentScroll <= 0 ? 0 : currentScroll; // For Mobile or negative scrolling
@@ -49,3 +49,40 @@ menuLinks.forEach(link => {
         link.parentElement.classList.add('active');
     }
 });
+
+
+
+
+const themeToggle = document.querySelector('.theme');
+const b = document.body;
+
+// Vérifier si une préférence de thème est stockée dans localStorage
+const themeStocke = localStorage.getItem('theme');
+if (themeStocke) {
+    b.classList.add(themeStocke);
+    mettreAJourBoutonTheme(themeStocke);
+}
+
+themeToggle.addEventListener('click', () => {
+    if (b.classList.contains('dark')) {
+        definirTheme('light');
+    } else {
+        definirTheme('dark');
+    }
+});
+
+function definirTheme(theme) {
+    b.classList.toggle('dark', theme === 'dark');
+    mettreAJourBoutonTheme(theme);
+    // Stocker la préférence de thème actuelle dans localStorage
+    localStorage.setItem('theme', theme);
+    location.reload();
+}
+
+function mettreAJourBoutonTheme(theme) {
+    const estModeSombre = theme === 'dark';
+    themeToggle.innerHTML = estModeSombre ? 'Clair' : 'Sombre';
+    themeToggle.style.backgroundColor = estModeSombre ? '#ffffffa6' : '#333333a9';
+    themeToggle.style.color = estModeSombre ? '#000' : '#fff';
+    themeToggle.style.filter = estModeSombre ? 'drop-shadow(2px 3px 1px rgba(255,255,255,0.30))' : '';
+}

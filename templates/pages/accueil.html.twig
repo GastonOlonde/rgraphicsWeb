@@ -18,7 +18,7 @@
     <div class="div-accueil">
         <div class="logo-text hiddenY">
             <div class="logo-accueil">
-                <img src="{{ vich_uploader_asset(parametrelogoAccueil, 'imageFile') }}" alt="{{parametrelogoAccueil.imageName}}" class="logo-accueil">
+                <img src="{{ vich_uploader_asset(parametrelogoAccueilblack, 'imageFile') }}" alt="{{parametrelogoAccueilblack.imageName}}" class="logo-accueil" id="logo-accueil">
             </div>
             <div class="text-accueil">
                 <p>
@@ -293,6 +293,22 @@
         }
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    var body = document.body;
+    if (body.classList.contains('dark')) {
+        // La classe 'dark' est présente sur le corps du document
+        // Ajoutez le code ici pour charger le logo sombre
+        document.getElementById('logo-accueil').src = "{{ vich_uploader_asset(parametrelogoAccueilwhite, 'imageFile') }}";
+        document.getElementById('logo-accueil').alt = "{{parametrelogoAccueilwhite.imageName}}";
+    } else {
+        // La classe 'dark' n'est pas présente sur le corps du document
+        // Ajoutez le code ici pour charger le logo clair
+        document.getElementById('logo-accueil').src = "{{ vich_uploader_asset(parametrelogoAccueilblack, 'imageFile') }}";
+        document.getElementById('logo-accueil').alt = "{{parametrelogoAccueilblack.imageName}}";
+    }
+});
+
 </script>
 {# 
 <script>

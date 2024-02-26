@@ -15,8 +15,8 @@
 
 {% block body %}
 {# <img class="fond" src="{{ asset('images/FOND_INDUS.png') }}" alt="logo"> #}
-<h1 class="titre_page">Voici notre équipe</h1>
-<p class="phrase_page">Nous sommes composés que de {{nbMembres}} membres, mais nousnous divisons en 8 pour vous !!</p>
+<h1 class="titre_page hiddenY">Voici notre équipe</h1>
+<p class="phrase_page hiddenY">Nous sommes composés que de {{nbMembres}} membres, mais nousnous divisons en 8 pour vous !!</p>
 <div class="div-equipe hiddenY">
     
     {% for i in 0..membres|length-1 %}

@@ -66,6 +66,9 @@ body {
     width: 20%;
     text-align: justify;
 }
+.text-accueil p{
+    color: var(--color-text);
+}
 .btn-decouvrir{
     width: 150px;
     background-color: var(--color-button);
@@ -76,6 +79,7 @@ body {
     border: none;
     text-transform: uppercase;
     font-size: 1rem;
+    color: var(--color-text);
     font-family: 'Inter', sans-serif;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
     transition: all 0.3s ease-in-out;
@@ -109,7 +113,7 @@ body {
     left: -182px;
     width: 1100px;
     height: 1100px;
-    background-color: #ffffff;
+    background-color: var(--color-background);
     clip-path: polygon(48% 0, 59% 36%, 98% 32%, 66% 50%, 74% 85%, 48% 70%, 21% 86%, 38% 55%, 4% 49%, 38% 38%);
     transform-origin: center;
     z-index:-2;
@@ -149,6 +153,7 @@ body {
 .titre h2 {
     width: fit-content;
     text-transform: uppercase;
+    color: var(--color-text);
 }
 
 .titre{

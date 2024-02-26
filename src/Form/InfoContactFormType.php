@@ -23,7 +23,7 @@ class InfoContactFormType extends AbstractType
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('p')
                         ->where('p.nom_param NOT IN (:nom_param)')
-                        ->setParameter( 'nom_param', ['LOGO', 'TEXTE_ACCUEIL']);
+                        ->setParameter( 'nom_param', ['LOGO-BLACK-GR', 'LOGO-WHITE-GR', 'TEXTE_ACCUEIL']);
                 },
                 'choice_label' => 'nom_param',
                 'label' => 'Nom du paramètre'

@@ -162,14 +162,16 @@ class AdministrationController extends AbstractController
         $formLogo->handleRequest($request);
 
         if($formLogo->isSubmitted() && $formLogo->isValid()){
+            $theme = RecupTheme();
+
             //suppression de l'ancien logo
-            $logo = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO']);
+            $logo = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-GR']);
             $entityManager->remove($logo);
             $entityManager->flush();
 
             // on récupère toutes les données du formulaire
             $logo = $formLogo->getData();
-            $nom_param = 'LOGO';
+            $nom_param = 'LOGO-BLACK-GR';
             $logo->setNomParam($nom_param);
             $entityManager->persist($logo);
             $entityManager->flush();
@@ -363,7 +365,8 @@ class AdministrationController extends AbstractController
         $infoscontact = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => $formInfoContact->get('nom_param')->getData()]);
 
         // On récupère le logo de la page d'accueil        
-        $parametrelogoAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO']);
+        $parametrelogoAccueilblack = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-GR']);
+        $parametrelogoAccueilwhite = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-GR']);
 
         // On récupère le texte d'accueil
         $parametreTextAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'TEXTE_ACCUEIL']);
@@ -384,7 +387,8 @@ class AdministrationController extends AbstractController
             // 'selectForm' => $selectForm->createView(),
             'modifyForm' => $modifyForm->createView(),
             'controller_name' => 'AdministrationController',
-            'parametrelogoAccueil' => $parametrelogoAccueil,
+            'parametrelogoAccueilblack' => $parametrelogoAccueilblack,
+            'parametrelogoAccueilwhite' => $parametrelogoAccueilwhite,
             'parametreTextAccueil' => $parametreTextAccueil,
             'infoscontact' => $infoscontact,
         ]);
