@@ -1,12 +1,14 @@
+{# {{ render(controller('App\\Controller\\HeaderController::index')) }} #}
 
 <link rel="stylesheet" href="{{ asset('css/header.css') }}">
 <link href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Poppins:wght@300&display=swap" rel="stylesheet">
 
-
 <header>
     <nav>        
         <div class="logo">
-            <a href="/"><img src="{{ asset('images/R-G.png') }}" alt=""></a>
+            {# {{ headerData.parametrelogoHeaderblack.nom_param }} #}
+            {# {{ headerData.parametrelogoHeaderwhite.nom_param }} #}
+            <a href="/"><img src="{{ vich_uploader_asset(headerData.parametrelogoHeaderblack, 'imageFile') }}" alt="{{ headerData.parametrelogoHeaderblack.imageName }}" class="logo-header" id="logo-header"></a>
             <button class="theme">Sombre</button>
         </div>
         <div class="toggle">
@@ -27,3 +29,19 @@
 </header>
 
 <script src="{{ asset('js/header.js') }}"></script>
+{# <script>
+document.addEventListener('DOMContentLoaded', function() {
+    var body = document.body;
+    if (body.classList.contains('dark')) {
+        // La classe 'dark' est présente sur le corps du document
+        // Ajoutez le code ici pour charger le logo sombre
+        document.getElementById('logo-header').src = "{{ vich_uploader_asset(parametrelogoHeaderwhite, 'imageFile') }}";
+        document.getElementById('logo-header').alt = "{{parametrelogoHeaderwhite.imageName}}";
+    } else {
+        // La classe 'dark' n'est pas présente sur le corps du document
+        // Ajoutez le code ici pour charger le logo clair
+        document.getElementById('logo-header').src = "{{ vich_uploader_asset(parametrelogoHeaderblack, 'imageFile') }}";
+        document.getElementById('logo-header').alt = "{{parametrelogoHeaderblack.imageName}}";
+    }
+});
+</script> #}

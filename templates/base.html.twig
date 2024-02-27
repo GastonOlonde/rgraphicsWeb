@@ -9,11 +9,10 @@
         {% endblock %}
 
         {% block javascripts %}
-        
+
         {% endblock %}
     </head>
     <body>
-        {% include "partials/header.html.twig" %}
 
         {# Si la connexion à réussie #}
         {# {% if  %}
@@ -25,8 +24,12 @@
         {% endif %}     #}
 
         {% include "partials/_flash.html.twig" %}
+        {% block body %}
 
-        {% block body %}{% endblock %}
+        {% endblock %}
+
+        {% include "partials/header.html.twig" %}
+
         {% include "partials/footer.html.twig" %}
     </body>
 </html>

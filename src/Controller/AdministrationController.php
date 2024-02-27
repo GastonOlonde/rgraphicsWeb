@@ -11,6 +11,7 @@ use App\Entity\Parametre;
 use App\Entity\Membre;
 use App\Entity\Categories;
 use App\Form\LogoAccueilFormType;
+use App\Form\LogoHeaderFormType;
 use App\Form\TextAccueilFromType;
 use App\Form\InfoContactFormType;
 use App\Form\AjoutMembreFormType;
@@ -162,7 +163,6 @@ class AdministrationController extends AbstractController
         $formLogo->handleRequest($request);
 
         if($formLogo->isSubmitted() && $formLogo->isValid()){
-            $theme = RecupTheme();
 
             //suppression de l'ancien logo
             $logo = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-GR']);
@@ -180,6 +180,28 @@ class AdministrationController extends AbstractController
         }
 
 
+        // Formulaire de modification du logo dans le header
+        $logoHeader = new Parametre();
+        $formLogoHeader = $this->createForm(LogoHeaderFormType::class, $logoHeader);
+        $formLogoHeader->handleRequest($request);
+
+        if($formLogoHeader->isSubmitted() && $formLogoHeader->isValid()){
+
+            //suppression de l'ancien logo
+            $logoHeader = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-PT']);
+            $entityManager->remove($logoHeader);
+            $entityManager->flush();
+
+            // on récupère toutes les données du formulaire
+            $logoHeader = $formLogoHeader->getData();
+            $nom_param = 'LOGO-BLACK-PT';
+            $logoHeader->setNomParam($nom_param);
+            $entityManager->persist($logoHeader);
+            $entityManager->flush();
+            $this->addFlash('success', 'Le logo a bien été modifié.');
+            return $this->redirectToRoute('app_administration');
+        }
+
         // Formulaire de modification du texte d'accueil
 
         $textAccueil = new Parametre();
@@ -193,7 +215,7 @@ class AdministrationController extends AbstractController
                 $entityManager->remove($textAccueil);
                 $entityManager->flush();
             }
-           
+
 
             // on récupère toutes les données du formulaire
             $textAccueil = $formTextAccueil->getData();
@@ -368,6 +390,10 @@ class AdministrationController extends AbstractController
         $parametrelogoAccueilblack = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-GR']);
         $parametrelogoAccueilwhite = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-GR']);
 
+        // On récupère le logo du header
+        $parametrelogoHeaderblack = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-PT']);
+        $parametrelogoHeaderwhite = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-PT']);
+
         // On récupère le texte d'accueil
         $parametreTextAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'TEXTE_ACCUEIL']);
         // s'il n'existe pas, on affiche "aucun texte d'accueil pour le moment, veuillez en ajouter un."
@@ -384,6 +410,7 @@ class AdministrationController extends AbstractController
             'infoContactForm' => $formInfoContact->createView(),
             'ajoutMembreForm' => $formMembre->createView(),
             'supprimerMembreForm' => $supprimerForm->createView(),
+            'formlogoHeader' => $formLogoHeader->createView(),
             // 'selectForm' => $selectForm->createView(),
             'modifyForm' => $modifyForm->createView(),
             'controller_name' => 'AdministrationController',
@@ -391,6 +418,8 @@ class AdministrationController extends AbstractController
             'parametrelogoAccueilwhite' => $parametrelogoAccueilwhite,
             'parametreTextAccueil' => $parametreTextAccueil,
             'infoscontact' => $infoscontact,
+            'parametrelogoHeaderblack' => $parametrelogoHeaderblack,
+            'parametrelogoHeaderwhite' => $parametrelogoHeaderwhite,
         ]);
     }
     

@@ -46,6 +46,18 @@
                     {{ form_row(logoAccueilForm.imageFile) }}
                     <button class="button-add-content" type="submit">Valider</button>
                     {{ form_end(logoAccueilForm) }}
+
+                    <h1>Logo barre de navigation</h1>
+                    <p class="p-apercu">Aperçu actuel du logo</p>
+                    {{ form_start(formlogoHeader) }}
+                    <div class="image-logo-header">               
+                        <img src="" alt="" id="logo-header" class="logo-header">
+                    </div>
+                    {{ form_row(formlogoHeader.imageFile) }}
+                    <button class="button-add-content" type="submit">Valider</button>
+                    {{ form_end(formlogoHeader) }}
+
+
                     <h1 class="class-h1">Texte page d'accueil</h1>
                     <p class="p-apercu">Aperçu actuel du Texte</p>
                     {{ form_start(textAccueilForm) }}
@@ -150,6 +162,21 @@
         // Ajoutez le code ici pour charger le logo clair
         document.getElementById('logo-accueil').src = "{{ vich_uploader_asset(parametrelogoAccueilblack, 'imageFile') }}";
         document.getElementById('logo-accueil').alt = "{{parametrelogoAccueilblack.imageName}}";
+    }
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    var body = document.body;
+    if (body.classList.contains('dark')) {
+        // La classe 'dark' est présente sur le corps du document
+        // Ajoutez le code ici pour charger le logo sombre
+        document.getElementById('logo-header').src = "{{ vich_uploader_asset(parametrelogoHeaderwhite, 'imageFile') }}";
+        document.getElementById('logo-header').alt = "{{parametrelogoHeaderwhite.imageName}}";
+    } else {
+        // La classe 'dark' n'est pas présente sur le corps du document
+        // Ajoutez le code ici pour charger le logo clair
+        document.getElementById('logo-header').src = "{{ vich_uploader_asset(parametrelogoHeaderblack, 'imageFile') }}";
+        document.getElementById('logo-header').alt = "{{parametrelogoHeaderblack.imageName}}";
     }
 });
     </script>

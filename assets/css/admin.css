@@ -374,6 +374,9 @@ input[type=file]::file-selector-button:hover {
 .logo-accueil{
     width: 100%;
 }
+.logo-header{
+    width: 100%;
+}
 
 /* .page-accueil form div {
    width: 20%;
@@ -409,6 +412,15 @@ input[type=file]::file-selector-button:hover {
 .image-logo{
     display: flex;
     width: 100%;
+    /* height: 400px; */
+    border-radius: 10px;
+    border: 1px solid var(--color-first-color);
+    padding: 0.2rem;
+}
+
+.image-logo-header{
+    display: flex;
+    width: 40%;
     /* height: 400px; */
     border-radius: 10px;
     border: 1px solid var(--color-first-color);
