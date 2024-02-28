@@ -86,3 +86,4 @@ function mettreAJourBoutonTheme(theme) {
     themeToggle.style.color = estModeSombre ? '#000' : '#fff';
     themeToggle.style.filter = estModeSombre ? 'drop-shadow(2px 3px 1px rgba(255,255,255,0.30))' : '';
 }
+

@@ -8,7 +8,7 @@
         <div class="logo">
             {# {{ headerData.parametrelogoHeaderblack.nom_param }} #}
             {# {{ headerData.parametrelogoHeaderwhite.nom_param }} #}
-            <a href="/"><img src="{{ vich_uploader_asset(headerData.parametrelogoHeaderblack, 'imageFile') }}" alt="{{ headerData.parametrelogoHeaderblack.imageName }}" class="logo-header" id="logo-header"></a>
+            <a href="/"><img src="" class="logo-header" id="logo-header-header"></a>
             <button class="theme">Sombre</button>
         </div>
         <div class="toggle">
@@ -29,19 +29,19 @@
 </header>
 
 <script src="{{ asset('js/header.js') }}"></script>
-{# <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     var body = document.body;
     if (body.classList.contains('dark')) {
         // La classe 'dark' est présente sur le corps du document
         // Ajoutez le code ici pour charger le logo sombre
-        document.getElementById('logo-header').src = "{{ vich_uploader_asset(parametrelogoHeaderwhite, 'imageFile') }}";
-        document.getElementById('logo-header').alt = "{{parametrelogoHeaderwhite.imageName}}";
+        document.getElementById('logo-header-header').src = "";
+        document.getElementById('logo-header-header').alt = "logo clair";
     } else {
         // La classe 'dark' n'est pas présente sur le corps du document
         // Ajoutez le code ici pour charger le logo clair
-        document.getElementById('logo-header').src = "{{ vich_uploader_asset(parametrelogoHeaderblack, 'imageFile') }}";
-        document.getElementById('logo-header').alt = "{{parametrelogoHeaderblack.imageName}}";
+        document.getElementById('logo-header-header').src = "{{ asset('images/R-G.png') }}";
+        document.getElementById('logo-header-header').alt = "logo sombre";
     }
 });
-</script> #}
+</script>

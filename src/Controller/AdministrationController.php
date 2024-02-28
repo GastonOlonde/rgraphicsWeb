@@ -28,6 +28,8 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Service\SendMailService;
+// use App\Service\HeaderDataService;
+// use App\Service\HeaderController;
 
 class AdministrationController extends AbstractController
 {
@@ -41,6 +43,7 @@ class AdministrationController extends AbstractController
         SendMailService $mail
     ): Response
     {
+
         // on créer un nouveau service
         $service = new Services();
         $form = $this->createForm(AddcontentFormType::class, $service);

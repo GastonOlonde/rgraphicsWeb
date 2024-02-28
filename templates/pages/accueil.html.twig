@@ -90,6 +90,19 @@
                 <h2>Marquage vehicules</h2>
             </div>  
         </div>
+        <div class="contenu_marquage">
+            {# block foreach #}
+            {% for img in marquageVehicule %}
+                {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                <div class="img_marquage">
+                    <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                    <div class="info_marq">
+                        <h3>{{img.titre}}</h3>
+                        <p>{{img.legende}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
 <section id="section4" class="section"  data-section-name="Enseignes">
@@ -100,6 +113,21 @@
                 <h2>Enseignes</h2>
             </div>
         </div>
+
+        <div class="contenu_enseignes">
+            {# block foreach #}
+            {% for img in enseigne %}
+                {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                <div class="img_enseigne">
+                    <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                    <div class="info_enseigne">
+                        <h3>{{img.titre}}</h3>
+                        <p>{{img.legende}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
     </div>
 </section>
 

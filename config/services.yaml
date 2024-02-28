@@ -26,9 +26,3 @@ services:
     # Symfony/Component/Mailer/MailerInterface:
     #     arguments:  
     #         $transport: '@swiftmailer.mailer.transport.null'
-    App\ViewComposer\HeaderViewComposer:
-        tags:
-            - { name: 'twig.controller', method: 'compose'}
-    App\Service\HeaderDataService: 
-        arguments:
-            $entityManager: '@doctrine.orm.entity_manager'
