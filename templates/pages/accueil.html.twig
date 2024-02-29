@@ -3,7 +3,10 @@
 {% block stylesheets %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- Inclure Slick -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('css/accueil.css') }}">
 {% endblock %}
@@ -114,18 +117,33 @@
             </div>
         </div>
 
-        <div class="contenu_enseignes">
-            {# block foreach #}
-            {% for img in enseigne %}
-                {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
-                <div class="img_enseigne">
-                    <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                    <div class="info_enseigne">
-                        <h3>{{img.titre}}</h3>
-                        <p>{{img.legende}}</p>
+        <div class="swiper-enseignes">
+            <div class="swiper-wrapper">
+                {% for img in enseigne %}
+                    <div class="swiper-slide">
+                    {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                        <div class="info_cov">
+                            <h3>{{img.titre}}</h3>
+                            <p>{{img.legende}}</p>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+        <div class="swiper-enseignes-2">
+            <div class="swiper-wrapper">
+                {% for img in enseigne %}
+                    <div class="swiper-slide">
+                    {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                        <div class="info_cov">
+                            <h3>{{img.titre}}</h3>
+                            <p>{{img.legende}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
     </div>
@@ -302,7 +320,11 @@
             dragMove(e);
         }
     });
+
+});
     window.addEventListener('scroll', function() {
+            const dropdown = document.querySelector('.dropdown');
+    const dropdownBtn = document.querySelector('.dropdown-btn');
         const scrollPosition = window.scrollY;
         if (scrollPosition >= 750) {
             // récupération du nouveau right du bouton dropdown mise à jour lors du glisser-déposer
@@ -320,7 +342,6 @@
             //dropdown.style.right = `calc(${window.innerWidth}px - ${dropdownBtn.getBoundingClientRect().right}px)`;
         }
     });
-});
 
 document.addEventListener('DOMContentLoaded', function() {
     var body = document.body;
@@ -337,24 +358,75 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-</script>
-{# 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const dropdown = document.querySelector('.dropdown');
 
-    window.addEventListener('scroll', function() {
-        const scrollPosition = window.scrollY;
-        //console.log(scrollPosition);
-        if (scrollPosition >= 750) {
-            // on ajoute tranlateY(50%) pour faire apparaitre le bouton de navigation
-            dropdown.style.right = '1%';
-        } else {
-            // on enlève le transform pour faire disparaitre le bouton de navigation
-            dropdown.style.right = '-50%';
-        }
-    });
+var swiper = new Swiper('.swiper-enseignes',{
+    spaceBetween: 0,
+    grabCursor: true,
+    a11y: false,
+    freeMode: true,
+    speed: 9000,
+    loop: true,
+    slidesPerView: "4",
+    autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+        reverseDirection: false,
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 5,
+        },
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+        },
+    },
 });
-</script> #}
+var swiper = new Swiper('.swiper-enseignes-2',{
+    spaceBetween: 0,
+    grabCursor: true,
+    
+    a11y: false,
+    freeMode: true,
+    speed: 9000,
+    loop: true,
+    slidesPerView: "3",
+    autoplay: {
+        delay: 0,
+        disableOnInteraction: false,
+        reverseDirection: true,
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 5,
+        },
+        640: {
+            slidesPerView: 2,
+            spaceBetween: 10,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+        },
+    },
+});
+
+
+</script>
+
 
 {% endblock %}

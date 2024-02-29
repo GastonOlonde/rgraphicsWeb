@@ -138,7 +138,7 @@ body {
 
 
 #section2{
-    height: 900px;
+    height: auto;
 }
 
 .div-covering{
@@ -270,7 +270,7 @@ body {
     overflow: hidden;
 }
 
-.swiper-slide img{
+.swiper-container .swiper-slide img{
     box-sizing: border-box;
     width: auto;
     height: 500px;
@@ -379,32 +379,81 @@ body {
     opacity: 0.7;
 }
 
-.img_marquage img:hover{
+/* .img_marquage img:hover{
     transform: scale(1.01);
-}
+} */
 
 #section4{
     height: auto;
+    /* width: 200vw; */
 }
 
-.contenu_enseignes{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px; /* Facultatif : espace entre les éléments */
-    overflow-x: scroll;
+
+.swiper-enseignes {
+    -webkit-transition-timing-function:linear!important;
+    -o-transition-timing-function:linear!important;
+    transition-timing-function:linear infinite!important;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
     margin-top: 1rem;
+    position: relative;
     padding: 1rem 1rem; 
+    background-color: var(--color-second-color);
+
 }
 
-.img_enseigne{
-    position: relative;
-    overflow: hidden;
+.swiper-enseignes .swiper-slide {
+    -webkit-transition-timing-function:linear!important;
+    -o-transition-timing-function:linear!important;
+    transition-timing-function:linear infinite!important;
 }
+
+.swiper-enseignes .swiper-slide img{
+    width: 100%;
+    /* height: 100%; */
+    align-content: center;
+}
+
+
+.swiper-enseignes-2 {
+    -webkit-transition-timing-function:linear!important;
+    -o-transition-timing-function:linear!important;
+    transition-timing-function:linear infinite!important;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    position: relative;
+    padding: 1rem 1rem;
+    background-color: var(--color-second-color);
+}
+
+.swiper-enseignes-2 .swiper-slide {
+    -webkit-transition-timing-function:linear!important;
+    -o-transition-timing-function:linear!important;
+    transition-timing-function:linear infinite!important;
+}
+
+.swiper-enseignes-2 .swiper-slide img{
+    width: 100%;
+    /* height: 100%; */
+    align-content: center;
+}
+/* 
+.img_enseigne{
+    display: inline-block;
+    position: relative;
+    margin: 0 auto;
+} */
 .info_enseigne{
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    box-sizing: border-box;
     text-align: center; /* Facultatif : pour centrer le texte */
     background: rgba(255, 255, 255, 0.8); /* Facultatif : fond semi-transparent pour améliorer la lisibilité */
     padding: 10px; /* Facultatif : espace autour du texte */
@@ -418,7 +467,6 @@ body {
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-
 }
 
 @media all and (max-width: 1170px){

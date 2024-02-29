@@ -88,7 +88,7 @@ class AdministrationController extends AbstractController
                     try{
                         $entityManager->persist($service);
                         $entityManager->flush();
-                        $this->addFlash('success', 'L\'image et ses infrmations ont bien été ajoutés.');
+                        $this->addFlash('success', 'L\'image et ses informations ont bien été ajoutés.');
                         return $this->redirectToRoute('app_administration');
                     } catch(\Exception $e){
                         $this->addFlash('error', 'Une erreur est survenue, veuillez réessayer.');
