@@ -15,11 +15,11 @@
 
 
 {% block body %}
-<section class="section1-accueil hiddenY" id="section1">
+<section class="section1-accueil " id="section1">
         <div class="star"></div>
         <div class="star-background"></div>
     <div class="div-accueil">
-        <div class="logo-text hiddenY">
+        <div class="logo-text">
             <div class="logo-accueil">
                 <img src="{{ vich_uploader_asset(parametrelogoAccueilblack, 'imageFile') }}" alt="{{parametrelogoAccueilblack.imageName}}" class="logo-accueil" id="logo-accueil">
             </div>
@@ -29,7 +29,7 @@
                 </p>
             </div>
         </div>
-        <a href="#section2" class="section-link hiddenRotateY ">
+        <a href="#section2" class="section-link  ">
             <button class="btn-decouvrir ">Découvrir</button>
         </a>
     </div>
@@ -52,17 +52,13 @@
                 <div class="dropdown-content">
                     <a href="#section2" class="section-link">Total Covering</a>
                     <a href="#section3" class="section-link">Marquage véhicules</a>
-                    <a href="#section4" class="section-link">Enseignes</a>
+                    <a href="#section4" class="section-link">Enseignes-Vitrines-Panneaux</a>
                     <a href="#section5" class="section-link">Logos</a>
                     <a href="#section6" class="section-link">Impression num.</a>
-                    <a href="#section7" class="section-link">Panneaux</a>
-                    <a href="#section8" class="section-link">Vitrines</a>
-                    <a href="#section9" class="section-link">Banderoles</a>
-                    <a href="#section10" class="section-link">Evenementiel</a>
-                    <a href="#section11" class="section-link">Imprimerie</a>
-                    <a href="#section12" class="section-link">Textiles</a>
-                    <a href="#section13" class="section-link">Goddies</a>
-                    <a href="#section14" class="section-link">Partenaires</a>
+                    <a href="#section7" class="section-link">Imprimerie-Evenementiel-Banderoles</a>
+                    <a href="#section8" class="section-link">Textiles</a>
+                    <a href="#section9" class="section-link">Goddies</a>
+                    <a href="#section10" class="section-link">Partenaires</a>
                 </div>
                 
             </div>
@@ -108,22 +104,22 @@
         </div>
     </div>
 </section>
-<section id="section4" class="section"  data-section-name="Enseignes">
+<section id="section4" class="section"  data-section-name="Enseignes-Vitrines-Panneaux">
     <div class="div-enseignes">
 
         <div class="div-tire-onglet">
             <div class="titre">
-                <h2>Enseignes</h2>
+                <h2>Enseignes - Vitrines - Panneaux</h2>
             </div>
         </div>
 
         <div class="swiper-enseignes">
             <div class="swiper-wrapper">
-                {% for img in enseigne %}
+                {% for img in enseigneP1 %}
                     <div class="swiper-slide">
                     {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_cov">
+                        <div class="info_ens">
                             <h3>{{img.titre}}</h3>
                             <p>{{img.legende}}</p>
                         </div>
@@ -133,11 +129,11 @@
         </div>
         <div class="swiper-enseignes-2">
             <div class="swiper-wrapper">
-                {% for img in enseigne %}
+                {% for img in enseigneP2 %}
                     <div class="swiper-slide">
                     {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_cov">
+                        <div class="info_ens">
                             <h3>{{img.titre}}</h3>
                             <p>{{img.legende}}</p>
                         </div>
@@ -157,76 +153,76 @@
                 <h2>CRÉATION LOGOS & CHARTES GRAPHIQUES</h2>
             </div>
         </div>
+
+        <div class="contenu_logos">
+            {# block foreach #}
+            {% for img in logocharte %}
+                {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                <div class="img_logos">
+                    <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                    <div class="info_logos">
+                        <h3>{{img.titre}}</h3>
+                        <p>{{img.legende}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 </section>
     
 <section id="section6" class="section"  data-section-name="Impression num.">
     <div class="div-imp">
 
-        <div class="div-tire-onglet">
+        <div class="div-tire-onglet-imp">
             <div class="titre">
                 <h2>IMPRESSION NUMÉRIQUE TOUS SUPPORTS</h2>
             </div>
         </div>
+
+        <div class="contenu_imp">
+            {# block foreach #}
+            {% for img in impressionNum %}
+                {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                <div class="img_imp">
+                    <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                    <div class="info_imp">
+                        <h3>{{img.titre}}</h3>
+                        <p>{{img.legende}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
     </div>
 </section>
-    
-<section id="section7" class="section"  data-section-name="Panneaux">
-    <div class="div-panneaux">
 
-        <div class="div-tire-onglet">
-            <div class="titre">
-                <h2>Panneaux</h2>
-            </div>
-        </div>
-    </div>
-</section>    
-
-<section id="section8" class="section"  data-section-name="Vitrines">
-    <div class="div-vitrines">
-
-        <div class="div-tire-onglet">
-            <div class="titre">
-                <h2>Vitrines</h2>
-            </div>
-        </div>
-    </div>
-</section>   
-
-<section id="section9" class="section"  data-section-name="Banderoles">
-    <div class="div-banderoles">
-
-        <div class="div-tire-onglet">
-            <div class="titre">
-                <h2>Banderoles</h2>
-            </div>
-        </div>
-    </div>
-</section>   
-
-<section id="section10" class="section"  data-section-name="Evenementiel">
-    <div class="div-evenementiel">
-
-        <div class="div-tire-onglet">
-            <div class="titre">
-                <h2>Évenementiel</h2>
-            </div>
-        </div>
-    </div>
-</section>   
-
-<section id="section11" class="section"  data-section-name="Imprimerie">
+<section id="section7" class="section"  data-section-name="Imprimerie-Evenementiel-Banderoles">
     <div class="div-imprimerie">
 
         <div class="div-tire-onglet">
             <div class="titre">
-                <h2>IMPRIMERIE</h2>
+                <h2>IMPRIMERIE - Évenementiel - Banderoles</h2>
             </div>
         </div>
+
+        {# swiper vertical #}
+        <div class="swiper-imprimerie">
+            <div class="swiper-wrapper">
+                {% for img in imprimerie %}
+                    <div class="swiper-slide">
+                    {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                        <div class="info_imp2">
+                            <h3>{{img.titre}}</h3>
+                            <p>{{img.legende}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
     </div>
 </section>   
 
-<section id="section12" class="section"  data-section-name="Textiles">
+<section id="section8" class="section"  data-section-name="Textiles">
     <div class="div-textiles">
 
         <div class="div-tire-onglet">
@@ -237,7 +233,7 @@
     </div>
 </section>   
 
-<section id="section13" class="section"  data-section-name="Goodies">
+<section id="section9" class="section"  data-section-name="Goodies">
     <div class="div-goodies">
 
         <div class="div-tire-onglet">
@@ -248,7 +244,7 @@
     </div>
 </section>   
 
-<section id="section14" class="section"  data-section-name="Partenaires">
+<section id="section10" class="section"  data-section-name="Partenaires">
     <div class="div-partenaires">
 
         <div class="div-tire-onglet">
@@ -322,26 +318,31 @@
     });
 
 });
-    window.addEventListener('scroll', function() {
-            const dropdown = document.querySelector('.dropdown');
+{# dropdown.style.right = '1%'; #}
+
+window.addEventListener('scroll', function() {
+    const dropdown = document.querySelector('.dropdown');
     const dropdownBtn = document.querySelector('.dropdown-btn');
-        const scrollPosition = window.scrollY;
-        if (scrollPosition >= 750) {
-            // récupération du nouveau right du bouton dropdown mise à jour lors du glisser-déposer
-            // seulement si le drag and drop a été effectué au moins une fois
-            if (parseFloat(dropdown.style.right) !== '1%' && (dropdown.style.right) !== '-50%') {
-                const newRight = dropdownBtn.getBoundingClientRect().right;
-                dropdown.style.right = `calc(${newRight}px - dropdownBtn.getBoundingClientRect().width`;
-                const newTop = dropdownBtn.getBoundingClientRect().top;
-                dropdown.style.top = `${newTop}px`;
-            } else {
-                dropdown.style.right = '1%';
-            }
+    const scrollPosition = window.scrollY;
+    if (scrollPosition >= 750) {
+        // récupération du nouveau right du bouton dropdown mise à jour lors du glisser-déposer
+        // seulement si le drag and drop a été effectué au moins une fois
+        if ((parseFloat(dropdown.style.right) !== '1%') && (dropdown.style.right) !== '-50%') { 
+            const newRight = dropdownBtn.getBoundingClientRect().right;
+            dropdown.style.right = `calc(${newRight}px - dropdownBtn.getBoundingClientRect().width`;
+            const newTop = dropdownBtn.getBoundingClientRect().top;
+            dropdown.style.top = `${newTop}px`;
+            console.log(newRight);
         } else {
-            dropdown.style.right = '-50%';
-            //dropdown.style.right = `calc(${window.innerWidth}px - ${dropdownBtn.getBoundingClientRect().right}px)`;
+            dropdown.style.right = '1%';
         }
-    });
+    } else {
+        dropdown.style.right = '-50%';
+        //dropdown.style.right = `calc(${window.innerWidth}px - ${dropdownBtn.getBoundingClientRect().right}px)`;
+    }
+});
+
+
 
 document.addEventListener('DOMContentLoaded', function() {
     var body = document.body;
@@ -424,6 +425,7 @@ var swiper = new Swiper('.swiper-enseignes-2',{
         },
     },
 });
+
 
 
 </script>

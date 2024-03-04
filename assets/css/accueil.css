@@ -20,7 +20,7 @@ body {
 
 .section{
     height: 720px;
-
+    overflow: hidden;
 }
 .section1-accueil{
     height: 820px;
@@ -153,6 +153,7 @@ body {
 
 .titre h2 {
     width: fit-content;
+    font-size: 1.8rem;
     text-transform: uppercase;
     color: var(--color-text);
 }
@@ -241,7 +242,7 @@ body {
 
 /* Affichage de la liste déroulante lorsqu'elle est activée */
 .dropdown:hover .dropdown-content {
-    height: 551px;
+    height: 437px;
 }
 
 .dragging {
@@ -329,7 +330,7 @@ body {
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
     gap: 2rem;
-    width: 98%;
+    width: 80%;
     margin: 0 auto;
     margin-top: 1rem;
     padding: 1rem 1rem; 
@@ -355,28 +356,28 @@ body {
     flex-direction: column;
     gap: 1rem;
     width: 100%;
-    height: auto;
+    height: 100%;
     align-self: center;
     overflow: hidden;
-    text-align: left;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     background-color: var(--color-first-color);
     position: absolute;
     border-radius: 10px;
     padding: 0.5rem;
-    top: -100%;
+    top: 0;
     left: 0px;
     opacity: 0;
-    transition: all 0.3s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
-.img_marquage img:hover + .info_marq{
-    top: 0px;
-    opacity: 0.7;
+.info_marq img:hover + .info_marq{
+    opacity: 0.85;
 }
-
 .info_marq:hover{
-    top: 0px;
-    opacity: 0.7;
+    opacity: 0.85;
 }
 
 /* .img_marquage img:hover{
@@ -386,33 +387,37 @@ body {
 #section4{
     height: auto;
     /* width: 200vw; */
+    overflow: hidden;
 }
 
 
 .swiper-enseignes {
     -webkit-transition-timing-function:linear!important;
     -o-transition-timing-function:linear!important;
-    transition-timing-function:linear infinite!important;
+    transition-timing-function:linear!important;
     display: flex;
     align-items: center;
     width: 100%;
     margin: 0 auto;
-    margin-top: 1rem;
+    margin-top: 4rem;
     position: relative;
     padding: 1rem 1rem; 
     background-color: var(--color-second-color);
 
 }
 
-.swiper-enseignes .swiper-slide {
+.swiper-enseignes .swiper-wrapper {
     -webkit-transition-timing-function:linear!important;
     -o-transition-timing-function:linear!important;
-    transition-timing-function:linear infinite!important;
+    transition-timing-function:linear!important;
+    display: flex;
+    align-items: center;
 }
 
-.swiper-enseignes .swiper-slide img{
+.swiper-enseignes .swiper-wrapper img{
     width: 100%;
     /* height: 100%; */
+    border-radius: 10px;
     align-content: center;
 }
 
@@ -420,7 +425,7 @@ body {
 .swiper-enseignes-2 {
     -webkit-transition-timing-function:linear!important;
     -o-transition-timing-function:linear!important;
-    transition-timing-function:linear infinite!important;
+    transition-timing-function:linear!important;
     display: flex;
     align-items: center;
     width: 100%;
@@ -431,15 +436,18 @@ body {
     background-color: var(--color-second-color);
 }
 
-.swiper-enseignes-2 .swiper-slide {
+.swiper-enseignes-2 .swiper-wrapper {
     -webkit-transition-timing-function:linear!important;
     -o-transition-timing-function:linear!important;
-    transition-timing-function:linear infinite!important;
+    transition-timing-function:linear!important;
+    display: flex;
+    align-items: center;
 }
 
-.swiper-enseignes-2 .swiper-slide img{
+.swiper-enseignes-2 .swiper-wrapper img{
     width: 100%;
     /* height: 100%; */
+    border-radius: 10px;
     align-content: center;
 }
 /* 
@@ -448,18 +456,64 @@ body {
     position: relative;
     margin: 0 auto;
 } */
-.info_enseigne{
+.info_ens{
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     width: 100%;
-    box-sizing: border-box;
-    text-align: center; /* Facultatif : pour centrer le texte */
-    background: rgba(255, 255, 255, 0.8); /* Facultatif : fond semi-transparent pour améliorer la lisibilité */
-    padding: 10px; /* Facultatif : espace autour du texte */
+    height: auto;
+    align-self: center;
+    overflow: hidden;
+    text-align: left;
+    padding: 1rem;
+    background-color: var(--color-first-color);
+    border-radius: 10px;
+    opacity: 0;
+    transition: all 0.7s ease-in-out;
 }
 
-.img_enseigne img{
+.swiper-enseignes .swiper-slide img:hover + .info_ens{
+    top: 0px;
+    opacity: 0.8;
+}
+.swiper-enseignes-2 .swiper-slide img:hover + .info_ens{
+    top: 0px;
+    opacity: 0.8;
+}
+
+.info_ens:hover{
+    top: 0px;
+    opacity: 0.8;
+}
+
+
+
+#section5{
+    height: auto;
+}
+
+.contenu_logos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 2rem;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: 1rem 1rem;
+}
+
+.img_logos{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    padding: 0.5rem;
+    overflow: hidden;
+}
+
+.img_logos img{
     display: block;
     width: 100%;
     /* height: 100%; */
@@ -468,6 +522,167 @@ body {
     transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
+
+.info_logos{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: var(--color-first-color);
+    position: absolute;
+    border-radius: 10px;
+    padding: 0.5rem;
+    top: 0;
+    left: 0px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.img_logos img:hover + .info_logos{
+    opacity: 0.85;
+}
+.info_logos:hover{
+    opacity: 0.85;
+}
+
+#section6{
+    height: auto;
+}
+
+.contenu_imp{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 3px;
+    width: 98%;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+.img_imp{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.img_imp img{
+    display: block;
+    width: 100%;
+    /* height: 100%; */
+    object-fit: cover;
+    /* border-radius: 10px; */
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.info_imp{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+    align-self: center;
+    overflow: hidden;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: var(--color-first-color);
+    position: absolute;
+    /* border-radius: 10px; */
+    padding: 0.5rem;
+    top: 0;
+    left: 0px;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.img_imp img:hover + .info_imp{
+    opacity: 0.85;
+}
+.info_imp:hover{
+    opacity: 0.85;
+}
+
+
+#section7{
+    height: auto;
+}
+
+.swiper-imprimerie{
+    width: 98%;
+    /* height: 50%; */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.swiper-imprimerie .swiper-wrapper{
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.swiper-imprimerie .swiper-slide{
+    background-position: center;
+    background-size: cover;
+    width: auto;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.swiper-imprimerie .swiper-slide img{
+    box-sizing: border-box;
+    width: auto;
+    height: 500px;
+    display: block;
+    overflow: hidden;
+}
+
+.info_imp2{
+    position: absolute;
+    top: -100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    height: auto;
+    align-self: center;
+    overflow: hidden;
+    text-align: left;
+    padding: 1rem;
+    background-color: var(--color-first-color);
+    /* border-radius: 0 0 10px 10px; */
+    opacity: 0;
+    transition: all 0.7s ease-in-out;
+}
+
+.swiper-imprimerie .swiper-slide img:hover + .info_imp2{
+    top: 0px;
+    opacity: 0.8;
+}
+
+.info_imp2:hover{
+    top: 0px;
+    opacity: 0.8;
+}
+
+
 
 @media all and (max-width: 1170px){
     .logo-text{

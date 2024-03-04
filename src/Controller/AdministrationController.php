@@ -79,7 +79,7 @@ class AdministrationController extends AbstractController
                 if($service->getImageFile()->getSize() < 200000){
 
                     // si il n'y a pas de caractères spéciaux ( injection de code, etc...)
-                    if(preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getLegende()) || preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $service->getTitre())){
+                    if(preg_match('/[\^£$%&*()}{@#~?><>|=_+¬]/', $service->getLegende()) || preg_match('/[\^£$%&*()}{@#~?><>|=_+¬]/', $service->getTitre())){
                         $this->addFlash('error', 'Les caractères spéciaux ne sont pas autorisés.');
                         return $this->redirectToRoute('app_administration');
                     }
@@ -247,7 +247,6 @@ class AdministrationController extends AbstractController
                 $entityManager->remove($paramseltioned);
                 $entityManager->flush();
             }
-           
 
             // on récupère toutes les données du formulaire
             $infoContact = $formInfoContact->getData();

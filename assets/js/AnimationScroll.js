@@ -85,8 +85,30 @@ var swiper = new Swiper('.swiper-container', {
         slideShadows: true,
     },
     loop: true,
+    loopedSlides: 1,
     autoplay: {
         delay: 3000,
+    },
+    speed: 2000,
+    easing: 'ease-in-out',
+});
+
+var swiper = new Swiper('.swiper-imprimerie', {
+    effect: 'slide',
+    grabCursor: false,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+    },
+    loop: true,
+    loopedSlides: 1,
+    autoplay: {
+        delay: 1000,
     },
     speed: 2000,
     easing: 'ease-in-out',

@@ -25,31 +25,25 @@ Class AccueilController extends AbstractController
         $covering = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'TOTAL COVERING'])]);
 
         // récupération des sevices qui coreespondent aux marquages véhicules
-        $marquageVehicule = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'MARQUAGE V'])]);
+        $marquageVehicule = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'MARQUAGE VEHICULES'])]);
 
         // récupération des sevices qui coreespondent aux enseignes
-        $enseigne = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'ENSEIGNES'])]);
+        $enseigne = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'ENSEIGNES-VITRINES-PANNEAUX'])]);
+        $nombreDeResultat = count($enseigne);
+        $moitié = floor($nombreDeResultat / 2);
+
+        $enseigneP1 = array_slice($enseigne, 0, $moitié);
+
+        $enseigneP2 = array_slice($enseigne, $moitié);
 
         // récupération des sevices qui coreespondent aux Logo
-        $logocharte = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'LOGOS & CHARTES'])]);
+        $logocharte = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'LOGOS & CHARTES GRAPHIQUES'])]);
 
         // récupération des sevices qui coreespondent aux Impression num
-        $impressionNum = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'IMPRESSION NUM'])]);
-
-        // récupération des sevices qui coreespondent aux Panneaux
-        $panneaux = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'PANNEAUX'])]);
-
-        // récupération des sevices qui coreespondent aux Vitrines
-        $vitrines = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'VITRINES'])]);
-
-        // récupération des sevices qui coreespondent aux Bannieres
-        $bannieres = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'BANNIERES'])]);
-
-        // récupération des sevices qui coreespondent aux EVENEMENTIEL
-        $evenementiel = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'EVENEMENTIEL'])]);
+        $impressionNum = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'IMPRESSION NUMERIQUE'])]);
 
         // récupération des sevices qui coreespondent aux IMPRIMERIE
-        $imprimerie = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'IMPRIMERIE'])]);
+        $imprimerie = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'IMPRIMERIE-EVENEMENTIEL-BANDEROLES'])]);
 
         // récupération des sevices qui coreespondent aux TEXTILES
         $textiles = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'TEXTILES'])]);
@@ -67,13 +61,10 @@ Class AccueilController extends AbstractController
             'parametreTextAccueil' => $parametreTextAccueil,
             'covering' => $covering,
             'marquageVehicule' => $marquageVehicule,
-            'enseigne' => $enseigne,
+            'enseigneP1' => $enseigneP1,
+            'enseigneP2' => $enseigneP2,
             'logocharte' => $logocharte,
             'impressionNum' => $impressionNum,
-            'panneaux' => $panneaux,
-            'vitrines' => $vitrines,
-            'bannieres' => $bannieres,
-            'evenementiel' => $evenementiel,
             'imprimerie' => $imprimerie,
             'textiles' => $textiles,
             'goodies' => $goodies,
