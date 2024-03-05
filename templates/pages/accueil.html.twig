@@ -16,9 +16,9 @@
 
 {% block body %}
 <section class="section1-accueil " id="section1">
-        <div class="star"></div>
-        <div class="star-background"></div>
-    <div class="div-accueil">
+        <div class="star hiddenY"></div>
+        <div class="star-background hiddenY"></div>
+    <div class="div-accueil hiddenY">
         <div class="logo-text">
             <div class="logo-accueil">
                 <img src="{{ vich_uploader_asset(parametrelogoAccueilblack, 'imageFile') }}" alt="{{parametrelogoAccueilblack.imageName}}" class="logo-accueil" id="logo-accueil">
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="swiper-container">
+        <div class="swiper-container hiddenY">
             <div class="swiper-wrapper">
                 {% for img in covering %}
                     <div class="swiper-slide">
@@ -82,7 +82,7 @@
     </div>
 </section>
 <section id="section3" class="section"  data-section-name="Marquage véhicules">
-    <div class="div-Marquage">
+    <div class="div-Marquage hiddenY">
 
         <div class="div-tire-onglet">
             <div class="titre">
@@ -105,7 +105,7 @@
     </div>
 </section>
 <section id="section4" class="section"  data-section-name="Enseignes-Vitrines-Panneaux">
-    <div class="div-enseignes">
+    <div class="div-enseignes hiddenY">
 
         <div class="div-tire-onglet">
             <div class="titre">
@@ -146,7 +146,7 @@
 </section>
 
 <section id="section5" class="section"  data-section-name="Logos">
-    <div class="div-logos">
+    <div class="div-logos hiddenY">
 
         <div class="div-tire-onglet">
             <div class="titre">
@@ -171,7 +171,7 @@
 </section>
     
 <section id="section6" class="section"  data-section-name="Impression num.">
-    <div class="div-imp">
+    <div class="div-imp hiddenY">
 
         <div class="div-tire-onglet-imp">
             <div class="titre">
@@ -180,9 +180,7 @@
         </div>
 
         <div class="contenu_imp">
-            {# block foreach #}
             {% for img in impressionNum %}
-                {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                 <div class="img_imp">
                     <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
                     <div class="info_imp">
@@ -191,12 +189,13 @@
                     </div>
                 </div>
             {% endfor %}
+        </div>
 
     </div>
 </section>
 
 <section id="section7" class="section"  data-section-name="Imprimerie-Evenementiel-Banderoles">
-    <div class="div-imprimerie">
+    <div class="div-imprimerie hiddenY">
 
         <div class="div-tire-onglet">
             <div class="titre">
@@ -204,12 +203,10 @@
             </div>
         </div>
 
-        {# swiper vertical #}
         <div class="swiper-imprimerie">
             <div class="swiper-wrapper">
                 {% for img in imprimerie %}
                     <div class="swiper-slide">
-                    {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
                         <div class="info_imp2">
                             <h3>{{img.titre}}</h3>
@@ -218,12 +215,13 @@
                     </div>
                 {% endfor %}
             </div>
+        </div>
 
     </div>
 </section>   
 
 <section id="section8" class="section"  data-section-name="Textiles">
-    <div class="div-textiles">
+    <div class="div-textiles hiddenY">
 
         <div class="div-tire-onglet">
             <div class="titre">
@@ -234,7 +232,7 @@
 </section>   
 
 <section id="section9" class="section"  data-section-name="Goodies">
-    <div class="div-goodies">
+    <div class="div-goodies hiddenY">
 
         <div class="div-tire-onglet">
             <div class="titre">
@@ -245,7 +243,7 @@
 </section>   
 
 <section id="section10" class="section"  data-section-name="Partenaires">
-    <div class="div-partenaires">
+    <div class="div-partenaires hiddenY">
 
         <div class="div-tire-onglet">
             <div class="titre">
@@ -327,17 +325,16 @@ window.addEventListener('scroll', function() {
     if (scrollPosition >= 750) {
         // récupération du nouveau right du bouton dropdown mise à jour lors du glisser-déposer
         // seulement si le drag and drop a été effectué au moins une fois
-        if ((parseFloat(dropdown.style.right) !== '1%') && (dropdown.style.right) !== '-50%') { 
+        if ((parseFloat(dropdown.style.right) !== '1%') && (dropdown.style.right) !== '-55%') { 
             const newRight = dropdownBtn.getBoundingClientRect().right;
             dropdown.style.right = `calc(${newRight}px - dropdownBtn.getBoundingClientRect().width`;
             const newTop = dropdownBtn.getBoundingClientRect().top;
             dropdown.style.top = `${newTop}px`;
-            console.log(newRight);
         } else {
             dropdown.style.right = '1%';
         }
     } else {
-        dropdown.style.right = '-50%';
+        dropdown.style.right = '-55%';
         //dropdown.style.right = `calc(${window.innerWidth}px - ${dropdownBtn.getBoundingClientRect().right}px)`;
     }
 });
@@ -375,7 +372,7 @@ var swiper = new Swiper('.swiper-enseignes',{
     },
     breakpoints: {
         0: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 5,
         },
         640: {
@@ -383,7 +380,7 @@ var swiper = new Swiper('.swiper-enseignes',{
             spaceBetween: 10,
         },
         768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 20,
         },
         1024: {
@@ -408,7 +405,7 @@ var swiper = new Swiper('.swiper-enseignes-2',{
     },
     breakpoints: {
         0: {
-            slidesPerView: 1,
+            slidesPerView: 2,
             spaceBetween: 5,
         },
         640: {
@@ -416,7 +413,7 @@ var swiper = new Swiper('.swiper-enseignes-2',{
             spaceBetween: 10,
         },
         768: {
-            slidesPerView: 3,
+            slidesPerView: 2,
             spaceBetween: 20,
         },
         1024: {
