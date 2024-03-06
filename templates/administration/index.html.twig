@@ -165,19 +165,58 @@
     }
 });
 
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     var body = document.body;
     if (body.classList.contains('dark')) {
         // La classe 'dark' est présente sur le corps du document
         // Ajoutez le code ici pour charger le logo sombre
-        document.getElementById('logo-header').src = "{{ vich_uploader_asset(parametrelogoHeaderwhite, 'imageFile') }}";
-        document.getElementById('logo-header').alt = "{{parametrelogoHeaderwhite.imageName}}";
+        document.getElementById('logo-header').src = "";
+        document.getElementById('logo-header').alt = "logo clair";
     } else {
         // La classe 'dark' n'est pas présente sur le corps du document
         // Ajoutez le code ici pour charger le logo clair
-        document.getElementById('logo-header').src = "{{ vich_uploader_asset(parametrelogoHeaderblack, 'imageFile') }}";
-        document.getElementById('logo-header').alt = "{{parametrelogoHeaderblack.imageName}}";
+        document.getElementById('logo-header').src = "{{ asset('images/R-G.png') }}";
+        document.getElementById('logo-header').alt = "logo sombre";
     }
+    classbody();
+    
+getClassBody();
 });
+
+function getClassBody() {
+    // Ajouter la valeur de la classe du body
+    var bodyClass = document.body.classList.value;
+
+    // Construire l'URL avec la classe du body en tant que paramètre GET
+    var url = 'administration?bodyClass=' + encodeURIComponent(bodyClass);
+    console.log(url);
+    // Envoyer une requête GET au contrôleur Symfony
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+
+    // Définir la fonction de rappel lorsque la requête est terminée
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Traitement de la réponse du contrôleur Symfony si nécessaire
+            console.log(xhr.responseText);
+        }
+    };
+
+    // Envoyer la requête
+    xhr.send();
+}
+
+
+function classbody() {
+    // Ajouter la valeur de la class du body
+    var body = document.body.classList.value;
+    console.log(body);
+}
+
+
+
+    
+
+
     </script>
 {% endblock %}

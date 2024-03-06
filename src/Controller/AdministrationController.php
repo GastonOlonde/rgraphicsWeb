@@ -28,11 +28,21 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use App\Service\SendMailService;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RequestStack;
 // use App\Service\HeaderDataService;
 // use App\Service\HeaderController;
 
 class AdministrationController extends AbstractController
 {
+
+    private $requestStack;
+
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->requestStack = $requestStack;
+    }
+    
     #[Route('/administration', name: 'app_administration')]
     public function addContent(
         Request $request,
@@ -160,21 +170,38 @@ class AdministrationController extends AbstractController
         }
 
 
+        $bodyClass = $request->request->get('bodyClass');
+        
+        dump($bodyClass);
+
+
         // Formulaire de modification du grand logo de la page d'accueil
         $logo = new Parametre();
         $formLogo = $this->createForm(LogoAccueilFormType::class, $logo);
         $formLogo->handleRequest($request);
 
+        // $bodyClass = $request->request->get('bodyClass');
+        // dd($bodyClass);
         if($formLogo->isSubmitted() && $formLogo->isValid()){
 
             //suppression de l'ancien logo
-            $logo = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-GR']);
-            $entityManager->remove($logo);
-            $entityManager->flush();
+            if($bodyClass == 'dark'){
+                $logo = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-GR']);
+                $entityManager->remove($logo);
+                $entityManager->flush();
+            }elseif ($bodyClass == 'light'){
+                $logo = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-GR']);
+                $entityManager->remove($logo);
+                $entityManager->flush();
+            }
 
             // on récupère toutes les données du formulaire
             $logo = $formLogo->getData();
-            $nom_param = 'LOGO-BLACK-GR';
+            if($bodyClass == 'dark'){
+                $nom_param = 'LOGO-WHITE-GR';
+            }elseif ($bodyClass == 'light'){
+                $nom_param = 'LOGO-BLACK-GR';
+            }
             $logo->setNomParam($nom_param);
             $entityManager->persist($logo);
             $entityManager->flush();
@@ -182,6 +209,7 @@ class AdministrationController extends AbstractController
             return $this->redirectToRoute('app_administration');
         }
 
+        
 
         // Formulaire de modification du logo dans le header
         $logoHeader = new Parametre();
@@ -189,15 +217,27 @@ class AdministrationController extends AbstractController
         $formLogoHeader->handleRequest($request);
 
         if($formLogoHeader->isSubmitted() && $formLogoHeader->isValid()){
-
+            // dd($bodyClass);
             //suppression de l'ancien logo
-            $logoHeader = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-PT']);
-            $entityManager->remove($logoHeader);
-            $entityManager->flush();
+            if($bodyClass == 'dark'){
+                $logoHeader = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-PT']);
+                $entityManager->remove($logoHeader);
+                $entityManager->flush();
+            }elseif ($bodyClass == 'light'){
+                $logoHeader = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-PT']);
+                $entityManager->remove($logoHeader);
+                $entityManager->flush();
+            }
+            
+            
 
             // on récupère toutes les données du formulaire
             $logoHeader = $formLogoHeader->getData();
-            $nom_param = 'LOGO-BLACK-PT';
+            if($bodyClass == 'dark'){
+                $nom_param = 'LOGO-WHITE-PT';
+            }elseif ($bodyClass == 'light'){
+                $nom_param = 'LOGO-BLACK-PT';
+            }
             $logoHeader->setNomParam($nom_param);
             $entityManager->persist($logoHeader);
             $entityManager->flush();
@@ -403,6 +443,10 @@ class AdministrationController extends AbstractController
             $parametreTextAccueil = new Parametre();
             $parametreTextAccueil->setValueParam('Aucun texte d\'accueil pour le moment, veuillez en ajouter un.');
         }
+
+        
+
+        // Le reste de votre code pour le rendu initial de la page
 
         return $this->render('administration/index.html.twig', [
             'addContentForm' => $form->createView(),
