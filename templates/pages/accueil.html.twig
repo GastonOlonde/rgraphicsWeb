@@ -29,7 +29,7 @@
                 </p>
             </div>
         </div>
-        <img src="{{asset('images/PIMENTEZ-BLACK.png')}}"  class="img_piment">
+        <img src=""  class="img_piment" id="img_piment">
         <a href="#section2" class="section-link  ">
             <button class="btn-decouvrir ">Découvrir</button>
         </a>
@@ -65,21 +65,27 @@
             </div>
         </div>
 
-        <div class="swiper-container hiddenY">
-            <div class="swiper-wrapper">
-                {% for img in covering %}
-                    <div class="swiper-slide">
-                    {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
-                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_cov">
-                            <h3>{{img.titre}}</h3>
-                            <p>{{img.legende}}</p>
-                        </div>
-                    </div>
-                {% endfor %}
+        {% if covering is empty %}
+            <div class="contenu_empty">
+                <h2>Le site est en cours de maintenance</h2>
+                <h2>Contenu à venir</h2>
             </div>
-        </div>
-
+        {% else %}
+            <div class="swiper-container hiddenY">
+                <div class="swiper-wrapper">
+                    {% for img in covering %}
+                        <div class="swiper-slide">
+                        {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                            <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                            <div class="info_cov">
+                                <h3>{{img.titre}}</h3>
+                                <p>{{img.legende}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
     </div>
 </section>
 <section id="section3" class="section"  data-section-name="Marquage véhicules">
@@ -90,19 +96,27 @@
                 <h2>Marquage vehicules</h2>
             </div>  
         </div>
-        <div class="contenu_marquage">
-            {# block foreach #}
-            {% for img in marquageVehicule %}
-                {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
-                <div class="img_marquage">
-                    <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                    <div class="info_marq">
-                        <h3>{{img.titre}}</h3>
-                        <p>{{img.legende}}</p>
+
+        {% if marquageVehicule is empty %}
+            <div class="contenu_empty">
+                <h2>Le site est en cours de maintenance</h2>
+                <h2>Contenu à venir</h2>
+            </div>
+        {% else %}
+            <div class="contenu_marquage">
+                {# block foreach #}
+                {% for img in marquageVehicule %}
+                    {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                    <div class="img_marquage">
+                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                        <div class="info_marq">
+                            <h3>{{img.titre}}</h3>
+                            <p>{{img.legende}}</p>
+                        </div>
                     </div>
-                </div>
-            {% endfor %}
-        </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 </section>
 <section id="section4" class="section"  data-section-name="Enseignes-Vitrines-Panneaux">
@@ -113,6 +127,13 @@
                 <h2>Enseignes - Vitrines - Panneaux</h2>
             </div>
         </div>
+
+        {% if enseigne is empty %}
+            <div class="contenu_empty">
+                <h2>Le site est en cours de maintenance</h2>
+                <h2>Contenu à venir</h2>
+            </div>
+        {% else %}
 
         <div class="swiper-enseignes">
             <div class="swiper-wrapper">
@@ -142,7 +163,7 @@
                 {% endfor %}
             </div>
         </div>
-
+        {% endif %}
     </div>
 </section>
 
@@ -155,6 +176,12 @@
             </div>
         </div>
 
+        {% if logocharte is empty %}
+            <div class="contenu_empty">
+                <h2>Le site est en cours de maintenance</h2>
+                <h2>Contenu à venir</h2>
+            </div>
+        {% else %}
         <div class="contenu_logos">
             {# block foreach #}
             {% for img in logocharte %}
@@ -168,6 +195,7 @@
                 </div>
             {% endfor %}
         </div>
+        {% endif %}
     </div>
 </section>
     
@@ -180,6 +208,12 @@
             </div>
         </div>
 
+        {% if impressionNum is empty %}
+            <div class="contenu_empty">
+                <h2>Le site est en cours de maintenance</h2>
+                <h2>Contenu à venir</h2>
+            </div>
+        {% else %}
         <div class="contenu_imp">
             {% for img in impressionNum %}
                 <div class="img_imp">
@@ -191,7 +225,7 @@
                 </div>
             {% endfor %}
         </div>
-
+        {% endif %}
     </div>
 </section>
 
@@ -204,6 +238,12 @@
             </div>
         </div>
 
+        {% if imprimerie is empty %}
+            <div class="contenu_empty">
+                <h2>Le site est en cours de maintenance</h2>
+                <h2>Contenu à venir</h2>
+            </div>
+        {% else %}
         <div class="swiper-imprimerie">
             <div class="swiper-wrapper">
                 {% for img in imprimerie %}
@@ -217,9 +257,10 @@
                 {% endfor %}
             </div>
         </div>
-
+        {% endif %}
     </div>
 </section>   
+
 
 <section id="section8" class="section"  data-section-name="Textiles">
     <div class="div-textiles hiddenY">
@@ -229,8 +270,28 @@
                 <h2>TEXTILES</h2>
             </div>
         </div>
+
+        {% if textiles is empty %}
+            <div class="contenu_empty">
+                <h2>Le site est en cours de maintenance</h2>
+                <h2>Contenu à venir</h2>
+            </div>
+        {% else %}
+            <div class="contenu_textiles">
+                {% for img in textiles %}
+                    <div class="img_textiles">
+                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                        <div class="info_textiles">
+                            <h3>{{img.titre}}</h3>
+                            <p>{{img.legende}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
-</section>   
+</section>
+
 
 <section id="section9" class="section"  data-section-name="Goodies">
     <div class="div-goodies hiddenY">
@@ -240,6 +301,24 @@
                 <h2>GOODIES</h2>
             </div>
         </div>
+        {% if goodies is empty %}
+            <div class="contenu_empty">
+                <h2>Le site est en cours de maintenance</h2>
+                <h2>Contenu à venir</h2>
+            </div>
+        {% else %}
+            <div class="contenu_goodies">
+                {% for img in goodies %}
+                    <div class="img_goodies">
+                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                        <div class="info_goodies">
+                            <h3>{{img.titre}}</h3>
+                            <p>{{img.legende}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 </section>   
 
@@ -251,6 +330,26 @@
                 <h2>PARTENAIRES</h2>
             </div>
         </div>
+
+        {% if partenaire is empty %}
+            <div class="contenu_empty">
+                <h2>Le site est en cours de maintenance</h2>
+                <h2>Contenu à venir</h2>
+            </div>
+        {% else %}
+            <div class="contenu_partenaires">
+                {% for img in partenaire %}
+                    <div class="img_partenaires">
+                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                        <div class="info_partenaires">
+                            <h3>{{img.titre}}</h3>
+                            <p>{{img.legende}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
     </div>
 </section>   
 
@@ -349,11 +448,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Ajoutez le code ici pour charger le logo sombre
         document.getElementById('logo-accueil').src = "{{ vich_uploader_asset(parametrelogoAccueilwhite, 'imageFile') }}";
         document.getElementById('logo-accueil').alt = "{{parametrelogoAccueilwhite.imageName}}";
+
+        document.getElementById('img_piment').src = "{{ vich_uploader_asset(parametrePimentWhite, 'imageFile') }}";
+        document.getElementById('img_piment').alt = "{{parametrePimentWhite.imageName}}";
     } else {
         // La classe 'dark' n'est pas présente sur le corps du document
         // Ajoutez le code ici pour charger le logo clair
         document.getElementById('logo-accueil').src = "{{ vich_uploader_asset(parametrelogoAccueilblack, 'imageFile') }}";
         document.getElementById('logo-accueil').alt = "{{parametrelogoAccueilblack.imageName}}";
+
+        document.getElementById('img_piment').src = "{{ vich_uploader_asset(parametrePimentBlack, 'imageFile') }}";
+        document.getElementById('img_piment').alt = "{{parametrePimentBlack.imageName}}";
     }
 });
 

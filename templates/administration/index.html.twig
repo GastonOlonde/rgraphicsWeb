@@ -47,7 +47,7 @@
                     <button class="button-add-content" type="submit">Valider</button>
                     {{ form_end(logoAccueilForm) }}
 
-                    <h1>Logo barre de navigation</h1>
+                    <h1 class="class-h1">Logo barre de navigation</h1>
                     <p class="p-apercu">Aperçu actuel du logo</p>
                     {{ form_start(formlogoHeader) }}
                     <div class="image-logo-header">               
@@ -56,6 +56,17 @@
                     {{ form_row(formlogoHeader.imageFile) }}
                     <button class="button-add-content" type="submit">Valider</button>
                     {{ form_end(formlogoHeader) }}
+
+
+                    <h1 class="class-h1">Slogan</h1>
+                    <p class="p-apercu">Aperçu actuel du slogan</p>
+                    {{ form_start(formPiment) }}
+                    <div class="image-logo-slogan">               
+                        <img src="" alt="" id="logo-slogan" class="logo-slogan">
+                    </div>
+                    {{ form_row(formPiment.imageFile) }}
+                    <button class="button-add-content" type="submit">Valider</button>
+                    {{ form_end(formPiment) }}
 
 
                     <h1 class="class-h1">Texte page d'accueil</h1>
@@ -157,15 +168,28 @@
         // Ajoutez le code ici pour charger le logo sombre
         document.getElementById('logo-accueil').src = "{{ vich_uploader_asset(parametrelogoAccueilwhite, 'imageFile') }}";
         document.getElementById('logo-accueil').alt = "{{parametrelogoAccueilwhite.imageName}}";
+
+        document.getElementById('logo-header').src = "";
+        document.getElementById('logo-header').alt = "logo clair";
+
+        document.getElementById('logo-slogan').src = "{{vich_uploader_asset(parametrePimentwhite, 'imageFile')}}";
+        document.getElementById('logo-slogan').alt = "{{parametrePimentwhite.imageName}}";
     } else {
         // La classe 'dark' n'est pas présente sur le corps du document
         // Ajoutez le code ici pour charger le logo clair
         document.getElementById('logo-accueil').src = "{{ vich_uploader_asset(parametrelogoAccueilblack, 'imageFile') }}";
         document.getElementById('logo-accueil').alt = "{{parametrelogoAccueilblack.imageName}}";
+
+
+        document.getElementById('logo-header').src = "{{ asset('images/R-G.png') }}";
+        document.getElementById('logo-header').alt = "logo sombre";
+
+        document.getElementById('logo-slogan').src = "{{ vich_uploader_asset(parametrePimentblack, 'imageFile') }}";
+        document.getElementById('logo-slogan').alt = "{{parametrePimentblack.imageName}}";
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+{# document.addEventListener('DOMContentLoaded', function() {
     var body = document.body;
     if (body.classList.contains('dark')) {
         // La classe 'dark' est présente sur le corps du document
@@ -178,12 +202,10 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('logo-header').src = "{{ asset('images/R-G.png') }}";
         document.getElementById('logo-header').alt = "logo sombre";
     }
-    classbody();
     
-getClassBody();
-});
+}); #}
 
-function getClassBody() {
+{# function getClassBody() {
     // Ajouter la valeur de la classe du body
     var bodyClass = document.body.classList.value;
 
@@ -211,7 +233,7 @@ function classbody() {
     // Ajouter la valeur de la class du body
     var body = document.body.classList.value;
     console.log(body);
-}
+} #}
 
 
 

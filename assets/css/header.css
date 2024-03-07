@@ -1,6 +1,8 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Mono&family=Poppins:wght@300&display=swap');
-
+/* @font-face {
+    font-family: 'Avenir';
+    src: url("/assets/fonts/avenir_zIFt5/Avenir/AvenirHeavy/AvenirHeavy.ttf");
+} */
 
 *{
     margin: 0;
@@ -20,7 +22,8 @@
 
 html{
     font-size:16px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Avenir', sans-serif;
+    font-weight: 550;
 }
 
 body{
@@ -134,7 +137,7 @@ nav{
     height: 60px;
     width: 60px;
     margin-top: 32px;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Avenir', sans-serif;
     padding: 0.5rem;
     cursor: pointer;
 }
@@ -179,6 +182,8 @@ nav{
     border-radius: 10px;
     padding: 0.5rem;
     border: none;
+    font-family: 'Avenir', sans-serif;
+    font-weight: 550;
     color: var(--color-text);
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
     transition: all 0.3s ease-in-out;

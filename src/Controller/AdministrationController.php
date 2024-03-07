@@ -18,6 +18,7 @@ use App\Form\AjoutMembreFormType;
 use App\Form\ModifMembreFormType;
 use App\Form\SelectMembreFormType;
 use App\Form\SupprimerMembreFormType;
+use App\Form\PimentFormType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Users;
@@ -170,18 +171,17 @@ class AdministrationController extends AbstractController
         }
 
 
-        $bodyClass = $request->request->get('bodyClass');
-        
-        dump($bodyClass);
+        // récupération de la valeur du cookie theme
+        $request = $this->requestStack->getCurrentRequest();
+        $bodyClass = $request->cookies->get('theme');
+
 
 
         // Formulaire de modification du grand logo de la page d'accueil
         $logo = new Parametre();
         $formLogo = $this->createForm(LogoAccueilFormType::class, $logo);
         $formLogo->handleRequest($request);
-
-        // $bodyClass = $request->request->get('bodyClass');
-        // dd($bodyClass);
+        
         if($formLogo->isSubmitted() && $formLogo->isValid()){
 
             //suppression de l'ancien logo
@@ -228,8 +228,6 @@ class AdministrationController extends AbstractController
                 $entityManager->remove($logoHeader);
                 $entityManager->flush();
             }
-            
-            
 
             // on récupère toutes les données du formulaire
             $logoHeader = $formLogoHeader->getData();
@@ -244,6 +242,41 @@ class AdministrationController extends AbstractController
             $this->addFlash('success', 'Le logo a bien été modifié.');
             return $this->redirectToRoute('app_administration');
         }
+
+
+        // Formulaire de modification de l'imgage "pimentez votre communication"
+        $piment = new Parametre();
+        $formPiment = $this->createForm(PimentFormType::class, $piment);
+        $formPiment->handleRequest($request);
+
+        if($formPiment->isSubmitted() && $formPiment->isValid()){
+            //suppression de l'ancien logp
+            if($bodyClass == 'dark'){
+                $piment = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'PIMENT-WHITE']);
+            $entityManager->remove($piment);
+            $entityManager->flush();
+            }elseif ($bodyClass == 'light'){
+                $piment = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'PIMENT-BLACK']);
+                $entityManager->remove($piment);
+                $entityManager->flush();
+            }
+            
+
+            // on récupère toutes les données du formulaire
+            $piment = $formPiment->getData();
+            if($bodyClass == 'dark'){
+                $nom_param = 'PIMENT-WHITE';
+            }elseif ($bodyClass == 'light'){
+                $nom_param = 'PIMENT-BLACK';
+            }
+            
+            $piment->setNomParam($nom_param);
+            $entityManager->persist($piment);
+            $entityManager->flush();
+            $this->addFlash('success', 'L\'image a bien été modifiée.');
+            return $this->redirectToRoute('app_administration');
+        }
+
 
         // Formulaire de modification du texte d'accueil
 
@@ -436,6 +469,10 @@ class AdministrationController extends AbstractController
         $parametrelogoHeaderblack = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-PT']);
         $parametrelogoHeaderwhite = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-PT']);
 
+        // on récupère le slogan
+        $parametrePimentblack = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'PIMENT-BLACK']);
+        $parametrePimentwhite = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'PIMENT-WHITE']);
+
         // On récupère le texte d'accueil
         $parametreTextAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'TEXTE_ACCUEIL']);
         // s'il n'existe pas, on affiche "aucun texte d'accueil pour le moment, veuillez en ajouter un."
@@ -457,6 +494,7 @@ class AdministrationController extends AbstractController
             'ajoutMembreForm' => $formMembre->createView(),
             'supprimerMembreForm' => $supprimerForm->createView(),
             'formlogoHeader' => $formLogoHeader->createView(),
+            'formPiment' => $formPiment->createView(),
             // 'selectForm' => $selectForm->createView(),
             'modifyForm' => $modifyForm->createView(),
             'controller_name' => 'AdministrationController',
@@ -466,6 +504,8 @@ class AdministrationController extends AbstractController
             'infoscontact' => $infoscontact,
             'parametrelogoHeaderblack' => $parametrelogoHeaderblack,
             'parametrelogoHeaderwhite' => $parametrelogoHeaderwhite,
+            'parametrePimentblack' => $parametrePimentblack,
+            'parametrePimentwhite' => $parametrePimentwhite,
         ]);
     }
     

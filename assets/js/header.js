@@ -63,11 +63,23 @@ if (themeStocke) {
     mettreAJourBoutonTheme(themeStocke);
 }
 
+document.cookie = "theme=light; path=/"; // création d'un cookie theme par défault theme blanc
+
+
+
 themeToggle.addEventListener('click', () => {
     if (b.classList.contains('dark')) {
         definirTheme('light');
+        
+        // création d'un cookie theme
+        document.cookie = "theme=light; path=/";
+        console.log(document.cookie, "cookie créé");
     } else {
         definirTheme('dark');
+        
+        // création d'un cookie theme
+        document.cookie = "theme=dark; path=/";
+        console.log(document.cookie, "cookie créé");
     }
 });
 
@@ -87,3 +99,13 @@ function mettreAJourBoutonTheme(theme) {
     themeToggle.style.filter = estModeSombre ? 'drop-shadow(2px 3px 1px rgba(255,255,255,0.30))' : '';
 }
 
+
+if(localStorage.getItem('theme') == 'dark'){
+    // création d'un cookie theme
+    document.cookie = "theme=dark; path=/";
+    // console.log(document.cookie, "cookie créé");
+}else{
+    // création d'un cookie theme
+    document.cookie = "theme=light; path=/";
+    // console.log(document.cookie, "cookie créé");
+}

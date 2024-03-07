@@ -54,6 +54,10 @@ Class AccueilController extends AbstractController
         // récupération des sevices qui coreespondent aux PARTENAIRE
         $partenaire = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'PARTENAIRES'])]);
 
+        // récupération du slogan avec PIMENT-BLACK et PIMENT-WHITE
+        $parametrePimentBlack = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'PIMENT-BLACK']);
+        $parametrePimentWhite = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'PIMENT-WHITE']);
+
         return $this->render('pages/accueil.html.twig',
         [
             'parametrelogoAccueilblack' => $parametrelogoAccueilblack,
@@ -63,12 +67,15 @@ Class AccueilController extends AbstractController
             'marquageVehicule' => $marquageVehicule,
             'enseigneP1' => $enseigneP1,
             'enseigneP2' => $enseigneP2,
+            'enseigne' => $enseigne,
             'logocharte' => $logocharte,
             'impressionNum' => $impressionNum,
             'imprimerie' => $imprimerie,
             'textiles' => $textiles,
             'goodies' => $goodies,
-            'partenaire' => $partenaire
+            'partenaire' => $partenaire,
+            'parametrePimentBlack' => $parametrePimentBlack,
+            'parametrePimentWhite' => $parametrePimentWhite,
         ]);
     }
 }
