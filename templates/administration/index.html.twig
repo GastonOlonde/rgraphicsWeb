@@ -47,15 +47,7 @@
                     <button class="button-add-content" type="submit">Valider</button>
                     {{ form_end(logoAccueilForm) }}
 
-                    <h1 class="class-h1">Logo barre de navigation</h1>
-                    <p class="p-apercu">Aperçu actuel du logo</p>
-                    {{ form_start(formlogoHeader) }}
-                    <div class="image-logo-header">               
-                        <img src="" alt="" id="logo-header" class="logo-header">
-                    </div>
-                    {{ form_row(formlogoHeader.imageFile) }}
-                    <button class="button-add-content" type="submit">Valider</button>
-                    {{ form_end(formlogoHeader) }}
+                    
 
 
                     <h1 class="class-h1">Slogan</h1>
@@ -169,9 +161,6 @@
         document.getElementById('logo-accueil').src = "{{ vich_uploader_asset(parametrelogoAccueilwhite, 'imageFile') }}";
         document.getElementById('logo-accueil').alt = "{{parametrelogoAccueilwhite.imageName}}";
 
-        document.getElementById('logo-header').src = "";
-        document.getElementById('logo-header').alt = "logo clair";
-
         document.getElementById('logo-slogan').src = "{{vich_uploader_asset(parametrePimentwhite, 'imageFile')}}";
         document.getElementById('logo-slogan').alt = "{{parametrePimentwhite.imageName}}";
     } else {
@@ -179,10 +168,6 @@
         // Ajoutez le code ici pour charger le logo clair
         document.getElementById('logo-accueil').src = "{{ vich_uploader_asset(parametrelogoAccueilblack, 'imageFile') }}";
         document.getElementById('logo-accueil').alt = "{{parametrelogoAccueilblack.imageName}}";
-
-
-        document.getElementById('logo-header').src = "{{ asset('images/R-G.png') }}";
-        document.getElementById('logo-header').alt = "logo sombre";
 
         document.getElementById('logo-slogan').src = "{{ vich_uploader_asset(parametrePimentblack, 'imageFile') }}";
         document.getElementById('logo-slogan').alt = "{{parametrePimentblack.imageName}}";

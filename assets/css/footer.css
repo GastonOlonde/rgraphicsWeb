@@ -4,7 +4,8 @@ footer{
     width: 100%;
     height: auto;
     margin-top: 7rem;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Acumin", sans-serif;
+    font-variation-settings: 'wght' 300, 'wdth' 300, 'slnt' 0;
     /* border-top: 1px solid var(--color-text); */
     color: var(--color-text);
     background-color: var(--color-second-color);

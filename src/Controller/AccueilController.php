@@ -24,8 +24,9 @@ Class AccueilController extends AbstractController
         // récupération des sevices qui coreespondent aux coverings
         $covering = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'TOTAL COVERING'])]);
 
-        // récupération des sevices qui coreespondent aux marquages véhicules
-        $marquageVehicule = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'MARQUAGE VEHICULES'])]);
+        // récupération des sevices qui coreespondent aux marquages véhicules du plus récent au plus ancien
+        $marquageVehicule = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'MARQUAGES VEHICULES'])], ['id' => 'DESC']);
+
 
         // récupération des sevices qui coreespondent aux enseignes
         $enseigne = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'ENSEIGNES-VITRINES-PANNEAUX'])]);
@@ -37,7 +38,7 @@ Class AccueilController extends AbstractController
         $enseigneP2 = array_slice($enseigne, $moitié);
 
         // récupération des sevices qui coreespondent aux Logo
-        $logocharte = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'LOGOS & CHARTES GRAPHIQUES'])]);
+        $logocharte = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'LOGOS & CHARTES GRAPHIQUES'])], ['id' => 'DESC']);
 
         // récupération des sevices qui coreespondent aux Impression num
         $impressionNum = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'IMPRESSION NUMERIQUE'])]);
@@ -46,10 +47,19 @@ Class AccueilController extends AbstractController
         $imprimerie = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'IMPRIMERIE-EVENEMENTIEL-BANDEROLES'])]);
 
         // récupération des sevices qui coreespondent aux TEXTILES
-        $textiles = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'TEXTILES'])]);
+        $textiles = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'TEXTILES'])], ['id' => 'DESC']);
 
         // récupération des sevices qui coreespondent aux GOODIES
         $goodies = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'GOODIES'])]);
+        $nbgoodies = count($goodies);
+        $tiers = floor($nbgoodies / 3);
+        $tiers2 = $nbgoodies - $tiers;
+        $tiers2 = $tiers + $tiers;
+
+        // répartition des goodies en 3
+        $goodiesP1 = array_slice($goodies, 0, $tiers);
+        $goodiesP2 = array_slice($goodies, $tiers, $tiers2);
+        $goodiesP3 = array_slice($goodies, $tiers2, $nbgoodies);
 
         // récupération des sevices qui coreespondent aux PARTENAIRE
         $partenaire = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'PARTENAIRES'])]);
@@ -73,6 +83,9 @@ Class AccueilController extends AbstractController
             'imprimerie' => $imprimerie,
             'textiles' => $textiles,
             'goodies' => $goodies,
+            'goodiesP1' => $goodiesP1,
+            'goodiesP2' => $goodiesP2,
+            'goodiesP3' => $goodiesP3,
             'partenaire' => $partenaire,
             'parametrePimentBlack' => $parametrePimentBlack,
             'parametrePimentWhite' => $parametrePimentWhite,

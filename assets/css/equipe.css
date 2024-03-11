@@ -1,5 +1,6 @@
 body{
-    font-family: 'Avenir', sans-serif;
+    font-family: "Acumin", sans-serif;
+    font-variation-settings: 'wght' 300, 'wdth' 100, 'slnt' 0;
     background-color: var(--color-background);
     color: var(--color-text);
     height: 100%;
@@ -19,6 +20,7 @@ body{
     margin-left: 10%;
     margin-right: 10%;
     text-align: justify;
+    font-size: 1.4rem;
     margin-bottom: 2rem;
 }
 
@@ -99,11 +101,16 @@ body{
 
 .desc p,
 .role p{
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 300;
     text-align: justify;
 }
 
+.desc h3,
+.role h3{
+    font-size: 1.3rem;
+    font-variation-settings: 'wght' 400, 'wdth' 100, 'slnt' 0;
+}
 .dropdown label{
     display: none;
     background: transparent;

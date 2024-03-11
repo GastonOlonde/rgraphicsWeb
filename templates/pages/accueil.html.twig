@@ -77,9 +77,15 @@
                         <div class="swiper-slide">
                         {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                             <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                            <div class="info_cov">
-                                <h3>{{img.titre}}</h3>
-                                <p>{{img.legende}}</p>
+                            {% if img.legende is not empty and img.titre is not empty %}
+                                <div class="info_cov">
+                                    <h3>{{img.titre}}</h3>
+                                    <p>{{img.legende}}</p>
+                                </div>
+                                
+                            {% endif %}
+                            <div class="croixSupp">
+                                <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
                             </div>
                         </div>
                     {% endfor %}
@@ -109,10 +115,12 @@
                     {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                     <div class="img_marquage">
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_marq">
-                            <h3>{{img.titre}}</h3>
-                            <p>{{img.legende}}</p>
-                        </div>
+                        {% if img.legende is not empty and img.titre is not empty %}
+                            <div class="info_marq">
+                                <h3>{{img.titre}}</h3>
+                                <p>{{img.legende}}</p>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -141,10 +149,12 @@
                     <div class="swiper-slide">
                     {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_ens">
-                            <h3>{{img.titre}}</h3>
-                            <p>{{img.legende}}</p>
-                        </div>
+                        {% if img.legende is not empty and img.titre is not empty %}
+                            <div class="info_ens">
+                                <h3>{{img.titre}}</h3>
+                                <p>{{img.legende}}</p>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -155,10 +165,12 @@
                     <div class="swiper-slide">
                     {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_ens">
-                            <h3>{{img.titre}}</h3>
-                            <p>{{img.legende}}</p>
-                        </div>
+                        {% if img.legende is not empty and img.titre is not empty %}
+                            <div class="info_ens">
+                                <h3>{{img.titre}}</h3>
+                                <p>{{img.legende}}</p>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -188,10 +200,12 @@
                 {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
                 <div class="img_logos">
                     <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                    <div class="info_logos">
-                        <h3>{{img.titre}}</h3>
-                        <p>{{img.legende}}</p>
-                    </div>
+                    {% if img.legende is not empty and img.titre is not empty %}
+                        <div class="info_logos">
+                            <h3>{{img.titre}}</h3>
+                            <p>{{img.legende}}</p>
+                        </div>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
@@ -218,10 +232,12 @@
             {% for img in impressionNum %}
                 <div class="img_imp">
                     <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                    <div class="info_imp">
-                        <h3>{{img.titre}}</h3>
-                        <p>{{img.legende}}</p>
-                    </div>
+                    {% if img.legende is not empty and img.titre is not empty %}
+                        <div class="info_imp">
+                            <h3>{{img.titre}}</h3>
+                            <p>{{img.legende}}</p>
+                        </div>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
@@ -249,10 +265,12 @@
                 {% for img in imprimerie %}
                     <div class="swiper-slide">
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_imp2">
-                            <h3>{{img.titre}}</h3>
-                            <p>{{img.legende}}</p>
-                        </div>
+                        {% if img.legende is not empty and img.titre is not empty %}
+                            <div class="info_imp2">
+                                <h3>{{img.titre}}</h3>
+                                <p>{{img.legende}}</p>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -281,10 +299,12 @@
                 {% for img in textiles %}
                     <div class="img_textiles">
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_textiles">
-                            <h3>{{img.titre}}</h3>
-                            <p>{{img.legende}}</p>
-                        </div>
+                        {% if img.legende is not empty and img.titre is not empty %}
+                            <div class="info_textiles">
+                                <h3>{{img.titre}}</h3>
+                                <p>{{img.legende}}</p>
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -307,16 +327,53 @@
                 <h2>Contenu à venir</h2>
             </div>
         {% else %}
-            <div class="contenu_goodies">
-                {% for img in goodies %}
-                    <div class="img_goodies">
-                        <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_goodies">
-                            <h3>{{img.titre}}</h3>
-                            <p>{{img.legende}}</p>
+            <div class="swiper_goodies_1">
+                <div class="swiper-wrapper">
+                    {% for img in goodiesP1 %}
+                        <div class="swiper-slide">
+                        {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                            <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                            {% if img.titre is not empty %}
+                                <div class="info_cov">
+                                    <h3>{{img.titre}}</h3>
+                                    <p>{{img.legende}}</p>
+                                </div>
+                            {% endif %}
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="swiper_goodies_2">
+                <div class="swiper-wrapper">
+                    {% for img in goodiesP2 %}
+                        <div class="swiper-slide">
+                        {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                            <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                            {% if img.titre is not empty %}
+                                <div class="info_cov">
+                                    <h3>{{img.titre}}</h3>
+                                    <p>{{img.legende}}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="swiper_goodies_3">
+                <div class="swiper-wrapper">
+                    {% for img in goodiesP3 %}
+                        <div class="swiper-slide">
+                        {# afficher seulement les marquages véhicule (catégorie.nom= MARQUAGE V)#}
+                            <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
+                            {% if img.titre is not empty %}
+                                <div class="info_cov">
+                                    <h3>{{img.titre}}</h3>
+                                    <p>{{img.legende}}</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         {% endif %}
     </div>
@@ -478,11 +535,11 @@ var swiper = new Swiper('.swiper-enseignes',{
     },
     breakpoints: {
         0: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 5,
         },
         640: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 10,
         },
         768: {
@@ -511,11 +568,11 @@ var swiper = new Swiper('.swiper-enseignes-2',{
     },
     breakpoints: {
         0: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 5,
         },
         640: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 10,
         },
         768: {
@@ -530,7 +587,91 @@ var swiper = new Swiper('.swiper-enseignes-2',{
 });
 
 
+var swiper = new Swiper('.swiper_goodies_1', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    rtl: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+        rotate: 15,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+    },
+    loop: true,
+    loopedSlides: 1,
+    autoplay: {
+        delay: 3000,
+    },
+    speed: 2000,
+    easing: 'ease-in-out',
+    
+});
+var swiper = new Swiper('.swiper_goodies_2', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    rtl: true,
+    coverflowEffect: {
+        rotate: 15,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+    },
+    loop: true,
+    loopedSlides: 1,
+    autoplay: {
+        delay: 3000,
+    },
+    speed: 2000,
+    easing: 'ease-in-out',
+    
+});
+var swiper = new Swiper('.swiper_goodies_3', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    rtl: true,
+    coverflowEffect: {
+        rotate: 15,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+    },
+    loop: true,
+    loopedSlides: 1,
+    autoplay: {
+        delay: 3000,
+    },
+    speed: 2000,
+    easing: 'ease-in-out',
+    
+});
 
+function supprimerService(serviceId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer ce service ?')) {
+        var url = '{{ path('app_supprimer_service', {'id': '__id__'}) }}';
+        url = url.replace('__id__', serviceId);
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('DELETE', url, true);
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Optionnel : Mettez à jour l'interface utilisateur après la suppression
+                var elementASupprimer = document.getElementById('croixsupp');
+                elementASupprimer.parentNode.removeChild(elementASupprimer);
+            }
+        };
+        xhr.send();
+    }
+}
 </script>
 
 

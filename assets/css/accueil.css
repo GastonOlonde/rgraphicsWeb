@@ -1,24 +1,16 @@
-
-/* :root{
-    --color-background: #FFFFFF;
-    --color-first-color: #FFD500;
-    --color-second-color: #F5F5F5;
-    --color-button: rgba(255, 213, 0, 0.7);
-    --color-text: #000000;
-} */
-/* @font-face {
-    font-family: 'Avenir';
-    src: url(/font/avenir_zIFt5/Avenir/AvenirBook.ttf);
-} */
+@font-face {
+    font-family: "Acumin";
+    src: url('../fonts/AcuminVariableConcept.otf') format('opentype');
+}
 
 body {
-    /* font-family: 'Avenir', sans-serif; */
     overflow-x: hidden;
+    font-family: "Acumin", sans-serif;
+    font-variation-settings: 'wght' 300, 'wdth' 80, 'slnt' 0;
 }
 
 
 /* Section 1 */
-
 
 
 .section{
@@ -97,13 +89,14 @@ body {
     filter: drop-shadow(4px 4px 1px rgba(0,0,0,0.2));
 }
 
+
 .text-accueil{
     width: 20%;
     text-align: justify;
 }
 .text-accueil p{
     color: var(--color-text);    
-    font-weight: 500;
+    font-size: 1.4rem;
 }
 .btn-decouvrir{
     width: 150px;
@@ -114,9 +107,10 @@ body {
     padding: 1rem;
     border: none;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--color-text);
-    font-family: 'Avenir', sans-serif;
+    font-family: "Acumin", sans-serif;
+    font-variation-settings: 'wght' 500, 'wdth' 80, 'slnt' 0;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
     transition: all 0.3s ease-in-out;
     animation: tac 2s linear infinite ;
@@ -245,7 +239,7 @@ body {
     gap : 10px;
     cursor: pointer;
     font-size: 1rem;
-    font-family: 'Inter', sans-serif;
+    font-family: "Acumin", sans-serif;
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
 }
 
@@ -343,6 +337,25 @@ body {
 .info_cov:hover{
     top: 0px;
     opacity: 0.8;
+}
+
+.croixSupp{
+    position: absolute;
+    height: 45px;
+    bottom: 0;
+    right: 0;
+    padding: 0.5rem;
+    background-color: rgba(219, 26, 26);
+    border-radius: 10px 10px 10px 10px;
+    opacity: 1;
+    padding: 0.2rem;
+    margin: 0.5rem;
+    transition: all 0.3s ease-in-out;
+}
+#croixsupp{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
 }
 
 #section3{
@@ -845,6 +858,9 @@ body {
         width: 100%;
         text-align: justify;
     }
+    .img_piment{
+        width: 80%;
+    }
     #section2{
         margin-top: 0;
     }
@@ -887,6 +903,11 @@ body {
         width: 90%;
         gap: 0.7rem;
     }
+    .contenu_textiles{
+        grid-template-columns: repeat(2, 1fr);
+        width: 90%;
+        gap: 0.7rem;
+    }
 }
 
 @media all and (max-width: 800px){
@@ -915,7 +936,7 @@ body {
 
 @media all and (max-width: 550px){
     #section1{
-        height: 700px;
+        height: 800px;
     }
     .star {
         top:-200px;
@@ -952,6 +973,11 @@ body {
         gap: 0.7rem;
     }
     .contenu_imp{
+        grid-template-columns: repeat(1, 1fr);
+        width: 90%;
+        gap: 0.7rem;
+    }
+    .contenu_textiles{
         grid-template-columns: repeat(1, 1fr);
         width: 90%;
         gap: 0.7rem;

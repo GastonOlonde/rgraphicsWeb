@@ -107,7 +107,6 @@ class AdministrationController extends AbstractController
                     }
                 }else{
                     $this->addFlash('error', 'L\'image est trop lourde, elle ne doit pas dépasser 200ko.');
-
                 }
 
             } elseif ( $button == 'delete' ){
@@ -124,7 +123,6 @@ class AdministrationController extends AbstractController
                     $this->addFlash('error', 'Le service n\'existe pas, veuillez essayer à nouveau.');
                 }
             }
-
         }
         if(!$this->getUser())
         {
@@ -212,36 +210,36 @@ class AdministrationController extends AbstractController
         
 
         // Formulaire de modification du logo dans le header
-        $logoHeader = new Parametre();
-        $formLogoHeader = $this->createForm(LogoHeaderFormType::class, $logoHeader);
-        $formLogoHeader->handleRequest($request);
+        // $logoHeader = new Parametre();
+        // $formLogoHeader = $this->createForm(LogoHeaderFormType::class, $logoHeader);
+        // $formLogoHeader->handleRequest($request);
 
-        if($formLogoHeader->isSubmitted() && $formLogoHeader->isValid()){
-            // dd($bodyClass);
-            //suppression de l'ancien logo
-            if($bodyClass == 'dark'){
-                $logoHeader = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-PT']);
-                $entityManager->remove($logoHeader);
-                $entityManager->flush();
-            }elseif ($bodyClass == 'light'){
-                $logoHeader = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-PT']);
-                $entityManager->remove($logoHeader);
-                $entityManager->flush();
-            }
+        // if($formLogoHeader->isSubmitted() && $formLogoHeader->isValid()){
+        //     // dd($bodyClass);
+        //     //suppression de l'ancien logo
+        //     if($bodyClass == 'dark'){
+        //         $logoHeader = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-PT']);
+        //         $entityManager->remove($logoHeader);
+        //         $entityManager->flush();
+        //     }elseif ($bodyClass == 'light'){
+        //         $logoHeader = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-BLACK-PT']);
+        //         $entityManager->remove($logoHeader);
+        //         $entityManager->flush();
+        //     }
 
-            // on récupère toutes les données du formulaire
-            $logoHeader = $formLogoHeader->getData();
-            if($bodyClass == 'dark'){
-                $nom_param = 'LOGO-WHITE-PT';
-            }elseif ($bodyClass == 'light'){
-                $nom_param = 'LOGO-BLACK-PT';
-            }
-            $logoHeader->setNomParam($nom_param);
-            $entityManager->persist($logoHeader);
-            $entityManager->flush();
-            $this->addFlash('success', 'Le logo a bien été modifié.');
-            return $this->redirectToRoute('app_administration');
-        }
+        //     // on récupère toutes les données du formulaire
+        //     $logoHeader = $formLogoHeader->getData();
+        //     if($bodyClass == 'dark'){
+        //         $nom_param = 'LOGO-WHITE-PT';
+        //     }elseif ($bodyClass == 'light'){
+        //         $nom_param = 'LOGO-BLACK-PT';
+        //     }
+        //     $logoHeader->setNomParam($nom_param);
+        //     $entityManager->persist($logoHeader);
+        //     $entityManager->flush();
+        //     $this->addFlash('success', 'Le logo a bien été modifié.');
+        //     return $this->redirectToRoute('app_administration');
+        // }
 
 
         // Formulaire de modification de l'imgage "pimentez votre communication"
@@ -493,7 +491,7 @@ class AdministrationController extends AbstractController
             'infoContactForm' => $formInfoContact->createView(),
             'ajoutMembreForm' => $formMembre->createView(),
             'supprimerMembreForm' => $supprimerForm->createView(),
-            'formlogoHeader' => $formLogoHeader->createView(),
+            // 'formlogoHeader' => $formLogoHeader->createView(),
             'formPiment' => $formPiment->createView(),
             // 'selectForm' => $selectForm->createView(),
             'modifyForm' => $modifyForm->createView(),
@@ -502,8 +500,8 @@ class AdministrationController extends AbstractController
             'parametrelogoAccueilwhite' => $parametrelogoAccueilwhite,
             'parametreTextAccueil' => $parametreTextAccueil,
             'infoscontact' => $infoscontact,
-            'parametrelogoHeaderblack' => $parametrelogoHeaderblack,
-            'parametrelogoHeaderwhite' => $parametrelogoHeaderwhite,
+            // 'parametrelogoHeaderblack' => $parametrelogoHeaderblack,
+            // 'parametrelogoHeaderwhite' => $parametrelogoHeaderwhite,
             'parametrePimentblack' => $parametrePimentblack,
             'parametrePimentwhite' => $parametrePimentwhite,
         ]);

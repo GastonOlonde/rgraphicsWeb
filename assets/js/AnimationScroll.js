@@ -91,7 +91,9 @@ var swiper = new Swiper('.swiper-container', {
     },
     speed: 2000,
     easing: 'ease-in-out',
+    
 });
+
 
 var swiper = new Swiper('.swiper-imprimerie', {
     effect: 'slide',

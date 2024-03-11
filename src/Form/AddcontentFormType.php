@@ -24,21 +24,23 @@ class AddcontentFormType extends AbstractType
                 'attr' =>[
                     'placeholder' => 'Titre'
                 ],
-                'label' => 'Titre*'
+                'label' => 'Titre',
+                'required' => false
             ])
             // tectarea pour la légende
             ->add('legende', TextAreaType::class, [
                 'attr' =>[
                     'placeholder' => 'Légende'
                 ],
-                'label' => 'Légende*'
+                'label' => 'Légende',
+                'required' => false
             ])
             // Input pour l'image avec vichuploader File
             ->add('imageFile', VichImageType::class, [
                 'attr' =>[
                     'placeholder' => 'Votre image'
                 ],
-                'label' => 'Image*',
+                'label' => 'Image',
                 'required' => false
             ])
             
@@ -46,7 +48,7 @@ class AddcontentFormType extends AbstractType
             ->add('categorie', EntityType::class, [
                 'class' => Categories::class,
                 'choice_label' => 'nom',
-                'label' => 'Catégorie*'
+                'label' => 'Catégorie'
             ])
         ;
     }

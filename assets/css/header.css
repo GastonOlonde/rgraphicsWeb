@@ -1,8 +1,8 @@
+@font-face {
+    font-family: 'Acumin';
+    src: url('../fonts/AcuminVariableConcept.otf') format('opentype');
+}
 
-/* @font-face {
-    font-family: 'Avenir';
-    src: url("/assets/fonts/avenir_zIFt5/Avenir/AvenirHeavy/AvenirHeavy.ttf");
-} */
 
 *{
     margin: 0;
@@ -21,13 +21,14 @@
 }
 
 html{
-    font-size:16px;
-    font-family: 'Avenir', sans-serif;
-    font-weight: 550;
+    font-size: 16px;
+    /* font-weight: 550; */
 }
 
 body{
     background-color: var(--color-background);
+    font-family: "Acumin",sans-serif;
+    font-variation-settings: 'wght' 300, 'wdth' 80, 'slnt' 0;
 }
 
 body.dark{
@@ -137,7 +138,8 @@ nav{
     height: 60px;
     width: 60px;
     margin-top: 32px;
-    font-family: 'Avenir', sans-serif;
+    font-family: "Acumin", sans-serif;
+    font-variation-settings: 'wght' 300, 'wdth' 100, 'slnt' 0;
     padding: 0.5rem;
     cursor: pointer;
 }
@@ -181,9 +183,10 @@ nav{
     justify-content: center;
     border-radius: 10px;
     padding: 0.5rem;
+    font-family: "Acumin", sans-serif;
+    font-variation-settings: 'wght' 500, 'wdth' 100, 'slnt' 0;
+    align-items: center;
     border: none;
-    font-family: 'Avenir', sans-serif;
-    font-weight: 550;
     color: var(--color-text);
     box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.30);
     transition: all 0.3s ease-in-out;
