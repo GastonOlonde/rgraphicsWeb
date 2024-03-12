@@ -22,7 +22,7 @@ Class AccueilController extends AbstractController
         $parametrelogoAccueilwhite = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'LOGO-WHITE-GR']);
         $parametreTextAccueil = $entityManager->getRepository(Parametre::class)->findOneBy(['nom_param' => 'TEXTE_ACCUEIL']);
         // récupération des sevices qui coreespondent aux coverings
-        $covering = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'TOTAL COVERING'])]);
+        $covering = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'COVERING'])]);
 
         // récupération des sevices qui coreespondent aux marquages véhicules du plus récent au plus ancien
         $marquageVehicule = $entityManager->getRepository(Services::class)->findBy(['categorie' => $entityManager->getRepository(Categories::class)->findOneBy(['nom' => 'MARQUAGES VEHICULES'])], ['id' => 'DESC']);

@@ -22,7 +22,7 @@ class mailcontact{
         // On créer le mail
         $email = (new TemplatedEmail())
             ->from($from)
-            ->to('gastonolonde@gmail.com')
+            ->to('r.graphics@orange.fr')
             ->subject($subject)
             ->context($message);
 

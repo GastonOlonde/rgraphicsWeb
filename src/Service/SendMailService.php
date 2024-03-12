@@ -23,7 +23,7 @@ class SendMailService{
         // On créer le mail
         $email = (new TemplatedEmail())
             ->from($from)
-            ->to('gastonolonde@gmail.com')
+            ->to('r.graphics@orange.fr')
             ->subject($subject)
             ->htmlTemplate("emails/$template.html.twig")
             ->context($context);

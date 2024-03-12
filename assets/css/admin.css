@@ -191,6 +191,10 @@ input:focus{
     overflow-y: hidden;
 }
 
+.select2-hidden-accessible{
+    width: 100%;
+}
+
 #addcontent_form_categorie:focus{
     outline: none;
     border: 1px solid var(--color-first-color);
@@ -418,6 +422,10 @@ input[type=file]::file-selector-button:hover {
     padding: 0.2rem;
 }
 
+.logo-slogan{
+    width: 100%;
+}
+
 .image-logo-header{
     display: flex;
     width: 40%;
@@ -429,14 +437,15 @@ input[type=file]::file-selector-button:hover {
 
 .text-apercu{
     display: flex;
-    width: 50%;
+    width: 45%;
     height: 100px;
     background-color: var(--color-background);
     color: var(--color-text);
     border: 1px solid var(--color-first-color);
-    border-radius: 10px 5px 5px 10px;
+    border-radius: 10px 10px 10px 10px;
     padding: 0.2rem;
     overflow-y: scroll;
+    resize: both;
 }
 
 .text-apercu::-webkit-scrollbar {
@@ -452,12 +461,12 @@ input[type=file]::file-selector-button:hover {
 }
 
 #text_accueil_from_textAccroche{
-    width: 500px;
+    min-width: 250px;
     height: 100px;
     padding: 0.5rem;
+    display: flex;
     border: 1px solid var(--color-text);
-    resize: none;
-    border-radius: 10px 5px 5px 10px;
+    border-radius: 10px 10px 10px 10px;
     overflow-y: scroll;
 }
 
@@ -480,12 +489,12 @@ input[type=file]::file-selector-button:hover {
 }
 
 #info_contact_form_value_param{
-    width: 500px;
-    height: 100px;
+    min-width: 250px;
+    height: 50px;
     padding: 0.5rem;
     border: 1px solid var(--color-text);
-    resize: none;
-    border-radius: 10px 5px 5px 10px;
+    
+    border-radius: 10px 10px 10px 10px;
     overflow-y: scroll;
 }
 #info_contact_form_value_param:focus{
@@ -569,6 +578,10 @@ input[type=file]::file-selector-button:hover {
     border: 1px solid var(--color-border-form);
     color: var(--color-text);
     margin-bottom: 0;
+}
+.div-equipe form div input:focus{
+    outline: none;
+    border: 1px solid var(--color-first-color);
 }
 .div-equipe form div textarea{
     display: flex;
@@ -701,7 +714,16 @@ input[type=file]::file-selector-button:hover {
     .page-accueil form{
         flex-direction: column;
     }
-    
+    .page-accueil form button{
+        width: 20%;
+    }
+
+    .text-apercu{
+        width: 100%;
+    }
+    .text_accueil_from_textAccroche{
+        width: 100%;
+    }
 }
 @media all and (max-width: 900px) {
     .ajout-contenu form{
@@ -714,6 +736,33 @@ input[type=file]::file-selector-button:hover {
         padding: auto;
     }
     .ajout-contenu form button{
+        width: 80%;
+    }
+    .page-accueil form button{
+        width: 30%;
+    }
+
+}
+/* media 500px */
+@media all and (max-width: 500px) {
+    .ajout-contenu{
         width: 100%;
     }
+    .div-form-info-gen{
+        width: 100%;
+    }
+    .div-equipe{
+        width: 100%;
+    }
+    .div-equipe form{
+        width: 100%;
+    }
+    .div-equipe form div {
+        width: 80%;
+        align-self: center;
+    }
+    .div-equipe form div label{
+        margin-right: 2rem;
+    }
 }
+

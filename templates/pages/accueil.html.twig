@@ -36,12 +36,12 @@
     </div>
 </section>
 
-<section id="section2" class="section" data-section-name="Total Covering">
+<section id="section2" class="section" data-section-name="Covering">
     <div class="div-covering">
 
         <div class="div-tire-onglet">
             <div class="titre">
-                <h2>TOTAL COVERING</h2>
+                <h2>COVERING</h2>
             </div>
             <div class="dropdown"> {# Onglet de navigation entre les sections #}
 
@@ -51,7 +51,7 @@
                 </button>
 
                 <div class="dropdown-content">
-                    <a href="#section2" class="section-link">Total Covering</a>
+                    <a href="#section2" class="section-link">Covering</a>
                     <a href="#section3" class="section-link">Marquage véhicules</a>
                     <a href="#section4" class="section-link">Enseignes-Vitrines-Panneaux</a>
                     <a href="#section5" class="section-link">Logos</a>
@@ -64,7 +64,8 @@
                 
             </div>
         </div>
-
+        <p class="text_expl">
+        </p>
         {% if covering is empty %}
             <div class="contenu_empty">
                 <h2>Le site est en cours de maintenance</h2>
@@ -84,9 +85,11 @@
                                 </div>
                                 
                             {% endif %}
-                            <div class="croixSupp">
-                                <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
-                            </div>
+                            {% if app.user %}
+                                <div class="croixSupp">
+                                    <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
@@ -102,7 +105,8 @@
                 <h2>Marquage vehicules</h2>
             </div>  
         </div>
-
+        <p class="text_expl">
+        </p>
         {% if marquageVehicule is empty %}
             <div class="contenu_empty">
                 <h2>Le site est en cours de maintenance</h2>
@@ -119,6 +123,11 @@
                             <div class="info_marq">
                                 <h3>{{img.titre}}</h3>
                                 <p>{{img.legende}}</p>
+                            </div>
+                        {% endif %}
+                        {% if app.user %}
+                            <div class="croixSupp">
+                                <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
                             </div>
                         {% endif %}
                     </div>
@@ -155,6 +164,11 @@
                                 <p>{{img.legende}}</p>
                             </div>
                         {% endif %}
+                        {% if app.user %}
+                            <div class="croixSupp">
+                                <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -169,6 +183,11 @@
                             <div class="info_ens">
                                 <h3>{{img.titre}}</h3>
                                 <p>{{img.legende}}</p>
+                            </div>
+                        {% endif %}
+                        {% if app.user %}
+                            <div class="croixSupp">
+                                <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
                             </div>
                         {% endif %}
                     </div>
@@ -206,6 +225,11 @@
                             <p>{{img.legende}}</p>
                         </div>
                     {% endif %}
+                    {% if app.user %}
+                        <div class="croixSupp">
+                            <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
+                        </div>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
@@ -236,6 +260,11 @@
                         <div class="info_imp">
                             <h3>{{img.titre}}</h3>
                             <p>{{img.legende}}</p>
+                        </div>
+                    {% endif %}
+                    {% if app.user %}
+                        <div class="croixSupp">
+                            <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
                         </div>
                     {% endif %}
                 </div>
@@ -269,6 +298,11 @@
                             <div class="info_imp2">
                                 <h3>{{img.titre}}</h3>
                                 <p>{{img.legende}}</p>
+                            </div>
+                        {% endif %}
+                        {% if app.user %}
+                            <div class="croixSupp">
+                                <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
                             </div>
                         {% endif %}
                     </div>
@@ -305,6 +339,11 @@
                                 <p>{{img.legende}}</p>
                             </div>
                         {% endif %}
+                        {% if app.user %}
+                            <div class="croixSupp">
+                                <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
@@ -339,6 +378,11 @@
                                     <p>{{img.legende}}</p>
                                 </div>
                             {% endif %}
+                            {% if app.user %}
+                                <div class="croixSupp">
+                                    <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
@@ -355,6 +399,11 @@
                                     <p>{{img.legende}}</p>
                                 </div>
                             {% endif %}
+                            {% if app.user %}
+                                <div class="croixSupp">
+                                    <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
                 </div>
@@ -369,6 +418,11 @@
                                 <div class="info_cov">
                                     <h3>{{img.titre}}</h3>
                                     <p>{{img.legende}}</p>
+                                </div>
+                            {% endif %}
+                            {% if app.user %}
+                                <div class="croixSupp">
+                                    <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
                                 </div>
                             {% endif %}
                         </div>
@@ -398,20 +452,20 @@
                 {% for img in partenaire %}
                     <div class="img_partenaires">
                         <img src="{{ vich_uploader_asset(img, 'imageFile') }}" alt="{{img.imageName}}">
-                        <div class="info_partenaires">
-                            <h3>{{img.titre}}</h3>
-                            <p>{{img.legende}}</p>
-                        </div>
+                        {% if app.user %}
+                            <div class="croixSupp">
+                                <img id="croixsupp" src="{{ asset('images/signe-de-la-croix.png') }}" onclick="supprimerService({{ img.id }})">
+                            </div>
+                        {% endif %}
                     </div>
                 {% endfor %}
             </div>
         {% endif %}
-
     </div>
 </section>   
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="{{ asset('js/AnimationScroll.js') }}"></script>
 
 <script>
@@ -654,22 +708,25 @@ var swiper = new Swiper('.swiper_goodies_3', {
     
 });
 
+
+
 function supprimerService(serviceId) {
     if (confirm('Êtes-vous sûr de vouloir supprimer ce service ?')) {
         var url = '{{ path('app_supprimer_service', {'id': '__id__'}) }}';
         url = url.replace('__id__', serviceId);
 
-        var xhr = new XMLHttpRequest();
-        xhr.open('DELETE', url, true);
-        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Optionnel : Mettez à jour l'interface utilisateur après la suppression
-                var elementASupprimer = document.getElementById('croixsupp');
-                elementASupprimer.parentNode.removeChild(elementASupprimer);
+        $.ajax({
+            url: url,
+            type: 'DELETE',
+            success: function(response) {
+                // La requête a réussi, vous pouvez mettre à jour l'interface utilisateur ici si nécessaire
+                // recharger la page
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                alert('Erreur lors de la suppression du service : ' + error);
             }
-        };
-        xhr.send();
+        });
     }
 }
 </script>
