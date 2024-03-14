@@ -4,12 +4,13 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" class="icon" href="{{asset('images/R-G.png')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         {% block stylesheets %}
 
         {% endblock %}
 
         {% block javascripts %}
-
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
