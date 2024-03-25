@@ -79,7 +79,7 @@ class SecurityController extends AbstractController
 
                 //Envoi du mail
                 $mail->sendMail(
-                    'no-reply@rgraphic.fr',
+                    'info@rgraphic.fr',
                     $user->getEmail(),
                     'Réinitialisation de votre mot de passe',
                     'password_reset',

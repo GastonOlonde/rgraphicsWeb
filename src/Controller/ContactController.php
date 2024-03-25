@@ -36,16 +36,26 @@ class ContactController extends AbstractController
             $nom = $formData['nom'];
             $objet = $formData['objet'];
             $message = $formData['message'];
+            // saut de ligne
+            $message .= '<br>';
             $message .= $formData['telephone'];
 
             $email = (new Email())
                 ->from(new Address($emailfrom, $nom))
-                ->to('gaston@gmail.com')
+                ->to('info@rgraphics.fr')
                 ->subject($objet)
                 ->html($message);
 
             // Envoyer l'email
-            $mailer->send($email);
+            // si le mail est envoyé
+            try {
+                $mailer->send($email);
+                $this->addFlash('success', 'Votre message a bien été envoyé');
+                // vider le formulaire
+                $form = $this->createForm(ContactFormType::class);
+            } catch (\Exception $e) {
+                $this->addFlash('error', 'Une erreur est survenue, veuillez réessayer');
+            }    
         }
 
         // on récupère la veleur de nom_param='PDG'

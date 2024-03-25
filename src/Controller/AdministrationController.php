@@ -119,19 +119,15 @@ class AdministrationController extends AbstractController
             );
 
             $entityManager->persist($user);
-            $entityManager->flush();
+            try{
+                $entityManager->flush();
+                $this->addFlash('success', 'Administrateur ajouté avec succès !');
+            } catch(\Exception $e){
+                $this->addFlash('error', 'Une erreur est survenue, veuillez réessayer.');
+            }
             // do anything else you need here, like send an email
 
-            // On envoi un mail
-            $mail->sendMail(
-                'gastonolonde@gmail.com',
-                $user->getEmail(),
-                'Bienvenue sur le site en tant qu\'administrateur',
-                'register',
-                [
-                    'user' => $user
-                ]
-            );
+            
 
             return $userAuthenticator->authenticateUser(
                 $user,
